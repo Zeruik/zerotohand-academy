@@ -1,0 +1,6 @@
+.partner4 .studio-logo9{position:relative;display:block;width:154px;max-width:100%;aspect-ratio:1530/490;margin:0 0 12px;background:transparent}
+html[data-theme] .partner4 .studio-logo9 img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;padding:0;margin:0;background:transparent!important;filter:none}
+.partner4 .studio-logo9 .studio-wordmark9{display:none}
+html[data-theme=dark] .partner4 .studio-logo9 .studio-wordmark9{display:block;filter:invert(1);clip-path:inset(0 0 0 32%)}
+.partner4 small{display:block;line-height:1.65}.partner4 .studio-parent9{font-size:10px;margin:7px 0;color:var(--muted)}.copyright9{font-size:10px;color:var(--muted);margin-top:9px;letter-spacing:.02em}
+.about-studios9{border-top:1px solid var(--line);margin-top:32px;padding-top:26px}.about-studios9 p{max-width:760px;color:var(--muted);line-height:1.9}

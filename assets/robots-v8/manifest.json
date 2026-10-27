@@ -1,0 +1,138 @@
+{
+  "format": 1,
+  "description": "Official visual mesh topology retained; positions quantized per mesh to uint16 and normals to normalized int8, with indexed triangle deduplication. No texture or external URL is loaded at runtime.",
+  "models": {
+    "go2": {
+      "repository": "https://github.com/unitreerobotics/unitree_ros",
+      "commit": "15ebe53f4cd77e7d745ae83b9d7ff90e685e8998",
+      "license": "BSD-3-Clause",
+      "geometry": "official visual DAE meshes, indexed and quantized; not collision proxies",
+      "urdfSha256": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e",
+      "meshFiles": [
+        {
+          "file": "robots/go2_description/dae/base.dae",
+          "sourceSha256": "e52bebbb5c7ff1f6aedee620c9b5b349f6e965360ecc63a9bb743eeff2d0be64",
+          "sourceBytes": 10727399,
+          "triangles": 77928,
+          "vertices": 50074,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/hip.dae",
+          "sourceSha256": "8735e10617afe252cef0844c1d139d15bc6d4c653660d742fea9fe05c2704d8f",
+          "sourceBytes": 4666421,
+          "triangles": 37040,
+          "vertices": 23230,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/thigh.dae",
+          "sourceSha256": "a622381ae308897ff143b8bbf02f075457c342b22984205040424a5a983246fa",
+          "sourceBytes": 3884136,
+          "triangles": 30134,
+          "vertices": 17944,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/calf.dae",
+          "sourceSha256": "29872fa1a435b92bc2b395fdfa7f0aee26101db3c494681896bd4ef24ee7883c",
+          "sourceBytes": 1125517,
+          "triangles": 8602,
+          "vertices": 5491,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/foot.dae",
+          "sourceSha256": "ffbd95fd641866ce9bd277aa249b92dafc9148d70131fa2c52709a35ce5b710b",
+          "sourceBytes": 506988,
+          "triangles": 4404,
+          "vertices": 12400,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/thigh_mirror.dae",
+          "sourceSha256": "c7bae0b0565c2aa4b7cc15a538d795e9153e0f10c821cc18429e92693172bdc6",
+          "sourceBytes": 3896575,
+          "triangles": 30126,
+          "vertices": 17942,
+          "parts": 1
+        },
+        {
+          "file": "robots/go2_description/dae/calf_mirror.dae",
+          "sourceSha256": "79c66be7ed06760bd5001c067a1fb0ac517f639d8b1a5f89be471903b3f359e1",
+          "sourceBytes": 1125457,
+          "triangles": 8602,
+          "vertices": 5490,
+          "parts": 1
+        }
+      ]
+    },
+    "ur5": {
+      "repository": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Description",
+      "commit": "81f7c9fe003c2f0e02eec5a7253f1b262ad38b61",
+      "license": "BSD-3-Clause",
+      "geometry": "official visual DAE meshes, indexed and quantized; not collision proxies",
+      "urdfSha256": "eadda7b5167bf9b268df86715ed688b1bdae278fb520401150e458baad1b1c66",
+      "meshFiles": [
+        {
+          "file": "meshes/ur5/visual/base.dae",
+          "sourceSha256": "366e6cb99a2bf5027dae92d2bd428d27224b0a5af96ca9f1e68f5b92860c2011",
+          "sourceBytes": 157910,
+          "triangles": 1932,
+          "vertices": 2009,
+          "parts": 1
+        },
+        {
+          "file": "meshes/ur5/visual/shoulder.dae",
+          "sourceSha256": "fd15be6d2edbc6403e00f4f6e00bd3970491d3d53cc77eeb55c98bcd8f6b49ca",
+          "sourceBytes": 1007765,
+          "triangles": 13492,
+          "vertices": 10298,
+          "parts": 2
+        },
+        {
+          "file": "meshes/ur5/visual/upperarm.dae",
+          "sourceSha256": "06b46dce3dadb55a71dc55dc710a3a6206006a902e507f05267dde6ffe4c9c8c",
+          "sourceBytes": 2004987,
+          "triangles": 29436,
+          "vertices": 19759,
+          "parts": 5
+        },
+        {
+          "file": "meshes/ur5/visual/forearm.dae",
+          "sourceSha256": "2fabc6738b33365b5c54b59304f128907c5e214d25d5e4cc40487b67718a3dbe",
+          "sourceBytes": 1469403,
+          "triangles": 21028,
+          "vertices": 14310,
+          "parts": 4
+        },
+        {
+          "file": "meshes/ur5/visual/wrist1.dae",
+          "sourceSha256": "3eb98c0a440ea8f4e91fd2cbb3bf39bd8b96acbb5ebdb697e64603395f1d0a79",
+          "sourceBytes": 948689,
+          "triangles": 14074,
+          "vertices": 9024,
+          "parts": 2
+        },
+        {
+          "file": "meshes/ur5/visual/wrist2.dae",
+          "sourceSha256": "2a60ae57fd85ee06e77482029b10fe09fd53dc68169138380e64d98d5f134f09",
+          "sourceBytes": 947502,
+          "triangles": 14074,
+          "vertices": 9006,
+          "parts": 2
+        },
+        {
+          "file": "meshes/ur5/visual/wrist3.dae",
+          "sourceSha256": "23430d8b8ec0c94c5a69fe5e70931399d3d8e07d40f277334fe62d82b959cef5",
+          "sourceBytes": 123930,
+          "triangles": 1658,
+          "vertices": 1682,
+          "parts": 1
+        }
+      ]
+    }
+  },
+  "generatedJsBytes": 4753230,
+  "totalTriangles": 292530
+}

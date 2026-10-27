@@ -1,0 +1,19 @@
+:root{--motion-fill9:#287b76;--motion-hover9:#216660;--motion-ink9:#fff}
+html[data-theme=dark]{--motion-fill9:#8dcdc0;--motion-hover9:#abdfd4;--motion-ink9:#172426}
+.motion-controls9,.motion-modes9{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* Include the control attribute so legacy transport and narrow-layout rules cannot shrink or recolor these buttons. */
+html .motion-controls9 button[data-motion9]{min-height:44px;min-width:64px;padding:10px 14px;font-size:12px}
+html .motion-controls9 button[data-motion9=start],html .motion-modes9 button[aria-pressed=true]{background:var(--motion-fill9);border-color:var(--motion-fill9);color:var(--motion-ink9)}
+html .motion-controls9 button[data-motion9=start]:hover:not(:disabled),html .motion-modes9 button[aria-pressed=true]:hover:not(:disabled){background:var(--motion-hover9);border-color:var(--motion-hover9);color:var(--motion-ink9)}
+.motion-controls9 button:disabled{opacity:.48;cursor:default}
+.motion-controls9 [data-motion9=stop]{border-color:color-mix(in srgb,var(--accent,#c87842),var(--line,#ddd) 60%)}
+.motion-modes9{margin:0 0 14px}
+.motion-modes9 button{flex:1;min-width:125px;min-height:44px;padding:10px 13px}
+.motion-note9{padding:13px 15px;border-radius:12px;background:color-mix(in srgb,var(--teal,#287b76),transparent 92%);font-size:12px;line-height:1.8;border:1px solid color-mix(in srgb,var(--teal,#287b76),transparent 77%)}
+.transport4 [hidden],.hero-controls7 [hidden]{display:none!important}
+.scene3d-hud6 [data-view-orbit-pause9],.scene3d-hud6 [data-view-orbit-stop9]{font-size:10px}
+.scene3d-hud6>span i{animation:none!important}
+.hero-controls7 .motion-controls9{flex-wrap:wrap}
+html[data-motion-preference9=reduced]{scroll-behavior:auto}
+html[data-motion-preference9=reduced] *{scroll-behavior:auto!important;transition:none!important}
+.motion-controls9 button:focus-visible,.motion-modes9 button:focus-visible{outline:3px solid var(--accent,#c87842);outline-offset:3px}
