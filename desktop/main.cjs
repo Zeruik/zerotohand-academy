@@ -17,11 +17,12 @@ else{let win;app.on('second-instance',()=>{if(win){win.show();if(win.isMinimized
  const protection=await createProtection(safeStorage);
  const archive=await storagePath10(path.dirname(app.getPath('exe')),app.getPath('userData'),protection);
  const store=archive.store;
+ const manager=require('./manager-store.cjs').createManagerStore(archive.directory);
  const flasher=createFlasher10({root:path.join(process.resourcesPath,'flashing-v10'),tempRoot:path.join(app.getPath('temp'),'ZeroToHand-builds')});
  const firmware=new Map();let disposing=false,disposed=false;
  app.on('before-quit',event=>{if(disposed)return;event.preventDefault();if(disposing)return;disposing=true;flasher.dispose().catch(()=>{}).finally(()=>{disposed=true;app.quit();});});
  function trusted(event){return !!win&&!win.isDestroyed()&&event.sender===win.webContents&&event.senderFrame===win.webContents.mainFrame&&event.senderFrame.url.split('#')[0]===entry;}
- for(const [channel,handler]of [['load',()=>store.load()],['save',data=>store.save(data)],['info',()=>({storage:'local-file',protected:protection.protected,archivePath:archive.directory,migrated:archive.migrated,runtime:process.versions.electron})]])ipcMain.handle('zth9:'+channel,(event,data)=>{if(!trusted(event))throw Error('UNTRUSTED_SENDER');return handler(data);});
+ for(const [channel,handler]of [['manager-load',()=>manager.load()],['manager-save',data=>manager.save(data)],['load',()=>store.load()],['save',data=>store.save(data)],['info',()=>({storage:'local-file',protected:protection.protected,archivePath:archive.directory,migrated:archive.migrated,runtime:process.versions.electron})]])ipcMain.handle('zth9:'+channel,(event,data)=>{if(!trusted(event))throw Error('UNTRUSTED_SENDER');return handler(data);});
  win=new BrowserWindow({show:false,width:1440,height:960,minWidth:460,minHeight:560,backgroundColor:'#f7f3ed',icon:path.join(__dirname,'icon.ico'),webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true}});
  win.once('ready-to-show',()=>win.show());
  let closePending=false,closeReady=false,interruptAccepted=false;

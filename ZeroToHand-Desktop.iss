@@ -4,15 +4,15 @@ AppId={{CFF45F03-4D61-4AF0-93F5-5C21174D7510}
 AppName={#AppName}
 AppPublisher=Zeruik
 AppPublisherURL=mailto:zeruik@qq.com
-AppVersion=10.0.0
-VersionInfoVersion=10.0.0.0
+AppVersion=11.0.0
+VersionInfoVersion=11.0.0.0
 DefaultDirName={code:DefaultInstallFolder}
 DefaultGroupName=ZeroToHand
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=dist
-OutputBaseFilename=Install-ZeroToHand-v10
+OutputBaseFilename=Install-ZeroToHand-v11
 Compression=lzma2/fast
 SolidCompression=yes
 WizardStyle=modern
@@ -20,6 +20,8 @@ MinVersion=10.0
 DisableDirPage=no
 DisableProgramGroupPage=yes
 DisableWelcomePage=no
+ShowLanguageDialog=no
+UsePreviousLanguage=yes
 UninstallDisplayIcon={app}\ZeroToHand.exe
 SetupIconFile=ZeroToHand-Academy.ico
 WizardImageFile=setup-wizard.bmp
@@ -33,10 +35,10 @@ UsePreviousAppDir=yes
 Name: "chinesesimp"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 [Messages]
-chinesesimp.WelcomeLabel1=欢迎来到工程学院 10.0
-chinesesimp.WelcomeLabel2=从认识电路到理解机器人：106 课内容、29 个 3D 教学操作台，以及终端与 C 语句练习，均可离线使用。%n%n安装包已内置桌面运行环境，无需另装浏览器、下载依赖或配置环境变量。适用于 Windows 10/11 64 位电脑。%n%n接下来请确认许可与隐私说明，选择安装位置、存档位置和快捷方式。
-english.WelcomeLabel1=Welcome to ZeroToHand Engineering Academy 10.0
-english.WelcomeLabel2=Explore circuits, control and robotics with 106 lessons, 29 interactive 3D teaching workbenches, and terminal and C statement practice.%n%nThe desktop runtime is included. No separate browser, dependency download or environment-variable changes are needed. For Windows 10/11 64-bit computers.%n%nContinue to review the license and privacy information, then choose application and archive folders and shortcuts.
+chinesesimp.WelcomeLabel1=欢迎来到工程学院 11.0
+chinesesimp.WelcomeLabel2=从电阻分压到模拟电路与机器人：加强电子电路课程、交互实验和答题练习，并提供学员主动分享档案的离线进度管理。%n%n安装包已内置桌面运行环境，无需另装浏览器、下载依赖或配置环境变量。适用于 Windows 10/11 64 位电脑。%n%n接下来请确认许可与隐私说明，选择安装位置、存档位置和快捷方式。
+english.WelcomeLabel1=Welcome to ZeroToHand Engineering Academy 11.0
+english.WelcomeLabel2=Explore electronics, measurement and robotics with expanded circuit lessons, interactive experiments and offline progress management using learner-shared archives.%n%nThe desktop runtime is included. No separate browser, dependency download or environment-variable changes are needed. For Windows 10/11 64-bit computers.%n%nContinue to review the license and privacy information, then choose application and archive folders and shortcuts.
 [CustomMessages]
 chinesesimp.RuntimePageTitle=运行环境
 chinesesimp.RuntimePageDescription=必要的桌面运行环境已包含在安装包中。
@@ -75,6 +77,7 @@ Filename: "{app}\ZeroToHand.exe"; Description: "{cm:LaunchAcademy}"; Flags: post
 [Code]
 var
   AgreementPage: TWizardPage;
+
   AgreementCheck: TNewCheckBox;
   PolicyMemo: TNewMemo;
   ArchivePage: TInputDirWizardPage;
@@ -84,7 +87,7 @@ var
   BackupFolder, BackupSource, MigratedSource, MigratedTarget: String;
 
 const
-  InstallerVersion = '10.0.0';
+  InstallerVersion = '11.0.0';
   AppExecutable = 'ZeroToHand.exe';
   UninstallKey = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\{CFF45F03-4D61-4AF0-93F5-5C21174D7510}_is1';
 
@@ -179,9 +182,9 @@ end;
 
 function ArchiveFileName(Index: Integer): String;
 begin
-  Result := 'learning-store.zthdb';
-  if Index = 1 then Result := Result + '.previous';
-  if Index = 2 then Result := Result + '.pending';
+  if Index < 3 then Result := 'learning-store.zthdb' else Result := 'manager-store.zthdb';
+  if (Index mod 3) = 1 then Result := Result + '.previous';
+  if (Index mod 3) = 2 then Result := Result + '.pending';
 end;
 
 function HasArchive(const Folder: String): Boolean;
@@ -189,7 +192,7 @@ var I: Integer;
 begin
   Result := False;
   if Folder = '' then Exit;
-  for I := 0 to 2 do
+  for I := 0 to 5 do
     if FileExists(AddBackslash(Folder) + ArchiveFileName(I)) then Result := True;
 end;
 
@@ -280,7 +283,7 @@ begin
   until not DirExists(Folder) and not FileExists(Folder);
   Result := ForceDirectories(Folder);
   if not Result then Exit;
-  for I := 0 to 2 do begin
+  for I := 0 to 5 do begin
     FileName := ArchiveFileName(I);
     if FileExists(AddBackslash(Source) + FileName) then begin
       if not CopyFile(AddBackslash(Source) + FileName, AddBackslash(Folder) + FileName, True) then begin Result := False; Exit; end;
@@ -298,7 +301,7 @@ begin
   if not HasArchive(Source) then Exit;
   if SamePath(Source, MigratedSource) and SamePath(Target, MigratedTarget) then Exit;
   if HasArchive(Target) then begin Result := False; Exit; end;
-  for I := 0 to 2 do begin
+  for I := 0 to 5 do begin
     FileName := ArchiveFileName(I);
     if FileExists(AddBackslash(Source) + FileName) then begin
       if not CopyFile(AddBackslash(Source) + FileName, AddBackslash(Target) + FileName, True) then begin Result := False; Exit; end;

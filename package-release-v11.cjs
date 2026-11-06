@@ -4,16 +4,27 @@ const crypto = require('crypto');
 const cp = require('child_process');
 
 const ROOT = fs.realpathSync(__dirname);
-const VERSION = '10.0.0';
-const SOURCE_FOLDER = 'publish/zerotohand-academy-v10';
-const RELEASE_FOLDER = 'release/ZeroToHand-Academy-Windows-v10.0.0';
-const INSTALLER = 'dist/Install-ZeroToHand-v10.exe';
+const VERSION = '11.0.0';
+const SOURCE_FOLDER = 'publish/zerotohand-academy-v11';
+const RELEASE_FOLDER = 'release/ZeroToHand-Academy-Windows-v11.0.0';
+const INSTALLER = 'dist/Install-ZeroToHand-v11.exe';
 const APP_HTML = 'ZeroToHand-Engineering-Academy.html';
 
 // Public inputs are deliberately enumerated. Add a new required source file here.
 // A folder-wide copy would make a stray learner archive or developer log public.
 const SOURCE_FILES = [
-  'desktop/flashing.cjs', 'build-flashing.cjs', 'build-exe-brand-v10.cjs', 'qa/flashing-v10.cjs',
+  'qa/storage-path-v11.cjs',
+  'qa/companion-v11.cjs',
+  'src/computer-v11.js', 'src/computer-v11.css', 'qa/computer-v11.cjs',
+  'src/connections-v11.js', 'src/connections-v11.css', 'qa/connections-v11.cjs', 'qa/integration-v11.cjs',
+  'src/learner-v11.js', 'src/learner-v11.css', 'qa/learner-v11.cjs',
+  'src/robot-interaction-v11.js', 'src/layout-v11.js', 'src/layout-v11.css',
+  'qa/robot-interaction-v11.cjs', 'qa/navigation-shell-v11.cjs',
+  'src/electronics-v11.js', 'src/electronics-v11.css', 'qa/electronics-v11.cjs',
+  'src/manager-v11.js', 'src/manager-v11.css', 'qa/manager-v11.cjs',
+  'qa/installer-lifecycle-v11.cjs', 'desktop/manager-store.cjs',
+  'qa/manager-storage-v11.cjs', 'qa/storage-upgrade-v11.cjs', 'qa/archive-compatibility-v11.cjs',
+  'desktop/flashing.cjs', 'build-flashing.cjs', 'build-exe-brand-v11.cjs', 'qa/flashing-v10.cjs',
   'src/rtos-v10.js', 'src/rtos-v10.css', 'qa/rtos-v10.cjs', 'qa/harness-v10.cjs', 'qa/navigation-shell-v10.cjs',
   'src/companion-v10.js', 'src/companion-v10.css',
   'qa/companion-v10.cjs', 'desktop/storage-path.cjs', 'qa/storage-path-v10.cjs', 'qa/storage-upgrade-v10.cjs',
@@ -72,7 +83,7 @@ const SOURCE_FILES = [
   'assets/robots-v8/ur5/upstream/urdf/inc/ur_joint_control.xacro',
   'assets/robots-v8/ur5/upstream/urdf/inc/ur_sensors.xacro',
   'assets/robots-v8/ur5/upstream/urdf/inc/ur_transmissions.xacro',
-  'build.cjs', 'build-desktop.ps1', 'package-release-v10.cjs',
+  'build.cjs', 'build-desktop.ps1', 'package-release-v11.cjs',
   'ZeroToHand-Desktop.iss', 'ZeroToHand-Academy.ico',
   'setup-wizard.bmp', 'setup-small.bmp', 'THIRD-PARTY-LICENSES.txt', 'LICENSE-ZH.txt', 'PRIVACY-ZH.txt', APP_HTML,
   'assets/xiangyang-logo.png', 'desktop/package.json', 'desktop/main.cjs',
@@ -91,7 +102,7 @@ const SOURCE_FILES = [
 const GITIGNORE = [
   'node_modules/', 'dist/', 'release/', 'publish/', 'dev-notes/', 'archive/', 'private/', '__pycache__/',
   'qa/*-results.json', 'qa/results/', 'qa/*-art/', 'qa/*.log',
-  '*.log', '*.zth', '*.zthdb', '*.previous', '*.pending', '*.zthprogress', '*progress*.html', '*Codex-Master-Prompt*',
+  '*.log', '*manager-backup*', '*learner-report*', '*.zthm', '*.zth', '*.zthdb', '*.previous', '*.pending', '*.zthprogress', '*progress*.html', '*Codex-Master-Prompt*',
   '.env', '.env.*', '*.pem', '*.key', '.DS_Store', 'Thumbs.db', '',
 ].join('\n');
 
@@ -161,7 +172,7 @@ function assertNoPersonalArtifacts(names) {
     const guardedParts = parts.filter((part,index) => !(index === 1 && parts[0] === 'ThirdPartySources' && part === 'archives'));
     if (guardedParts.some(part => /^(?:\.git|dev-notes|node_modules|archives|profiles|screenshots?|cache|gpucache|local storage|session storage|indexeddb)$/i.test(part)) ||
         /^(?:local state|storage-location\.json)$/i.test(base) ||
-        /\.(?:zth|zthprogress|zthdb|previous|pending|log)$/i.test(base) ||
+        /\.(?:zth|zthm|zthprogress|zthdb|previous|pending|log)$/i.test(base) ||
         /(?:-results|-report|source-reproduction[^/]*)\.json$/i.test(base)) {
       throw Error('Personal archive, key context or developer artifact is forbidden in public output: ' + name);
     }
@@ -210,15 +221,15 @@ function scanPrivateStrings(file, label) {
 function sourcePlan() {
   if (new Set(SOURCE_FILES.map(file => file.toLowerCase())).size !== SOURCE_FILES.length) throw new Error('Duplicate or case-colliding public input.');
   const plan = SOURCE_FILES.map((file) => ({ from: file, to: file }));
-  plan.push({ from: authoringOrCanonical('README-v10.md', 'README.md'), to: 'README.md' });
-  plan.push({ from: authoringOrCanonical('README-v10.txt', 'README.txt'), to: 'README.txt' });
+  plan.push({ from: authoringOrCanonical('README-v11.md', 'README.md'), to: 'README.md' });
+  plan.push({ from: authoringOrCanonical('README-v11.txt', 'README.txt'), to: 'README.txt' });
   plan.push({ text: GITIGNORE, to: '.gitignore' });
   return plan;
 }
 function releasePlan() {
   const plan = [
-    { from: INSTALLER, to: 'Install-ZeroToHand-v10.exe' },
-    { from: authoringOrCanonical('README-v10.txt', 'README.txt'), to: '快速开始.txt' },
+    { from: INSTALLER, to: 'Install-ZeroToHand-v11.exe' },
+    { from: authoringOrCanonical('README-v11.txt', 'README.txt'), to: '快速开始.txt' },
     { from: 'THIRD-PARTY-LICENSES.txt', to: 'THIRD-PARTY-LICENSES.txt' },
     { from: 'LICENSE-ZH.txt', to: 'LICENSE-ZH.txt' },
     { from: 'PRIVACY-ZH.txt', to: 'PRIVACY-ZH.txt' },
@@ -281,6 +292,7 @@ function checkRuntimePayload() {
     { from: 'desktop/main.cjs', to: 'resources/app/main.cjs' },
     { from: 'desktop/preload.cjs', to: 'resources/app/preload.cjs' },
     { from: 'desktop/store.cjs', to: 'resources/app/store.cjs' },
+    { from: 'desktop/manager-store.cjs', to: 'resources/app/manager-store.cjs' },
     { from: 'desktop/protection.cjs', to: 'resources/app/protection.cjs' },
     { from: 'desktop/storage-path.cjs', to: 'resources/app/storage-path.cjs' },
     { from: 'desktop/flashing.cjs', to: 'resources/app/flashing.cjs' },
@@ -293,7 +305,7 @@ function checkRuntimePayload() {
   for (const file of runtimeFiles) {
     const target = file === 'electron.exe' ? 'ZeroToHand.exe' : file;
     if (file === 'electron.exe') {
-      cp.execFileSync(process.execPath, ['build-exe-brand-v10.cjs', '--check'], { cwd: ROOT, stdio: 'pipe', timeout: 120000 });
+      cp.execFileSync(process.execPath, ['build-exe-brand-v11.cjs', '--check'], { cwd: ROOT, stdio: 'pipe', timeout: 120000 });
       continue;
     }
     if (digest(path.join(runtimeFolder, file)) !== digest(path.join(bundleFolder, target))) {
@@ -312,17 +324,17 @@ function checkRuntimePayload() {
   if (!/^AppId=\{\{CFF45F03-4D61-4AF0-93F5-5C21174D7510\}\s*$/m.test(setup)) {
     throw new Error('The installer AppId must match the released v8 product so upgrades retain the same application identity.');
   }
-  if (!/^AppVersion=10\.0\.0\s*$/m.test(setup) || !/^OutputBaseFilename=Install-ZeroToHand-v10\s*$/m.test(setup)) {
-    throw new Error('The Inno Setup script is not configured for the v10 installer.');
+  if (!/^AppVersion=11\.0\.0\s*$/m.test(setup) || !/^OutputBaseFilename=Install-ZeroToHand-v11\s*$/m.test(setup)) {
+    throw new Error('The Inno Setup script is not configured for the v11 installer.');
   }
   const setupInputs = [...setup.matchAll(/^Source:\s*"([^"]+)"/gm)].map((match) => match[1].replace(/\\/g, '/'));
   const expectedSetupInputs = ['dist/desktop/*', 'README.txt', 'THIRD-PARTY-LICENSES.txt', 'LICENSE-ZH.txt', 'PRIVACY-ZH.txt'];
   if (setupInputs.length !== expectedSetupInputs.length || setupInputs.some((input) => !expectedSetupInputs.includes(input))) {
     throw new Error('The Inno Setup file list contains unreviewed inputs.');
   }
-  const readme = authoringOrCanonical('README-v10.txt', 'README.txt');
+  const readme = authoringOrCanonical('README-v11.txt', 'README.txt');
   if (digest(regularInput(readme)) !== digest(regularInput('README.txt'))) {
-    throw new Error('Copy README-v10.txt to README.txt before compiling the installer.');
+    throw new Error('Copy README-v11.txt to README.txt before compiling the installer.');
   }
   const installerTime = fs.statSync(regularInput(INSTALLER)).mtimeMs;
   const inputs = ['ZeroToHand-Desktop.iss', 'README.txt', 'THIRD-PARTY-LICENSES.txt', 'LICENSE-ZH.txt', 'PRIVACY-ZH.txt', ...expected.map((file) => `dist/desktop/${file}`)];
@@ -379,8 +391,8 @@ function main() {
     excluded: ['developer logs', 'QA results', 'screenshots', 'learner records', 'private prompts', 'dependency folders', 'Git metadata'],
   };
   fs.mkdirSync(child('dev-notes'), { recursive: true });
-  fs.writeFileSync(child('dev-notes/packaging-v10.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8');
-  console.log(JSON.stringify({ version: VERSION, uploadFolder: SOURCE_FOLDER, releaseFolder: RELEASE_FOLDER, uploadFiles: publicFiles.length, releaseFiles: distributedFiles.length, privacy: 'PASS', privateReport: 'dev-notes/packaging-v10.json' }, null, 2));
+  fs.writeFileSync(child('dev-notes/packaging-v11.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+  console.log(JSON.stringify({ version: VERSION, uploadFolder: SOURCE_FOLDER, releaseFolder: RELEASE_FOLDER, uploadFiles: publicFiles.length, releaseFiles: distributedFiles.length, privacy: 'PASS', privateReport: 'dev-notes/packaging-v11.json' }, null, 2));
 }
 
 module.exports = { sourcePlan, releasePlan, assertOnlyExpected, assertNoPersonalArtifacts, scanPrivateStrings, checkRuntimePayload };

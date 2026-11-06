@@ -1,20 +1,24 @@
-# ZeroToHand电子版 10.0 / ZeroToHand Electronic Edition
+# ZeroToHand电子版 11.0 / ZeroToHand Electronic Edition
 
-可以离线使用的双语工程学习应用，包含 **106 课、29 个主三维教学操作台、3 个课内基础解析台和 2 个软件教学工作区**，另有 4 个虚拟终端任务和 4 个受限 C 语句任务。路线从认识电脑、文件与命令行开始，逐步进入 C、电子电路、测量、制造、电机控制和 ROS 2 机器人基础。
+可以离线使用的双语工程学习应用。11.0 把电子电路放到学习入口，增加电路分析、元件选择、测量和排错的课程与可调参数实验。电脑基础、终端和编程入门保留为按需补习；已有的三维教学操作台、制造、电机控制和 ROS 2 机器人内容继续提供。新增离线学员管理，用学员主动分享的加密档案查看进度与答题记录。
 
 建议按每周 **4–6 小时、96 周**的路线交替学习、复习和独立实践；新增专题可按先修关系穿插学习。96 周是可调整的学习计划，不表示每周都有完整授课视频，也不保证固定时长内掌握所有内容。
 
+本版共有 **124 节课程、30 个主要实验操作台**，另有课内解析、接线、文件与代码练习。课程与操作台并非一对一，每项教学模型的范围在对应页面说明。
+
 ## 安装后就能学习
 
-完整解压 `ZeroToHand-Academy-Windows-v10.0.0.zip`，双击 `Install-ZeroToHand-v10.exe`。向导提供中文和英文、使用许可确认、安装位置和存档位置选择；快捷方式默认勾选，可取消。安装与存档目录按页面提示使用英文路径，应用自建目录使用英文名称。桌面运行环境包含在安装包中，学习者不需要另装浏览器、Node.js 或 Python，不需要修改系统 PATH。
+完整解压 `ZeroToHand-Academy-Windows-v11.0.0.zip`，双击 `Install-ZeroToHand-v11.exe`。向导按系统或上次安装语言显示中文/英文，并提供使用许可确认、安装位置和存档位置选择；快捷方式默认勾选，可取消。安装与存档目录按页面提示使用英文路径，应用自建目录使用英文名称。桌面运行环境包含在安装包中，学习者不需要另装浏览器、Node.js 或 Python，不需要修改系统 PATH。
 
 也可以用现代浏览器打开 `免安装版/ZeroToHand-Engineering-Academy.html`。课程、界面和模型在单文件中，日常学习不需要联网；主动打开外部参考资料或启用可选天气时才需要网络。源码仓库根目录提供同一个 HTML。
 
-先从首页的电脑入门开始。每课先写预测，再按任务操作，记录结果并解释原因，最后检查完成标准。进度文档记录个人学习过程，不是机构颁发的资格证书。
+先从电子电路主线开始；不熟悉文件、工具或编程时再打开对应基础课程。每课先写预测，再按任务操作，记录结果并解释原因，最后检查完成标准。进度文档记录个人学习过程，不是机构颁发的资格证书。
+
+安装从一个可拖动的欢迎窗口开始，后续协议、路径、快捷方式与进度页使用同一个窗口。需要指定安装语言时可运行 `Install-ZeroToHand-v11.exe /LANG=english` 或 `/LANG=chinesesimp`；应用内仍可随时切换中英文。
 
 ## 可以练习什么
 
-- **电脑与命令行**：Windows 文件、路径、压缩包与工具基础，Linux 文件和命令基础；虚拟目录中练习定位、引号、复制与相对路径，然后做真实电脑上的只读迁移任务。
+- **按需补习的电脑与命令行**：Windows 文件、路径、压缩包与工具基础，Linux 文件和命令基础。新增可切换 Windows/Linux 风格的虚拟文件窗口：创建文件夹和文本、选择/打开、复制/粘贴、重命名，与命令行共享同一目录。按任务整理机器人项目、核对副本并记录检查结果；练习可随个人完整档案保存，不访问真实磁盘。随后按课程完成真实电脑上的只读迁移任务。
 - **RTOS 与有线入门**：用单步时间轴观察任务状态、抢占与等待，区分教学调度与真实 FreeRTOS；UNO R3 / Nano ATmega328P 提供有线学习路线，它们不在本版本 ESP32 真实烧录后端的目标范围。
 - **C 基础**：变量、整数运算、条件与循环的可编辑语句训练。每题有三组输入用例、变量表和执行轨迹，支持预测、单步、查看终点和比较测试结果。
 - **电学与仪器**：回路、元件、万用表、可调电源、RC、信号、示波器、PWM 与闭环控制。万用表的功能、量程、插孔和表笔位置独立选择；分压、电容、电感各有课内解析台。
@@ -22,7 +26,17 @@
 - **编程与烧录工作区**：模拟 VS Code 和 Arduino IDE 的文件树、编辑、虚拟保存、终端、构建检查、板卡/端口/库选择、上传与串口监视器。编译器缺失、语法错误、端口不符、TX/RX、供电、BOOT 和波特率问题分别给出原因，修改后可以重新检查。
 - **ESP32 OTA 工作区**：先用 USB 安装含 OTA 服务的 Arduino 示例，再检查可达网络、目标和鉴权；随后学习独立的 ESP-IDF 流程，包括分区表、非活动槽、校验、重启、待确认、诊断确认和回滚。选择条件会改变结果，传输动画不代替前置检查。
 - **制造与机器人**：面包板、洞洞板、焊接、钢网、回流、PCB 间距、四旋翼装配与无桨台架；平面机械臂、差速车和本地消息流程。Go2 与 UR5 使用官方公开描述及真实视觉网格，展示运动链、关节限位与姿态插值。
-- **学习记录**：中英文、暖色/明亮/深色主题、独立学员、笔记、任务证据、练习草稿和路线周次。姓名、性别和生日可自行填写，后两项可不设置，不支持头像。每次提交的答题选择与检查结果保留历史；原生 `.zth` 档案强制口令加密。
+- **学习记录**：中英文、暖色/明亮/深色主题、独立学员、笔记、任务证据、练习草稿和路线周次。新建或编辑学员时填写姓名和所属组（机械、电控、编程、运营、其他）；学号、专业、学院、学校、性别与生日均可选，不支持头像。旧档案继续可读，编辑时再补齐组别。每次提交的答题选择与检查结果保留历史；原生 `.zth` 档案强制口令加密。
+
+“学习记录”提供按月日历、笔记入口和答题正确率。日历只统计实际记录的阅读秒数、提交答案与完成标记，不补造旧版缺失的按日时长。成绩按每题最新一次结果计算；课程完成勾选不计入成绩。
+
+## 离线学员管理
+
+管理者可以收集学员主动导出的加密 `.zth` 档案，在管理界面输入对应口令后导入，查看课程完成情况、答题选项与历史，以及需要复习的内容。它不连接远程账号或自动获取他人学习记录；数据刷新需要学员重新导出并分享档案。完成标记与答题记录来自学习档案，不构成身份认证、考试防作弊或掌握程度证明。
+
+管理资料独立于当前学员，导入不会把自己的学习进度替换为别人的。管理副本保留姓名/编号、组别、已填写的学号/专业/学院/学校、进度、答题和学习时间，可按组别、学校与待复习情况筛选。正确率按每题最新结果计算，完成勾选不加分。学校等字段是自行填写的信息，不验证学籍。管理副本不保留生日、性别、私人笔记和代码草稿，并删去终端/C 练习提交正文与反馈。原始完整 `.zth` 仍可能含这些信息，请只在取得学员同意后接收；优先请学员导出“仅学习进度与成绩”。管理库使用独立口令加密；导出 `.zthm` 管理备份用于迁移，忘记口令无法恢复。
+
+桌面端管理库在所选存档目录中的 `manager-store.zthdb`，与个人学习库分开；浏览器使用当前站点本地存储。管理操作会保存独立管理库，个人学员的自动保存开关不控制它。CSV 汇总属于明文，包含学员编号、姓名、组别、学校和进度统计，不包含逐题正文，应限制分享范围；管理界面删除记录不会删除已导出的报告、他人原件或已有备份。
 
 ## 教学模型的边界
 
@@ -43,15 +57,15 @@ Go2 和 UR5 的公开视觉网格经过坐标/法线量化后离线嵌入，保�
 - 安装器未签名，Windows 可能提示无法确认发布者。请核对来源并按设备管理要求处理。
 - 客户端默认在安装位置的 Archives 目录保存 Windows 保护的本机数据库，可在安装时选择其他可写目录，并保留上次有效副本；浏览器使用当前站点的本地存储。默认自动保存，也可关闭后手动保存。关闭自动保存时更改先留在内存，退出前需要保存或导出。应用不自动上传资料。
 - 工具工作区中的“保存文件”只把编辑内容写入**虚拟项目文件**；学员资料是否持久保存仍服从全局自动保存设置。文件、设置和预测/解释草稿可随学员档案保存；重新打开应用会重置虚拟设备固件、编译产物与进行中的传输，需要重新检查，不会把草稿当成已完成烧录。
-- 换电脑、浏览器、移动网页文件、清理数据或卸载前先导出 `.zth`。档案使用 PBKDF2-SHA256 与 AES-256-GCM；口令不会保存，忘记后无法恢复。可导入旧 `.zthprogress` 档案；应用 10.0 继续使用第 9 版档案结构，不因应用升版更改存储格式。
-- 档案含当前学员已填写的姓名、性别、生日、答题历史、笔记、任务证据、语言主题和练习草稿，请只分享给合适的人。本机自动保存与动效设置独立，不随导入改变。同编号导入会创建新编号副本，保留本地原档案。
+- 换电脑、浏览器、移动网页文件、清理数据或卸载前先导出 `.zth`。档案使用 PBKDF2-SHA256 与 AES-256-GCM；口令不会保存，忘记后无法恢复。可导入旧 `.zthprogress` 档案；应用 11.0 继续使用第 9 版档案结构，不因应用升版更改存储格式。
+- 导出时选择范围：完整个人档案含已填资料、笔记、答题和草稿；“仅学习进度与成绩”含姓名/组别/已填学籍信息和答题结果，不含性别、生日、笔记、代码、草稿或任务正文。两者均为口令加密 .zth。进度分享不能恢复未分享的资料，导入只创建独立副本；该来源标记在后续备份中保留。请只分享给合适的人。本机自动保存与动效设置独立，不随导入改变。同编号导入会创建新编号副本，保留本地原档案。
 - 进度文档只汇总学习与练习记录，不包含预测、解释或代码草稿正文，也不作为资格证书。
 
 ## 离线更新、卸载与环境
 
-应用不在后台检查或下载更新。更新前，为每个需要保留的本地学员分别导出加密 `.zth` 并保管口令，然后正常关闭应用，完整解压可信来源的新发行包并运行安装器。新版安装器优先沿用已有安装和存档位置；运行中的应用需要正常退出，安装器不会强制终止它。
+应用不在后台检查或下载更新。更新前，为每个需要保留的本地学员分别导出加密 `.zth` 并保管口令，如已使用管理系统，也导出加密 `.zthm` 备份并保管独立口令；然后正常关闭应用，完整解压可信来源的新发行包并运行安装器。新版安装器优先沿用已有安装和存档位置；运行中的应用需要正常退出，安装器不会强制终止它。
 
-安装前，已有固定数据库文件会备份到原存档目录的 `UpgradeBackups/before-版本-时间戳/`。仅复制存在的 `learning-store.zthdb`、`.previous`、`.pending` 三种固定文件，不递归复制其他个人资料。改变存档目录须明确选择复制现有存档；目标已有数据库时停止，原目录仍保留。本机保护的数据库备份用于本机恢复，不能代替跨电脑使用的 `.zth`。
+安装前，已有固定数据库文件会备份到原存档目录的 `UpgradeBackups/before-版本-时间戳/`。仅复制存在的 `learning-store.zthdb`、`manager-store.zthdb` 及它们的 `.previous`、`.pending` 六种固定文件，不递归复制其他个人资料。改变存档目录须明确选择复制现有存档；目标已有数据库时停止，原目录仍保留。个人库依赖 Windows 本机保护，管理库使用独立口令；迁移前分别导出并核验完整个人 `.zth` 和管理 `.zthm`。
 
 新版安装器会检查已注册版本和目标程序版本，阻止降级覆盖；过去的旧安装器无法被追溯加上此保护，因此不要运行旧包覆盖新版。当前程序识别到来自更新版本的数据库、学员记录或不认识的课程内容时停止写入，保留文件。请用相同或更高版本打开，不能靠删除备份、修改版本字段强行降级。`.previous` 只是最近一次写入的副本，不是长期版本回滚备份。
 
@@ -82,40 +96,31 @@ npm ci --prefix qa/dom-runtime --ignore-scripts
 npm ci --prefix qa/desktop-runtime
 node build-brand-v8.cjs
 node build.cjs
-node qa/curriculum-v8.cjs
-node qa/practice-v8.cjs
-node qa/profiles-v9.cjs
-node qa/store-v9.cjs
-node qa/storage-path-v10.cjs
-node qa/storage-upgrade-v10.cjs
-node qa/protection-native-v10.cjs
-node qa/archive-compatibility-v10.cjs
-.\qa\desktop-runtime\node_modules\.bin\electron.cmd qa/storage-native-v9.cjs
-node qa/foundations-v9.cjs
-node qa/motion-v9.cjs
+node qa/storage-path-v11.cjs
+node qa/storage-upgrade-v11.cjs
+node qa/archive-compatibility-v11.cjs
 node qa/components-v10.cjs
 node qa/wiring-v10.cjs
 node qa/tooling-v10.cjs
-node qa/companion-v10.cjs
-node qa/flashing-v10.cjs
+node qa/companion-v11.cjs
 node qa/rtos-v10.cjs
-node qa/content-v10.cjs
-node qa/integration-v10.cjs
-node qa/navigation-shell-v10.cjs
-node qa/robotics-v8.cjs
-node qa/making-v8.cjs
-node qa/quality-v8.cjs
-node qa/interface-v8.cjs
-node qa/gallery-v8.cjs
-node qa/meter-v7.cjs
-node qa/installer-lifecycle-v10.cjs
+node qa/integration-v11.cjs --final
+node qa/electronics-v11.cjs
+node qa/connections-v11.cjs
+node qa/computer-v11.cjs
+node qa/robot-interaction-v11.cjs
+node qa/manager-v11.cjs
+node qa/manager-storage-v11.cjs
+node qa/learner-v11.cjs
+node qa/navigation-shell-v11.cjs
+node qa/installer-lifecycle-v11.cjs
 ```
 
-第二条命令下载 Electron；原生存储测试通过 Electron 在 Windows 上检查本机保护接口。品牌脚本从附带原始图稿生成图标和安装器图片；`build-exe-brand-v10.cjs` 为 Windows 程序嵌入图标与产品版本，打包时从原始 Electron 重放资源编辑并比较结果；网页构建使用附带的机器人几何 JavaScript，不需要 ROS、Python/xacro 或重新下载网格。`assets/robots-v8/` 保存来源与许可，不是可直接运行的完整 ROS 软件包。
+第二条命令下载 Electron。以上模块检查不代替 Windows 原生存储保护验收；本机保护接口需要在 Electron/Windows 下使用隔离测试资料单独验证，不能只依据浏览器或模拟接口判断成功。品牌脚本从附带原始图稿生成图标和安装器图片；`build-exe-brand-v11.cjs` 为 Windows 程序嵌入图标与产品版本，打包时从原始 Electron 重放资源编辑并比较结果；网页构建使用附带的机器人几何 JavaScript，不需要 ROS、Python/xacro 或重新下载网格。`assets/robots-v8/` 保存来源与许可，不是可直接运行的完整 ROS 软件包。
 
-`qa/installer-lifecycle-v10.cjs` 需要本机 Inno Setup 7，在隔离目录和随机安装器 ID 下用很小的测试程序检查安装、更新、迁移、防降级和卸载；它不安装正式产品，也不能代替完整发行包的安装验收。工具链实际上传测试需要匹配的开发板，代码检查和编译测试不表示已经完成实物刷写。
+`qa/installer-lifecycle-v11.cjs` 需要本机 Inno Setup 7，在隔离目录和随机安装器 ID 下用很小的测试程序检查安装、更新、迁移、防降级和卸载；它不安装正式产品，也不能代替完整发行包的安装验收。工具链实际上传测试需要匹配的开发板，代码检查和编译测试不表示已经完成实物刷写。
 
-测试会自行创建 `dev-notes/` 保存结果，不需要复制发布者的开发记录。`qa/integration-v10.cjs` 与 `qa/content-v10.cjs` 检查全部 106 课的双语集成、数值自检及新增内容；其他检查覆盖元件、接线、工具流程与页面集成。旧版 `qa/v5.cjs --final` 与 `qa/content-v6.cjs --final` 仍按旧课程规模检查，不作为 v10 验收命令。测试文件名保留模块版本，并不表示应用版本倒退。JSDOM、数值和几何检查不等于真实浏览器、原生安装或第二台电脑验收，实际画面和安装流程仍需单独检查。
+测试会自行创建 `dev-notes/` 保存结果，不需要复制发布者的开发记录。以上命令选用本版适用的模块检查，覆盖电子内容、接线、虚拟电脑、学习记录、离线管理、存档兼容和界面集成；`integration-v11.cjs --final` 核对本版124课、30个主要操作台及双语路线。保留的旧测试可能带有旧课程数量或旧入口假设，不应批量运行后当作 v11 验收清单；例如陪伴首页应使用 `companion-v11.cjs`，而非旧版同名检查。测试文件名保留模块版本，并不表示应用版本倒退。JSDOM、数值和几何检查不等于真实浏览器、原生安装或第二台电脑验收，实际画面和安装流程仍需单独检查。
 
 如果要复现带真实烧录功能的离线桌面包，还需要 Arduino CLI 1.5.1 和 `esp32:esp32@3.3.10` 的安装目录及其下载归档。使用 Espressif 官方稳定索引安装该固定核心；随后运行 `node build-flashing.cjs`，或通过 `--cli`、`--arduino-data` 指定这些工具的位置。编译器与板卡库体积较大，最终用户无需自行安装；开发复现需要保留相同版本。工具链和对应源码/许可必须完成配对核验，不能把未完成的负载直接分发。
 
@@ -124,19 +129,20 @@ node qa/installer-lifecycle-v10.cjs
 质量检查后生成桌面负载和安装器：
 
 ```powershell
+Copy-Item README-v11.txt README.txt -Force
 powershell -ExecutionPolicy Bypass -File build-desktop.ps1
 ISCC.exe ZeroToHand-Desktop.iss
-node package-release-v10.cjs --check
-node package-release-v10.cjs
-Compress-Archive -Path 'release/ZeroToHand-Academy-Windows-v10.0.0' -DestinationPath 'release/ZeroToHand-Academy-Windows-v10.0.0.zip' -Force
+node package-release-v11.cjs --check
+node package-release-v11.cjs
+Compress-Archive -Path 'release/ZeroToHand-Academy-Windows-v11.0.0' -DestinationPath 'release/ZeroToHand-Academy-Windows-v11.0.0.zip' -Force
 ```
 
-`ISCC.exe` 来自已安装的 Inno Setup 7；也可在 Inno 编辑器打开 `.iss` 编译。输出安装器为 `dist/Install-ZeroToHand-v10.exe`。缺少 Electron 时桌面构建会停止，先解决依赖安装问题。
+`ISCC.exe` 来自已安装的 Inno Setup 7；也可在 Inno 编辑器打开 `.iss` 编译。输出安装器为 `dist/Install-ZeroToHand-v11.exe`。缺少 Electron 时桌面构建会停止，先解决依赖安装问题。
 
 打包器采用逐文件白名单，核对桌面负载、文件哈希、应用版本、安装器身份与时效，并扫描机器路径、账号及常见凭据样式。`--plan` 只列计划；`--check` 校验输入但不生成公开目录。正式更新仍由用户手动下载安装包，不自动发布或拉取远端代码。正常执行生成：
 
-- `publish/zerotohand-academy-v10/`：手动上传 GitHub 的源码、资源、测试和锁文件。
-- `release/ZeroToHand-Academy-Windows-v10.0.0/`：安装器、快速开始、使用许可、隐私说明、第三方许可、可选免安装网页，以及`ThirdPartySources/` 中单独的第三方工具链对应源码材料（不安装进应用）。
+- `publish/zerotohand-academy-v11/`：手动上传 GitHub 的源码、资源、测试和锁文件。
+- `release/ZeroToHand-Academy-Windows-v11.0.0/`：安装器、快速开始、使用许可、隐私说明、第三方许可、可选免安装网页，以及`ThirdPartySources/` 中单独的第三方工具链对应源码材料（不安装进应用）。
 
 ZIP 保留一个版本文件夹作为根目录。输出目录出现清单外内容会停止，不自动删除。开发日志、QA 结果、截图、提示词、个人档案、缓存、依赖目录和 Git 元数据不进入公开目录。验证记录只留在本地 `dev-notes/`，不要上传整个开发工作区。
 
@@ -150,8 +156,12 @@ Go2 来源为 [Unitree 官方 unitree_ros](https://github.com/unitreerobotics/un
 
 ## English overview
 
-ZeroToHand 10.0 is an offline bilingual engineering learning app with 106 lessons, 29 main 3D teaching workbenches, 3 dedicated foundation benches, 2 software workspaces, four virtual-terminal scenarios and four restricted C exercises. The suggested 96-week route combines lessons, review and independent practice at 4–6 hours per week; additional topics can be studied with their prerequisites.
+ZeroToHand 11.0 is an offline bilingual engineering learning app with **124 lessons and 30 main workbenches**, focused on electronics, circuit reasoning, measurements and troubleshooting. It adds practical electronics lessons and adjustable experiments while keeping computer fundamentals as optional support. A virtual Windows/Linux file window shares its tree with a limited teaching terminal: create, open, copy and rename files, then check a robot-project task without accessing real files. Existing 3D teaching workbenches and the suggested long-term route remain available.
 
 The Windows ZIP includes its desktop runtime. The terminal, C stepper, IDE and OTA workspaces are explicit teaching simulations: they do not execute host commands, compile arbitrary C/C++, flash hardware or contact a network. A separate, explicitly confirmed desktop USB action uses the bundled Arduino toolchain to compile and upload firmware to supported ESP32 targets. It does not constitute hardware acceptance testing. ArduinoOTA and ESP-IDF use distinct prerequisite, transfer and recovery models. Go2 and UR5 show attributed official geometry and kinematics, not validated physical control.
 
-Learner data stays local. Export requires a password-protected `.zth` archive; application 10.0 retains the version-9 archive schema. The commands above reproduce the app from included sources. Developer logs, personal records, screenshots and installed dependencies are excluded from the public source folder and user package.
+Learner data stays local. Creating or editing a profile requires a display name and group; student ID, major, college, school, gender and birthday are optional. Existing profiles remain readable. The study calendar shows recorded reading activity, answers and completion dates without inventing missing history. Notes have a direct entry; accuracy uses the latest answer per question, independently of self-marked course completion.
+
+Export requires a password-protected `.zth` archive; application 11.0 retains the version-9 archive schema. Choose a full personal backup, or progress-only sharing that excludes gender, birthday, notes, code/drafts and task text while retaining supplied group/student/school fields. Progress-only imports create independent learner copies, retain their partial-origin marker and cannot recover omitted information. The commands above reproduce the app from included sources. Developer logs, personal records, screenshots and installed dependencies are excluded from the public source folder and user package.
+
+The offline manager accepts password-protected `.zth` archives explicitly shared by learners. It shows progress, answer history and latest-answer accuracy, with group and school filters, without replacing the active learner profile or contacting a server. Supplied student/school fields are self-reported. Manager records omit birth dates, gender, notes and code drafts, and remove terminal/C submission text; original full archives may contain them. A separate password protects the manager database and portable `.zthm` backups. CSV summaries are plaintext names, IDs, groups, schools and progress statistics. Deleting a managed record does not erase previously exported copies or backups.

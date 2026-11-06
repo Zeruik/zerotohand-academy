@@ -11,6 +11,9 @@ qa/results/
 qa/*-art/
 qa/*.log
 *.log
+*manager-backup*
+*learner-report*
+*.zthm
 *.zth
 *.zthdb
 *.previous

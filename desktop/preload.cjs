@@ -1,5 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('zthDesktop9', {
+  loadManager: () => ipcRenderer.invoke('zth9:manager-load'),
+  saveManager: data => ipcRenderer.invoke('zth9:manager-save', data),
   loadStore: () => ipcRenderer.invoke('zth9:load'),
   saveStore: data => ipcRenderer.invoke('zth9:save', data),
   getInfo: () => ipcRenderer.invoke('zth9:info'),

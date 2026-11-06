@@ -1,15 +1,23 @@
 ZeroToHand电子版 隐私与本地数据说明
-版本 1.0 · 2026年10月27日
+适用应用版本 11.0 · 2026年11月6日
 作者：Zeruik / TechABJ　联系：zeruik@qq.com
 
 一、默认离线与本地学员
 不需要注册网络账号。课程、教学模型和软件工作区可离线使用，学习记录不自动
 上传给作者，也不作为使用分析或广告数据发送。一个本地学员不等于在线账号。
-姓名由用户设置；性别和生日可不填写，不影响课程。应用不要求或保存头像。
+新建或编辑学员时必填显示姓名与组别（机械、电控、编程、运营、其他）；
+显示姓名不要求为法定姓名，也不用于实名核验。学号、专业、学院、学校、性别和
+生日均可不填写，不影响课程。旧档案可继续学习，编辑资料时再补齐必填项。
+应用不要求或保存头像。
 
 二、保存哪些资料
-学员资料包括编号、姓名、可选性别和生日、学习时间、课程进度、笔记、任务证据、
-练习草稿、路线周次、答题与检查历史及修改时间、语言和主题。
+学员资料包括编号、显示姓名、组别、主动填写的学号/专业/学院/学校/性别/生日、
+学习时间、课程进度、笔记、任务证据、练习草稿、路线周次、答题与检查历史及
+修改时间、语言和主题。虚拟文件练习的目录与文本作为当前学员的练习草稿保存；
+这些操作不读取或修改电脑上的真实文件。
+学习日历汇总已记录的阅读活动、答题提交和完成标记；新版按日阅读时间依据
+前台课程页的活动记录，不为旧档案补造缺失日期的数据。正确率按每题最新结果
+计算，完成勾选不计入成绩。时间与完成标记不是出勤、身份或掌握程度的认证。
 自动保存、动效及部分设备选项独立于学员档案。答题修改后再次提交会产生新的
 记录，保留前次尝试；编辑草稿通常更新当前草稿，而非记录每个按键。
 请勿在普通笔记、终端或代码练习草稿中填写真实密码、访问令牌或他人隐私。
@@ -17,7 +25,7 @@ ZeroToHand电子版 隐私与本地数据说明
 三、本机文件、自动保存和备份
 客户端在本机保存资料，默认使用安装位置下的 Archives 目录；可以在安装向导中
 选择其他可写位置，首页“应用与存档位置”可查看实际目录，但不提供应用内存档目录迁移。
-本机数据库使用 Windows 账户相关保护，并保留上一份有效副本；它与用于换电脑
+个人学习数据库使用 Windows 账户相关保护，并保留上一份有效副本；它与用于换电脑
 的 .zth 导出档案不同。不要仅复制内部数据库就认为已经完成跨电脑迁移。
 Windows AppData 下固定 ZeroToHand Academy 目录的 Local State 还保存本机加密
 所需的保护密钥，不是普通缓存；继续使用或恢复本机库时须保留。只复制 Archives
@@ -30,25 +38,37 @@ Windows AppData 下固定 ZeroToHand Academy 目录的 Local State 还保存本�
 安装目录若位于受限位置或外置盘，权限或磁盘移除可能影响保存。
 
 更新由用户取得新的完整发行包后离线运行安装器，不在后台检查或下载更新。
-升级前请为每个需要保留的本地学员分别导出 .zth。安装器会把原存档目录中存在的
-learning-store.zthdb、learning-store.zthdb.previous、learning-store.zthdb.pending
+升级前请为每个需要保留的本地学员分别导出完整个人 .zth；使用管理系统时另行
+导出 .zthm。安装器会把原存档目录中存在的 learning-store.zthdb、
+manager-store.zthdb 及各自的 .previous、.pending 共六种固定文件
 另存到该目录的 UpgradeBackups/before-版本-时间戳/，不递归复制其他个人文件。
-这些备份包含受本机保护的完整学习库，仍应限制访问，并纳入你的备份与删除管理。
+个人库受本机保护，管理库使用管理员口令加密。这些副本仍包含相应个人资料，
+应限制访问，并纳入你的备份与删除管理。
 更改存档目录需明确选择复制；目标已有库时停止，原库仍保留。较新版本的库或无法
 识别的课程资料会阻断当前程序写入，不能依靠旧安装器和旧程序保证向后降级安全。
 
 四、导出、分享和删除
 原生档案统一为小写 .zth，使用用户设置的口令加密；导入先解密预览。
-口令不保存，遗忘后不能由作者恢复。档案包含当前学员的资料、答题历史、私人
-笔记和草稿，分享前请考虑接收人范围。旧 .zthprogress 可能不具备同样的加密
-保护，导入后可重新导出为 .zth。
+口令不保存，遗忘后不能由作者恢复。导出时有两种范围：
+1. 完整个人档案：包含已填写的个人资料、答题历史、私人笔记、任务记录和草稿，
+   用于个人备份与迁移。分享前请考虑接收人范围。
+2. 仅学习进度与成绩：保留编号、显示姓名、组别、已填写的学号/专业/学院/学校、
+   学习时间、完成记录、题目结果与选项、日历活动和界面语言/主题；不含性别、
+   生日、笔记、代码草稿及任务正文。终端/C 练习的提交正文与反馈也会删减，
+   保留结果和时间。它仍是个人资料，不是匿名文件。
+两种范围均使用口令加密，文件后缀同为 .zth。仅进度档案不能恢复未分享的内容；
+导入个人学习端只创建独立学员副本，不覆盖完整档案。其来源标记随后续备份保留；
+在副本中新写的笔记可进入该副本的完整备份，但不会恢复原档案未分享的资料。
+管理端只提取下文第八节所列字段。接收人知道口令后仍能解密你发送的原文件，
+不能把管理界面的字段筛选视为原文件已被删减。旧 .zthprogress 可能不具备同样
+的加密保护，导入后可重新导出为 .zth。
 进度文档只汇总学习与练习记录，不放入预测、解释或代码草稿正文，但仍可能含
 姓名与进度等个人信息；它不是资格证书，也不是匿名文件。
 
 卸载默认保留存档、UpgradeBackups 升级备份、storage-location.json 位置配置和
 旧 AppData 数据。位置配置可能透露用户自己选择的路径；旧 AppData 也可能含
 迁移前原件或缓存。保留是为重装和恢复资料，不表示这些文件已经匿名或清除。
-需要清除资料时，先导出所需学员、确认备份并关闭应用，再管理“应用与存档位置”
+需要清除资料时，先导出所需学员及管理备份、确认可解密并关闭应用，再管理“应用与存档位置”
 显示的确切存档目录和核实后的缓存位置；同时检查上一份副本、升级备份、导出档案、
 下载文件及外部备份。不一键递归删除可能混有其他个人资料的目录。浏览器资料可在
 浏览器中清理对应站点数据。卸载应用不应被当作个人资料已完全删除的证明。
@@ -99,14 +119,45 @@ Wi-Fi 名称、密码及鉴权值不自动写入学习档案或本地自动保�
 无需附上学习档案、真实口令或整份存档目录，请只提供解决问题所需的信息。
 本说明随功能更新可能调整；涉及新的可选联网功能，应先明确展示用途和选择。
 
+八、离线进度管理（11.0 新增）
+管理员只在学员主动提供 .zth 与解密口令后导入记录，不扫描其他电脑、不提供远程监视或联网账号。导入前展示学员和资料范围，导入不替换管理员自己的学习档案。管理库保留学员编号、显示姓名、组别、已填写的学号/专业/学院/学校、完成课程及时间、累计学习时间、答题选项和历次提交；不保留生日、性别、私人笔记或代码草稿，终端/C 练习的提交正文和反馈也删去。可按组别、学校及待复习状态筛选。学校等字段来自学员自行填写，不验证就读关系。原始完整 .zth 仍可能包含已排除的资料，学员分享时应知悉接收人可解密原文件。
+管理库单独用管理员口令加密，客户端文件为所选存档目录中的 manager-store.zthdb，浏览器预览则保存密文到当前站点。口令不保存，忘记后作者无法恢复。便携备份为 .zthm；更换电脑前应主动导出并核验。桌面升级同时备份管理库及 previous/pending 文件，卸载默认保留。管理界面移除记录不会清除之前的文件副本、升级备份或外部导出；需要彻底删除时还应管理这些副本。CSV 是含姓名与进度的明文报告，导出前确认用途。
+CSV 汇总含编号、显示姓名、组别、学校、课程数量、正确率、提交统计和学习时间；
+不含逐题正文、生日、性别、笔记或口令。导出 CSV 不会为其加密。
+
 English summary
-Learning data stays on the device by default. Profiles are local, with optional
-gender and birthday. Exported .zth files require a password and may contain private
-learning material. City search sends the entered city name to Open-Meteo; enabled
-weather sends the selected coordinates and normal connection metadata. It does
-not use device geolocation or send learner records.
-Generating code alone processes settings in page memory. Explicit real compilation
-writes temporary source and firmware, which may contain plaintext credentials.
-Normal completion, expiry or exit cleans relevant temporary materials; a crash may
-leave files. Downloaded or copied code may also contain credentials; review it before
-sharing. Compilation does not prove successful physical flashing or hardware testing.
+Learning data stays on the device by default. Creating or editing a local profile
+requires a display name and group; legal names are not required or verified. Student
+ID, major, college, school, gender and birthday are optional. Existing profiles remain
+readable. Virtual file exercises do not access real files. Calendar statistics use
+recorded activity, attempts and completion dates, without inventing missing history.
+Answer accuracy uses the latest attempt per question; self-marked completion adds
+no score and is not attendance or identity verification.
+
+Both full and progress-only .zth exports require a password. Full archives may
+contain private notes, demographics and code drafts. Progress-only exports retain
+identifiers, display names, groups, supplied student/school fields, progress, answers
+and activity, while removing gender, birthdays, notes, code/drafts and task text.
+Terminal/C submission text and feedback are removed. Progress-only imports create
+separate learner copies and retain their partial-origin marker; they cannot recover
+information that was never shared. Passwords are not retained or recoverable.
+
+Offline management imports only voluntarily shared .zth submissions. Its separate
+password-encrypted vault retains names, IDs, groups, supplied student/school fields,
+progress and answer history, excluding demographics, private notes and code drafts;
+terminal/C submission text is removed. Group and school filters use self-reported
+values. Original full archives may still contain excluded fields. Export .zthm for
+portable manager backups. CSV reports expose names, IDs, groups, supplied schools
+and progress summaries in plaintext. Deleting records does not delete older copies.
+There is no cloud synchronization or remote monitoring. Personal desktop databases
+use Windows-related protection; management databases use the administrator password.
+Uninstall retains archives, upgrade backups, location settings and old application
+data by default. Neither installation nor removal changes system or user PATH.
+
+City search sends the entered city name to Open-Meteo; enabled weather sends selected
+coordinates and normal connection metadata. It does not use device geolocation or
+send learner records. Generating code alone processes settings in page memory.
+Explicit real compilation writes temporary source and firmware, which may contain
+plaintext credentials. Normal completion, expiry or exit cleans relevant temporary
+materials; a crash may leave files. Downloaded or copied code may also contain
+credentials. Compilation does not prove successful flashing or hardware testing.
