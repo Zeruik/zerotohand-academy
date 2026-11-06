@@ -1,161 +1,180 @@
-ZeroToHand电子版 11.0
-从电子电路开始，学会计算、测量、选型与排错。
+赋形工作室学院 12.0 / ZTH Studio Academy 12.0
+四条赛道，从具体任务走到可交接的工程项目。
 
 一、安装与打开
 
-1. 把 ZIP 完整解压到一个文件夹。
-2. 双击 Install-ZeroToHand-v11.exe。
-3. 阅读并同意使用许可，选择安装位置与存档目录；快捷方式默认勾选，可取消。
-4. 完成后打开 ZeroToHand电子版，从电子电路主线开始。
+1. 完整解压 ZeroToHand-Academy-Windows-v12.0.0.zip。
+2. 打开其中的 Install-ZeroToHand-v12.exe。
+3. 阅读使用许可，选择英文安装路径与存档路径；桌面快捷方式默认勾选，可取消。
+4. 安装完成后打开“赋形工作室学院”，按自己的方向选择主赛道。
 
-适用于 Windows 10/11 64 位电脑，桌面运行环境已包含在安装包中。
-学习时无需另装浏览器、Node.js 或 Python，也无需修改系统 PATH。
-安装和存档目录使用英文路径；默认存档子目录为 Archives。
-安装器未签名；系统若询问发布者，请先核对收到的文件来源。
-也可用现代浏览器打开“免安装版”中的 ZeroToHand-Engineering-Academy.html。
+桌面版适用于 Windows 10/11 64位系统，运行环境已包含。离线学习不需要另外
+安装浏览器、Node.js、Python，也不修改系统或用户 PATH。原生安装器未签名；
+按设备管理要求核对来源。亦可用现代浏览器打开“免安装版”中的
+ZeroToHand-Engineering-Academy.html。第一次真实 USB 烧录可能需要板卡的厂商
+串口驱动，未把“应用能离线运行”当作每块板都已具备驱动的保证。
 
 二、怎样开始学
 
-11.0 共124节课程、30个主要实验操作台，另有课内解析、接线和代码练习。
-本版加强电子电路课程、计算例题和可调参数实验，保留三维操作台与机器人课程。
-电脑基础、文件与命令行作为按需补习。建议每周投入 4–6 小时，交替阅读、
-复习、独立实践和项目；长期路线可按先修关系调整，不是固定时长的掌握保证。
+156节课程分为电控与电子、机械设计与制造、编程与自主系统、内容与运营。
+先修课程会在课内提示；电脑文件与命令行按需补习，不要求每个人先走同一路线。
+保留30个主要实验操作台，另有5类机械/运营和5类自主系统课内工具。
+这些是不同范围的教学计算和交互模型，不是40套完整物理仿真器。
 
-每次按这个顺序：写下预测 → 按任务操作 → 记录实际结果 → 用自己的话解释。
-完成标准和例题帮助你核对；遇到不理解的地方，回到先修课程再试。
-顶部可切换中文/English，设置中可选择暖色、明亮、深色主题与动效。
+建议每周4–6小时，交替学习、复习、独立实践与项目验收。1–2年是可调整的安排，
+不是固定掌握保证；原96周参考路线继续提供。每课按“预测→操作→记录→解释→
+复验”进行。完成勾选是个人记录，不是机构证书。
 
-三、操作台与编程工作区
+机械新增12课：测量基准、草图/参数、拉伸/旋转、组件/装配、工程图/公差、
+紧固件、切片、校准与支架项目。运营新增6课：受众、素材、文章、视觉版式、
+活动执行与复盘。编程/自主新增14课，从保存并运行Python与CSV开始，再进入
+数据/标注、检测/分割、指标、YOLO、相机、手眼、抓取、建图/导航、无人机与
+学习型运动。电子课程继续保留完整的电路、测量、接线、选型、焊接与排错主线。
 
-三维场景可拖动旋转、滚轮缩放；用旁边参数改变实验条件。
-操作台从待启动开始。暂停保留当前位置，停止复位动态状态；单步用于观察细节。
-减少动态效果仍允许手动开始。万用表的功能、量程和插孔要分别选对；先断电接线。
-UART、SWD、SPI、I²C 接线可选择端点，并检查供电、共地、电平和上拉等条件。
-教学台的额定值与保护规则只属于该模型，真实仪器与开发板要查自己的说明书。
+三、操作台与真实工具要分清
 
-“编程与升级”提供两个完整教学页面：
-- 编程与烧录：切换 VS Code / Arduino IDE，编辑后保存虚拟文件，检查编译器、
-  板卡核心、库和端口，准备上传后按“开始”，再用匹配波特率查看虚拟串口输出。
-  构建成功不等于上传成功；端口、接线、BOOT 与供电错误可以逐项修正。
-- ESP32 空中升级：先完成含 OTA 服务的 USB 初次烧录，再尝试 ArduinoOTA。
-  随后切换 ESP-IDF，学习双槽分区、校验、重启、待确认、诊断确认与回滚。
-  IDF 需要独立的 USB 基线，切换标签不会把 Arduino 固件自动变成 IDF 固件。
+三维画面支持适用场景的旋转、缩放和参数操作。动态示教有开始、暂停和停止复位。
+教学终端不执行真实系统命令，C工作区是受限语句教学器，IDE/OTA台是流程模拟。
+学院不在网页内启动Python、训练YOLO、运行完整SLAM/Nav2或强化学习策略。
 
-两个工作区不会执行真实命令、编译器、串口烧录或网络请求。
-不需要填写真实 Wi-Fi 名称、密码或密钥。暂停只暂停教学传输；停止取消当前传输，
-保留先前已完成的虚拟固件和草稿。真实刷写中断可能造成不同后果，不能照搬。
-工作区“保存文件”只更新虚拟项目；学员草稿仍服从设置中的自动保存/手动保存。
-重新打开应用会重置虚拟设备和编译产物，保留已保存的项目草稿和检查历史。
+相机台讲像素/深度关系；变换台是二维旋转平移，不是真实手眼标定求解器。
+栅格台从已知位置更新地图并进行A*规划，没有位姿估计、回环优化或底盘动力学。
+动作台展示相位、一阶滞后和误差，没有刚体接触或平衡求解。SuperMimic课程是
+按原始资料阅读与复现准备，不内置论文模型或承诺本机训练耗时。
 
-按需补习入口提供 Windows/Linux 虚拟文件窗口：创建文件夹和文本、打开、复制、
-粘贴和重命名，与下方命令行共享目录。跟随机器人项目任务整理资料，核对副本后
-记录检查结果；目录与文本随个人完整档案保存，受自动保存设置控制，不访问真实磁盘。
-终端台仅操作内存里的虚拟文件。C 台是受限语句教学器，不是 C 编译器，
-可编辑变量、判断、循环和有限输出，查看变量表与轨迹，检查三组输入结果。
-独立 C 开发环境、Arduino IDE、ESP-IDF SDK、Linux 和 ROS 2 需按课程另行配置；
-桌面版专用 USB 助手已附带其支持范围内的 Arduino 编译工具链。
+标注台可以编辑实际图片、矩形与简单多边形。图片和轮廓应导出为独立JSON项目，
+不在.zth学员存档中；关闭、切换学员前按提示导出，并确认文件实际保存。
+机械模型不代替完整CAD/有限元/切片软件，示意图不构成加工或机器人安全验证。
 
-Go2 与 UR5 使用官方公开视觉模型展示运动链与姿态；它们不模拟碰撞、平衡、
-真实标定或安全控制。Go2 行走与四旋翼飞行均为教学示意，不是完整动力学仿真。
-不要把教学画面当作真实设备可以安全运行的证明。
+四、自己的学习记录
 
-四、姓名、学习记录与换电脑
+新建/编辑学员需姓名或昵称、所属组；学号、专业、学院、学校、性别和生日可选。
+支持独立学员、笔记、答题历史、草稿、按月学习记录与主题/语言切换，不设置头像。
+正确率只按每道题最新一次答案计算，完成勾选不加分；历史时间不会凭空补造。
 
-新建/编辑学员必填姓名及组别（机械、电控、编程、运营、其他）；学号、专业、
-学院、学校、性别和生日可选，不设置头像。旧学员仍可学习，编辑时再补齐。
-课程、笔记、任务证据、练习草稿和路线周次分别保存；提交的答案、选项及检查结果
-保留历史，修改后可重新提交。导入相同编号时创建新编号副本，保留本机原档案。
+默认自动保存，也可关闭后手动保存。关闭自动保存时，修改暂留内存，退出前保存
+或导出。浏览器清缓存、移动网页、换电脑或卸载前，先为每个需要保留的学员分别
+导出.zth。口令加密使用PBKDF2-SHA256与AES-256-GCM，口令不保存，忘记无法恢复。
 
-默认自动保存。关闭自动保存后，更改先留在内存，退出前请手动保存或导出。
-客户端默认保存于安装位置的 Archives 目录，可在安装时选择其他可写位置；保留上次
-有效副本。本机库使用 Windows 保护；浏览器只使用当前站点的本地存储。
-换电脑、换浏览器、移动网页、清理数据或卸载前，先导出小写 .zth 档案。
-导出可选完整个人档案或仅学习进度与成绩；两者必须设置口令，导入先解密预览。
-仅进度文件不含生日、性别、笔记、代码与草稿，适合分享给管理者；不能恢复完整
-个人资料，只能作为独立副本查看，来源标记会保留。口令不会保存，忘记后无法恢复。
-学习记录页面还有按月日历、笔记入口和每题最新一次答案正确率；完成勾选不计分，
-旧档案没有按日记录的学习时间不会自动补造。
-支持旧 .zthprogress 导入，应用 11.0 沿用第 9 版档案结构。
+导出有两种范围：
+- 完整个人档案：含已填写资料、笔记、答题与草稿，适合自己备份/迁移。
+- 仅进度与成绩：含姓名、组别、已填学籍信息、进度与答题结果；不含生日、性别、
+  笔记、代码、草稿或任务正文，适合经同意后交给管理者。
 
-完整个人档案包含当前学员已填的资料、答题历史、笔记、任务证据和代码草稿，
-请只分享给你希望分享的人。语言主题随学员档案保留，本机自动保存与动效设置独立。
-进度文档只汇总学习记录，不含预测、解释或代码草稿正文，也不是资格证书。
-应用不自动上传学习数据。教学台不连接设备；明确选择“真实 USB 烧录”并确认时，
-桌面版才会向所选 ESP32 开发板写入固件，不控制其他真实仪器或机器人。
+两种都是加密.zth；部分分享不能恢复未分享资料。同编号导入建立独立副本，
+不覆盖已有原件。应用版本12.0继续使用schema 9，不要求重建学员。
 
-五、图形、网络与卸载
+五、离线学员管理
 
-完整三维画面需要 WebGL 2。图形不可用时会提示，并保留课程与可用的兼容反馈。
-显示异常时可先重开应用，再检查显卡驱动或硬件加速设置。
-课程、模型与教学工作区可离线使用。天气默认关闭，主动选择城市启用后才请求
-Open-Meteo；点击“联网查找城市”会先发送查询城市名，不调用定位；对方会收到 IP、城市坐标与请求信息，不接收学习档案。
-打开外部参考资料也需要网络。详情见 PRIVACY-ZH.txt。
+管理者接收学员主动分享的.zth，输入对方提供的口令、预览并确认后加入独立库。
+没有远程监控、后台收集或作者账号；刷新记录需要再次分享。可看组别/学校筛选、
+完成课程、逐题历史和需要复习的内容，不能把自填资料当作认证学籍或考试防作弊。
 
-另有 OTA 代码生成器，可按配置下载源代码。桌面版还可明确选择真实 USB 编译/
-烧录，支持经典 ESP32、ESP32-C3、ESP32-S3；选择串口并确认后才开始写入。
-板型、Flash/PSRAM 必须匹配实物，尤其不同厂商的 S3 SuperMini 可能不同。
-需要 Windows 已识别的可用 COM 口。标准 USB CDC 通常可用系统驱动；CP210x、
-CH340 等桥接芯片可能需要厂商驱动，本包未附。SuperMini、N16R8 名称不能确定
-USB 实现，不能保证任意新电脑都能完全离线完成首次烧录。离线学习与编译不受影响。
-UNO R3、Nano ATmega328P 仅有课程教学，不在此真实 USB 助手的烧录目标内。
-编译会临时写入源码和固件（可能含凭据），成功后清理源码，固件上传有效期为 15 分钟；
-上传结束、放弃、过期或正常退出时清理相应材料；
-异常终止可能留有临时文件。编译通过不表示实物已通过验证。
-仅生成、尚未真实编译时，Wi-Fi 密码等只在页面内存处理，不自动存入学习档案；下载或复制的代码
-可能含明文凭据，上传 GitHub 或分享前必须自行移除真实值。
-在 Windows“设置 → 应用”中可卸载；更新、卸载和残留说明见下面第六节。
-使用许可见 LICENSE-ZH.txt：原创部分只授权非商用学习及完整原版免费分享，
-商用或应用修改请先联系 zeruik@qq.com；第三方与法定权利不受额外限制覆盖。
-第三方许可及材料位置见 THIRD-PARTY-LICENSES.txt；桌面运行环境另附许可文件。
-工具链许可在安装位置的 resources/flashing-v10/ 内；完整对应源码保留在 ZIP 的
-ThirdPartySources/ 目录，不必安装。免费转发完整发行包时请保留这些材料。
+管理副本去掉生日、性别、私人笔记、代码草稿及C/终端作答正文。管理库用自己的
+口令加密，保存为存档目录中的manager-store.zthdb；导出.zthm用于备份迁移。
+CSV汇总是明文，含姓名/编号/组别/学校与统计，应限制分享；删除管理记录不会
+自动删除已导出的副本、备份或学员自己的原件。
 
-六、离线更新、卸载与环境设置
+六、更新、卸载与环境
 
-应用不在后台检查或下载更新。收到可信的新包后，先为每个需要保留的本地学员
-分别导出加密 .zth 并保管口令，正常关闭应用，再完整解压并运行新安装器。
-新版安装器优先沿用旧安装和存档位置；运行中的应用需要正常退出，不会被强制终止。
+更新前分别导出个人.zth和管理.zthm、保管口令，正常退出，再运行新版安装器。
+保留应用ID与Windows保护目录，显示名称变更不要求删除旧资料。安装器沿用
+有效位置，备份固定数据库到UpgradeBackups，并阻止新版被旧版覆盖。旧安装器
+无法补上新保护，不要用旧包覆盖新版；不认识的新版资料会停止写入而非丢弃内容。
 
-安装前将已有的固定数据库文件备份到原存档目录内：
-UpgradeBackups/before-版本-时间戳/
-只复制存在的 learning-store.zthdb、manager-store.zthdb 及其 .previous、.pending
-六种固定文件，不递归复制其他个人文件。改变存档目录时必须明确
-选择复制现有存档，目标已有数据库会停止，原目录保留。个人库依赖 Windows 本机保护，
-管理库使用独立口令；换电脑分别使用完整个人 .zth 和管理 .zthm。
-最近一次 .previous 副本不能代替长期升级备份。
+卸载默认保留学习存档、管理库、升级备份和保护上下文，便于恢复。特别是
+Windows AppData中的“ZeroToHand Academy/Local State”与本机加密相关，不是
+普通可随手删缓存。需要彻底清理时先核验可移植备份，再逐项确认路径；不要递归
+删除混有其他资料的目录。导出的文件与外部备份需另行管理。
 
-新版安装器会阻止降级覆盖；旧安装器无法追溯加上保护，不要用旧包覆盖新版。
-程序遇到较新版本或无法理解的课程资料会停止写入并保留文件，请用相同或更高版本打开，
-不要删除备份或修改版本字段强行降级。
+学院不在后台自动下载更新、不改全局PATH，卸载无需恢复环境变量。另行安装的
+Arduino IDE、串口驱动、ROS或其他工具不由学院卸载。真实USB助手只在明确选择
+目标和确认后写入；编译成功不等于板卡已实际验证。可选天气默认关闭，启用后按
+隐私说明请求网络；学院主课程与离线管理不受影响。
 
-卸载会移除程序及相应快捷方式，默认保留存档、UpgradeBackups、位置配置
-storage-location.json 和旧 AppData 数据。旧 AppData 可能含迁移前原件或缓存，
-不一键递归抹除。需要彻底清理时，先确认导出和备份，再由你删除自己的确切存档、
-备份和缓存位置；不要删除混有其他文件的整棵目录。下载代码、导出档案、外部备份、
-剪贴板历史以及异常退出留下的临时文件也可能需要分别清理。
+七、两个独立MIT工具
 
-AppData 中固定的 ZeroToHand Academy/Local State 含本机解密所需的保护密钥，
-不是普通缓存。继续使用或恢复本机库时不要删除；只保留 Archives 数据库不保证
-密钥丢失后可恢复。清理、重装系统或换电脑前，先验证导出的 .zth 可用。
+ZTH Screen Studio：组件/页面编辑、链接与模拟数据、项目JSON、撤销重做、接线
+检查，导出完整Arduino代码/字形图片资源/API/AI提示词。ST7789、ILI9341、SSD1306
+三类导出已实际编译链接，未替代实物显示/触摸/接线测试。编辑器可离线运行，
+导出固件首次编译还需对应Arduino工具与固定显示库；软件不会自动烧录。
 
-本应用不修改系统或用户环境变量，不写入系统 PATH，卸载无需恢复这些设置。
-编译隔离环境仅对本次子进程生效，结束即失效；不会用旧 PATH 快照覆盖其他软件
-或你后来增加的配置。USB 驱动、Arduino IDE 等另装环境也不会被本应用卸载。
+ZTH Studio Forge：只读检测与可审阅的环境计划；真实系统安装需要明确确认，
+可能需要管理员和手动重启。WSL/Ubuntu/ROS/微软组件未全部预打包，本地rootfs
+缓存只减少镜像下载，ROS apt等仍需网络。取消不是回滚；卸载Forge不删除创建的
+Linux环境或微软工具。两者安装包/许可独立，不扩大学院课程的修改或商用授权。
 
-七、离线学员管理
+八、复现与公开分享
 
-学员主动导出 .zth 并提供口令，管理者导入后查看课程进度、答题选项及历史。
-这不是远程监控或在线账号系统；更新数据需要学员再次分享新档案。
-管理库独立于自己的学习资料，不会替换当前学员；保留姓名/编号、组别、已填学号、
-专业、学院、学校、进度、学习时间和答题历史。可按组别、学校及待复习状态筛选；
-正确率按每题最新结果计算，完成勾选不加分。学籍字段自行填写，不核验真实身份。
-不保留生日、性别、私人笔记或代码草稿，并删去终端/C 练习提交正文和反馈。
-原始完整 .zth 仍可能含这些内容；优先分享“仅学习进度与成绩”，先取得学员同意。
-管理库使用独立口令加密，桌面文件为 Archives/manager-store.zthdb；实际目录
-服从安装时选择。浏览器使用当前站点存储。个人自动保存开关不控制管理库保存。
-迁移或卸载前另行导出 .zthm 管理备份并验证口令；忘记口令无法恢复。
-CSV 汇总含姓名、编号、组别、学校和进度统计，不含逐题正文；它是明文个人信息，
-只分享给有权查看的人。删除管理记录不会删除
-原档案、以前导出的报告和已有备份。完成标记不是实名身份认证或资格证明。
+开发者参考README.md的固定依赖、构建与QA命令。公开源码目录是
+publish/zerotohand-academy-v12；给朋友的是release下对应版本的完整Windows ZIP。
+不要上传整个开发目录：学员存档、管理库、截图、日志、测试输出、临时固件、
+工具缓存与Git元数据都不应放入公开文件夹。详见SCOPE-v12.md与PRIVACY-ZH.txt。
 
-© 2026 Zeruik / TechABJ。向阳科创工作室 · 学习资源；赋形造物工作室专注动手制作与工程实践。
+©2026 Zeruik / TechABJ。联系：zeruik@qq.com。
+学院原创课程仍按LICENSE-ZH.txt的非商用学习许可；另两个项目代码为MIT。
+第三方软件/模型/数据保持自己的许可，不能用本项目许可代替。
+
+================================================================
+ENGLISH QUICK START
+================================================================
+
+Extract ZeroToHand-Academy-Windows-v12.0.0.zip completely, then run
+Install-ZeroToHand-v12.exe. Accept the license, choose English installation and
+archive paths, and keep or deselect the default desktop shortcut. Windows 10/11
+x64 desktop runtime is included; learning does not require separate Python,
+Node or a browser, and the Academy does not modify global PATH.
+
+ZTH Studio Academy has 156 lessons in electrical, mechanical, programming/
+autonomy and operations tracks. It retains 30 main workbenches and adds five
+mechanical/operations and five autonomous-system lesson modes. These are scoped
+teaching models, not full physical laboratories. Plan around 4–6 hours per week,
+with prerequisites, reviews, projects and acceptance evidence; no fixed-duration
+mastery is guaranteed.
+
+New material includes 12 mechanical, 6 operations and 14 programming/autonomy
+lessons. Python begins with file creation, indentation, runnable mean and CSV
+scripts, expected output and error diagnosis. Vision progresses through data,
+annotation, metrics and a versioned YOLO workflow before calibration/grasping.
+ROS/navigation, SITL and learned motion require their own real environments.
+
+The Academy terminal, C stepper and IDE/OTA workspaces are teaching tools. They
+do not execute host commands or arbitrary Python/C. Planar transforms are not
+3D calibration; known-pose grid scans are not SLAM; phase/lag plots are not
+reinforcement learning or contact dynamics. Actual annotation images/contours
+must be exported as a separate JSON project; they are NOT in learner .zth files.
+
+Learner data stays local. Display name and group are required on create/edit;
+school/student fields, gender and birthday are optional. Export password-encrypted
+.zth files before changing computer, clearing storage or uninstalling. Choose a
+full personal backup or progress-only sharing without private notes, code,
+drafts or demographics. Partial shares cannot recover omitted information.
+Matching IDs import as new copies. App 12.0 retains schema 9 and existing IDs.
+
+Offline management imports only explicitly shared archives. Its separate encrypted
+manager-store.zthdb and .zthm backup use an independent password. Managed copies
+omit private notes, demographics and terminal/C code bodies. CSV summaries are
+plaintext identity/progress statistics. There is no remote monitoring, automatic
+collection, identity certification or exam anti-cheat claim.
+
+Back up .zth and .zthm before upgrades. Close the app and run the new installer;
+it retains valid paths, creates fixed-database upgrade backups and rejects
+downgrades. Uninstall retains learner data and protection context by default.
+Do not casually delete the retained ZeroToHand Academy Local State file: local
+database protection depends on it. Portable .zth backups are needed before OS
+reinstallation or migration. No automatic background updates occur.
+
+Screen Studio is a separate MIT visual editor that exports real Arduino code,
+bitmap resources and integration documents. Three display/ESP32 combinations
+have compiled and linked; real display wiring, touch and behavior remain separate
+hardware tests. It does not flash devices and does not bundle every firmware
+dependency. Studio Forge is a separate MIT environment planner; system changes
+require explicit confirmation and may need administrator rights, network and a
+reboot. A rootfs cache does not make ROS/package installation fully offline.
+Cancellation is not rollback; removing Forge does not remove managed environments.
+
+Developer reproduction instructions are in README.md. Public source is prepared
+under publish/zerotohand-academy-v12. Share the complete Windows ZIP with learners;
+do not publish archives, private notes, screenshots, test logs or local caches.
+The Academy's original license remains LICENSE-ZH.txt; third-party rights remain
+unchanged. Copyright 2026 Zeruik / TechABJ. Contact: zeruik@qq.com.

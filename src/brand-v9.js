@@ -10,7 +10,7 @@ render4=function(){
  const partner=document.querySelector('.partner4');
  if(partner)partner.innerHTML=studioMark9()+`<small>${T('向阳科创工作室 · 学习资源','Xiangyang Innovation Studio · Learning resources')}</small><small class="studio-parent9">${T('赋形造物为旗下工作室 · 专注动手创造','ZeroToHand is a member studio · Building through practice')}</small><small class="copyright9">© 2026 Zeruik / TechABJ</small>`;
  const footer=document.querySelector('.footer4');
- if(footer)footer.textContent=T('赋形造物工作室 · 工程学习平台 11.0 · © 2026 Zeruik / TechABJ','ZeroToHand Studio · Engineering learning 11.0 · © 2026 Zeruik / TechABJ');
+ if(footer)footer.textContent=T('赋形造物工作室 · 工作室学院 12.0 · © 2026 Zeruik / TechABJ','ZeroToHand Studio · Studio Academy 12.0 · © 2026 Zeruik / TechABJ');
 };
 const _brandHelp9=help4;
 help4=function(){

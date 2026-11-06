@@ -1,18 +1,18 @@
-#define AppName "ZeroToHand电子版"
+#define AppName "赋形工作室学院"
 [Setup]
 AppId={{CFF45F03-4D61-4AF0-93F5-5C21174D7510}
 AppName={#AppName}
 AppPublisher=Zeruik
 AppPublisherURL=mailto:zeruik@qq.com
-AppVersion=11.0.0
-VersionInfoVersion=11.0.0.0
+AppVersion=12.0.0
+VersionInfoVersion=12.0.0.0
 DefaultDirName={code:DefaultInstallFolder}
 DefaultGroupName=ZeroToHand
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=dist
-OutputBaseFilename=Install-ZeroToHand-v11
+OutputBaseFilename=Install-ZeroToHand-v12
 Compression=lzma2/fast
 SolidCompression=yes
 WizardStyle=modern
@@ -35,10 +35,10 @@ UsePreviousAppDir=yes
 Name: "chinesesimp"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 [Messages]
-chinesesimp.WelcomeLabel1=欢迎来到工程学院 11.0
-chinesesimp.WelcomeLabel2=从电阻分压到模拟电路与机器人：加强电子电路课程、交互实验和答题练习，并提供学员主动分享档案的离线进度管理。%n%n安装包已内置桌面运行环境，无需另装浏览器、下载依赖或配置环境变量。适用于 Windows 10/11 64 位电脑。%n%n接下来请确认许可与隐私说明，选择安装位置、存档位置和快捷方式。
-english.WelcomeLabel1=Welcome to ZeroToHand Engineering Academy 11.0
-english.WelcomeLabel2=Explore electronics, measurement and robotics with expanded circuit lessons, interactive experiments and offline progress management using learner-shared archives.%n%nThe desktop runtime is included. No separate browser, dependency download or environment-variable changes are needed. For Windows 10/11 64-bit computers.%n%nContinue to review the license and privacy information, then choose application and archive folders and shortcuts.
+chinesesimp.WelcomeLabel1=欢迎来到赋形工作室学院 12.0
+chinesesimp.WelcomeLabel2=四条学习赛道：机械设计、电子电控、编程与自主系统、内容运营。按先修逐步学习，操作教学模型，记录项目证据，并使用离线学员管理。%n%n安装包已内置桌面运行环境，无需另装浏览器、下载依赖或配置环境变量。适用于 Windows 10/11 64 位电脑。%n%n接下来请确认许可与隐私说明，选择安装位置、存档位置和快捷方式。
+english.WelcomeLabel1=Welcome to ZTH Studio Academy 12.0
+english.WelcomeLabel2=Four learning tracks: mechanical design, electronics, programming and autonomy, and content operations. Follow prerequisite guidance, explore teaching models, record project evidence and manage learner-shared archives offline.%n%nThe desktop runtime is included. No separate browser, dependency download or environment-variable changes are needed. For Windows 10/11 64-bit computers.%n%nContinue to review the license and privacy information, then choose application and archive folders and shortcuts.
 [CustomMessages]
 chinesesimp.RuntimePageTitle=运行环境
 chinesesimp.RuntimePageDescription=必要的桌面运行环境已包含在安装包中。
@@ -59,7 +59,7 @@ english.RuntimeDownloads=During installation: no additional dependency downloads
 english.RuntimeEnvironment=Environment variables: no configuration needed; system PATH is unchanged
 english.RuntimeGraphics=3D display: the app checks WebGL 2 at launch and offers compatible models when unavailable. Setup does not benchmark the graphics hardware.
 english.StartMenuShortcut=Create a Start menu shortcut
-english.LaunchAcademy=Open ZeroToHand Engineering Academy
+english.LaunchAcademy=Open ZTH Studio Academy
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"
 Name: "startmenu"; Description: "{cm:StartMenuShortcut}"
@@ -69,9 +69,12 @@ Source: "PRIVACY-ZH.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "README.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "THIRD-PARTY-LICENSES.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "dist\desktop\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+[InstallDelete]
+Type: files; Name: "{autodesktop}\ZeroToHand电子版.lnk"
+Type: files; Name: "{group}\ZeroToHand电子版.lnk"
 [Icons]
-Name: "{group}\ZeroToHand电子版"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: startmenu
-Name: "{autodesktop}\ZeroToHand电子版"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: desktopicon
+Name: "{group}\赋形工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: startmenu
+Name: "{autodesktop}\赋形工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: desktopicon
 [Run]
 Filename: "{app}\ZeroToHand.exe"; Description: "{cm:LaunchAcademy}"; Flags: postinstall nowait skipifsilent
 [Code]
@@ -87,7 +90,7 @@ var
   BackupFolder, BackupSource, MigratedSource, MigratedTarget: String;
 
 const
-  InstallerVersion = '11.0.0';
+  InstallerVersion = '12.0.0';
   AppExecutable = 'ZeroToHand.exe';
   UninstallKey = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\{CFF45F03-4D61-4AF0-93F5-5C21174D7510}_is1';
 

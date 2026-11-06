@@ -7,7 +7,7 @@ function createStore9(directory, codec) {
   const previous = current + '.previous';
   const pending = current + '.pending';
   const limit = 64 * 1024 * 1024;
-  const producerVersion = '11.0.0';
+  const producerVersion = '12.0.0';
   let queue = Promise.resolve();
   const object = value => !!value && typeof value === 'object' && !Array.isArray(value);
   const profileId = value => typeof value === 'string' && /^[\w-]{8,80}$/.test(value) && !['__proto__', 'constructor', 'prototype'].includes(value);
