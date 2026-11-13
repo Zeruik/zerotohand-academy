@@ -7,7 +7,7 @@ function createStore9(directory, codec) {
   const previous = current + '.previous';
   const pending = current + '.pending';
   const limit = 64 * 1024 * 1024;
-  const producerVersion = '12.0.0';
+  const producerVersion = '14.0.0';
   let queue = Promise.resolve();
   const object = value => !!value && typeof value === 'object' && !Array.isArray(value);
   const profileId = value => typeof value === 'string' && /^[\w-]{8,80}$/.test(value) && !['__proto__', 'constructor', 'prototype'].includes(value);
@@ -73,9 +73,9 @@ function createStore9(directory, codec) {
     await queue;
     const [main, backup] = await Promise.all([read(current), read(previous)]);
     refuseNewer(main, backup);
-    if (main.data) return { data: main.data, recovered: false, protected: true };
-    if (backup.data) return { data: backup.data, recovered: true, protected: true };
-    if (main.missing && backup.missing) return { data: null, recovered: false, protected: true };
+    if (main.data) return { data: main.data, recovered: false, protected: codec.protected !== false };
+    if (backup.data) return { data: backup.data, recovered: true, protected: codec.protected !== false };
+    if (main.missing && backup.missing) return { data: null, recovered: false, protected: codec.protected !== false };
     throw Error('STORE_UNREADABLE');
   }
   function save(data) {
@@ -94,7 +94,7 @@ function createStore9(directory, codec) {
       // A corrupt current file must never replace the last readable backup.
       if (main.data) await fs.copyFile(current, previous);
       await fs.rename(pending, current);
-      return { savedAt, protected: true };
+      return { savedAt, protected: codec.protected !== false };
     });
     queue = operation.catch(() => {});
     return operation;

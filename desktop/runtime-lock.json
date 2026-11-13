@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "verifiedAt": "2026-11-13",
+  "target": "win32-x64",
+  "electron": {
+    "version": "45.3.2",
+    "file": "electron-v45.3.2-win32-x64.zip",
+    "url": "https://github.com/electron/electron/releases/download/v45.3.2/electron-v45.3.2-win32-x64.zip",
+    "sha256": "cd1ab0d49c2f76838c0c9ff75afefb4d9d85ca59036691932bf35be8eceba98b"
+  },
+  "python": {
+    "version": "3.14.10",
+    "file": "python-3.14.10-embed-amd64.zip",
+    "url": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip",
+    "sha256": "90905e64a840557d8c1bc4f5b74db3d7ee85e3ffb217611cac1c7813acea4159",
+    "releasePage": "https://www.python.org/downloads/release/python-31410/",
+    "sbom": "https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip.spdx.json",
+    "documentation": "https://docs.python.org/3.14/using/windows.html#the-embeddable-package",
+    "license": "PSF-2.0"
+  }
+}

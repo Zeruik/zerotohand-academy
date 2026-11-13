@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { createTeachingBuilders } from './scene3d-v7-builders.js';
 import { createMakingBuilders8 } from './making-scenes-v8.js';
 import { createRobotBuilders8 } from './robotics-v8.js';
 
 (() => {
+  function createGLRenderer(options){const canvas=document.createElement('canvas'),context=canvas.getContext('webgl2',options);if(!context)throw Error('WEBGL_UNAVAILABLE');return new THREE.WebGLRenderer({...options,canvas,context});}
   const stages = new Map();
   let renderer = null;
   let active = null;
@@ -170,7 +172,7 @@ import { createRobotBuilders8 } from './robotics-v8.js';
       job.frame=0;if(job.cancelled||thumbnailJob8!==job)return;
       const item=queue.shift();if(!item){job.cancel();return;}const [id,candidates]=item,live=candidates.filter(slot=>slot.isConnected&&identify(slot)===id);
       if(live.length){let stage=null;try{
-        if(!job.renderer){const r=job.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});r.setSize(480,290,false);r.setPixelRatio(1);r.outputColorSpace=THREE.SRGBColorSpace;r.toneMapping=THREE.ACESFilmicToneMapping;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFShadowMap;}
+        if(!job.renderer){const r=job.renderer=createGLRenderer({antialias:true,alpha:false});r.setSize(480,290,false);r.setPixelRatio(1);r.outputColorSpace=THREE.SRGBColorSpace;r.toneMapping=THREE.ACESFilmicToneMapping;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFShadowMap;}
         const s=JSON.parse(JSON.stringify(window.sim4(id)));if(id==='rc')s.y=3.2;
         if(id==='drone')Object.assign(s,{motionMode9:'bench',assembled:['frame','esc','fc','motors','receiver','gnss','battery'],props:true,on:false,activeMotor:-1,motorAngles:[0,0,0,0],p:{...s.p,explode:0,roll:0,pitch:0,yaw:0}});
         stage=createPreview(id,s);stage.camera.aspect=480/290;stage.camera.updateProjectionMatrix();stage.scene.updateMatrixWorld(true);job.renderer.render(stage.scene,stage.camera);thumbnailCache.set(id,job.renderer.domElement.toDataURL('image/png'));for(const slot of live)show(slot,id);
@@ -182,7 +184,7 @@ import { createRobotBuilders8 } from './robotics-v8.js';
   }
   function makeRenderer(shell){
     if(renderer)return renderer;
-    renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:false});
+    renderer=createGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:false});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.65));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;
     renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
     renderer.domElement.className='scene3d-canvas6';renderer.domElement.setAttribute('aria-label',T('可旋转和缩放的三维实验模型','Interactive three-dimensional lab model'));
@@ -285,5 +287,5 @@ import { createRobotBuilders8 } from './robotics-v8.js';
     if(!view){const target=stage.home.target.clone(),offset=stage.home.position.clone().sub(target).multiplyScalar(kind==='panel'?.58:.72);view={position:target.clone().add(offset).toArray(),target:target.toArray()};}
     stage.camera.position.set(...view.position);controls.target.set(...view.target);controls.update();stage.wrap.querySelector('[data-view-orbit6]')?.setAttribute('aria-pressed','false');
   }
-  window.SCENE3D6={THREE,OrbitControls,stages,install,mount,prepareGallery,focusView,motionControl9,resize:()=>resize(active),get active(){return active;},rangeOptions,createPreview};
+  window.SCENE3D6={THREE,OrbitControls,RoundedBoxGeometry,SVGRenderer,stages,install,mount,prepareGallery,focusView,motionControl9,resize:()=>resize(active),get active(){return active;},rangeOptions,createPreview};
 })();

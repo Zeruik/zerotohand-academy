@@ -2,7 +2,7 @@
 // Async per-file operations avoid Node's Windows cpSync native fast-fail.
 // Existing generated output is validated and quarantined, never recursively deleted.
 const fs=require('node:fs/promises'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
-const root=path.resolve(__dirname),bundle=path.join(root,'dist','desktop'),runtime=path.join(root,'qa/desktop-runtime/node_modules/electron/dist'),flashing=path.join(root,'dist/flashing-v10');
+const root=path.resolve(__dirname),bundle=path.join(root,'dist','desktop-v14'),runtimeCache=path.resolve(process.env.ZTH_RUNTIME_CACHE||path.join(root,'.runtime-cache')),runtime=path.join(runtimeCache,'electron-45.3.2'),flashing=path.join(root,'dist/flashing-v10');
 const io=file=>process.platform==='win32'?path.toNamespacedPath(file):file;
 function below(base,target){const relative=path.relative(base,target);return !!relative&&!relative.startsWith('..'+path.sep)&&relative!=='..'&&!path.isAbsolute(relative);}
 function privateName(name){return /\.(zth|zthm|zthdb)(?:\.|$)/i.test(name)||/^(Archives|Local State|storage-location\.json)$/i.test(name);}
@@ -18,7 +18,7 @@ async function inventory(folder,{rejectPrivate=false}={}){
 }
 async function assertGeneratedTarget(){
  const realRoot=await fs.realpath(io(root));if(path.resolve(realRoot)!==root)throw Error('Build root must not be a junction or symlink.');
- if(bundle!==path.join(root,'dist','desktop')||!below(root,bundle))throw Error('Unsafe generated-output directory.');
+ if(bundle!==path.join(root,'dist','desktop-v14')||!below(root,bundle))throw Error('Unsafe generated-output directory.');
  for(const file of [path.join(root,'dist'),bundle])if(await exists(file)){const st=await fs.lstat(io(file));if(!st.isDirectory()||st.isSymbolicLink()||!below(root,await fs.realpath(io(file))))throw Error('Generated directory escapes the workspace.');}
  if(await exists(bundle))await inventory(bundle,{rejectPrivate:true});
 }
@@ -32,16 +32,17 @@ function runNode(file){return new Promise((resolve,reject)=>{const child=cp.spaw
 async function quarantinePrevious(){
  if(!await exists(bundle))return;
  const notes=path.join(root,'dev-notes');if(await exists(notes)){const st=await fs.lstat(io(notes));if(!st.isDirectory()||st.isSymbolicLink()||!below(root,await fs.realpath(io(notes))))throw Error('Unsafe private quarantine directory.');}else await fs.mkdir(io(notes));
- const target=path.join(notes,'desktop-replaced-v12-'+new Date().toISOString().replace(/\D/g,'')+'-'+crypto.randomBytes(3).toString('hex'));
- if(!below(notes,target)||bundle!==path.join(root,'dist','desktop')||await exists(target))throw Error('Unsafe quarantine target.');
+ const target=path.join(notes,'desktop-replaced-v14-'+new Date().toISOString().replace(/\D/g,'')+'-'+crypto.randomBytes(3).toString('hex'));
+ if(!below(notes,target)||bundle!==path.join(root,'dist','desktop-v14')||await exists(target))throw Error('Unsafe quarantine target.');
  await fs.rename(io(bundle),io(target));console.log('Previous generated output preserved under dev-notes.');
 }
 async function refreshApp(){
  if(!await exists(path.join(bundle,'ZeroToHand.exe')))throw Error('Build the runtime and toolchain before refreshing application content.');
  const app=path.join(bundle,'resources/app');await fs.mkdir(io(app),{recursive:true});
- for(const file of ['package.json','main.cjs','preload.cjs','store.cjs','manager-store.cjs','storage-path.cjs','flashing.cjs','protection.cjs'])await fs.copyFile(io(path.join(root,'desktop',file)),io(path.join(app,file)));
+ for(const file of ['profile-directory.cjs','package.json','main.cjs','preload.cjs','store.cjs','manager-store.cjs','storage-path.cjs','flashing.cjs','protection.cjs','file-key.cjs'])await fs.copyFile(io(path.join(root,'desktop',file)),io(path.join(app,file)));
  const html=await fs.readFile(io(path.join(root,'ZeroToHand-Engineering-Academy.html')));await fs.writeFile(io(path.join(app,'index.html')),html);
  await fs.copyFile(io(path.join(root,'ZeroToHand-Academy.ico')),io(path.join(app,'icon.ico')));
+ await fs.mkdir(path.join(app,'assets','fonts'),{recursive:true});for(const n of ['NotoSansSC.ttf','OFL-NotoSansSC.txt','SOURCE.json'])await fs.copyFile(path.join(root,'assets/fonts',n),path.join(app,'assets/fonts',n));
  console.log('Application content refreshed. HTML SHA256 '+crypto.createHash('sha256').update(html).digest('hex'));
 }
 async function main(){
@@ -49,15 +50,16 @@ async function main(){
  if(args.has('--runtime-only')&&args.has('--refresh-app'))throw Error('Choose runtime-only or refresh-app, not both.');
  console.log('Checking fixed generated paths and private-data boundary...');await assertGeneratedTarget();
  if(args.has('--refresh-app')){await refreshApp();return;}
+ await require('./desktop/runtime-tools.cjs').prepareElectron(runtimeCache);
  if(!await exists(path.join(runtime,'electron.exe')))throw Error('Install the pinned desktop dependencies and Electron runtime first.');
  const manifest=JSON.parse(await fs.readFile(io(path.join(flashing,'bundle.json')),'utf8'));if(manifest.format!=='zth-flashing-toolchain'||manifest.version!==10||!Array.isArray(manifest.files))throw Error('Unexpected offline toolchain manifest.');
  if(!manifest.distributionReady&&!args.has('--allow-private-toolchain'))throw Error('Toolchain corresponding-source review is not complete.');
  const runtimePlan=await inventory(runtime,{rejectPrivate:true}),sdkPlan=await inventory(flashing,{rejectPrivate:true});
  const expected=new Set(manifest.files.map(entry=>entry.file).concat('bundle.json'));if(expected.size!==sdkPlan.files.length||sdkPlan.files.some(file=>!expected.has(file.split(path.sep).join('/'))))throw Error('Toolchain inventory differs from reviewed manifest.');
  await quarantinePrevious();await fs.mkdir(io(bundle),{recursive:true});
- console.log('Copying Electron runtime ('+runtimePlan.files.length+' files)...');await copyTree(runtime,bundle,runtimePlan);await fs.rename(io(path.join(bundle,'electron.exe')),io(path.join(bundle,'ZeroToHand.exe')));await runNode('build-exe-brand-v12.cjs');
+ console.log('Copying Electron runtime ('+runtimePlan.files.length+' files)...');await copyTree(runtime,bundle,runtimePlan);await fs.rename(io(path.join(bundle,'electron.exe')),io(path.join(bundle,'ZeroToHand.exe')));await runNode('build-exe-brand-v14.cjs');
  console.log('Copying offline toolchain ('+sdkPlan.files.length+' files)...');await copyTree(flashing,path.join(bundle,'resources/flashing-v10'),sdkPlan);
- if(args.has('--runtime-only'))console.log('Runtime and offline toolchain ready. Run node build-desktop.cjs --refresh-app after the final HTML build.');else{await refreshApp();console.log('Desktop bundle complete.');}
+ if(args.has('--runtime-only'))console.log('Runtime and offline toolchain ready. Run node build-desktop-v14.cjs --refresh-app after the final HTML build.');else{await refreshApp();console.log('Desktop bundle complete.');}
 }
 module.exports={below,privateName,inventory,copyTree};
 if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1;});

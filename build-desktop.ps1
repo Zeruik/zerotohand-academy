@@ -2,7 +2,7 @@ param([switch]$AllowPrivateToolchain,[switch]$RuntimeOnly,[switch]$RefreshApp)
 $ErrorActionPreference = 'Stop'
 # Async Node operations support the deeply nested ESP32 SDK on Windows.
 # Validated previous output is quarantined; no recursive deletion is needed.
-$buildArguments = @((Join-Path $PSScriptRoot 'build-desktop.cjs'))
+$buildArguments = @((Join-Path $PSScriptRoot 'build-desktop-v14.cjs'))
 if ($AllowPrivateToolchain) { $buildArguments += '--allow-private-toolchain' }
 if ($RuntimeOnly) { $buildArguments += '--runtime-only' }
 if ($RefreshApp) { $buildArguments += '--refresh-app' }

@@ -2,7 +2,7 @@
 // This layer deliberately does not invoke the legacy save4/localStorage chain.
 (function () {
  'use strict';
- const STORE_KEY='zth-store-v9', FORMAT='zth-local-store', ARCHIVE='zth-archive', MAX_BYTES=64*1024*1024, PRODUCER='12.0.0';
+ const STORE_KEY='zth-store-v9', FORMAT='zth-local-store', ARCHIVE='zth-archive', MAX_BYTES=64*1024*1024, PRODUCER='14.0.0';
  const copy=x=>JSON.parse(JSON.stringify(x)), now=()=>new Date().toISOString(), object=x=>x&&typeof x==='object'&&!Array.isArray(x)?x:{};
  const text=(x,n=20000)=>typeof x==='string'?x.slice(0,n):'', date=x=>typeof x==='string'&&Number.isFinite(Date.parse(x))?new Date(x).toISOString():null;
  const known=id=>LESSONS.some(l=>l.id===id), keyOK=id=>typeof id==='string'&&/^[\w.-]{1,100}$/.test(id)&&!['__proto__','prototype','constructor'].includes(id);

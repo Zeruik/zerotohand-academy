@@ -1,4 +1,4 @@
-/* ZTH Studio Academy / 赋形工作室学院 — original bilingual teaching content.
+/* ZTH Studio Academy / 赋形造物工作室学院 — original bilingual teaching content.
  * Official references checked 2026-11-06. Continuous-delivery interfaces may differ.
  * Educational SVG models are deliberately bounded; no native CAD, slicer or publication API.
  */

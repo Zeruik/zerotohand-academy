@@ -167,3 +167,11 @@ does not mean that every optional component is installed or enabled.
 ThirdPartySources 目录提供。免费转发完整发行包时请一并保留。第三方许可赋予
 的使用、研究、修改或再分发权利，不受本应用原创部分非商用条款的额外限制。
 本包未附 CP210x、CH340 等厂商 USB 桥接驱动。
+
+
+13.0 original robotics addition
+=============================
+The articulated teaching geometry is original. Three.js 0.186.1 remains MIT with its embedded/source notice. New course text and project-route text follow shared-robotics/LICENSE-CONTENT.txt; contact zeruik@qq.com for commercial/adaptation permission. Algorithm/runtime code and third-party licenses remain separate.
+
+
+Noto Sans SC — Copyright the Noto Project Authors. SIL Open Font License 1.1. The unmodified font, full license and reviewed source/hash metadata are retained in assets/fonts/. No font CDN is used.

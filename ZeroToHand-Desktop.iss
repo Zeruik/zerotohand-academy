@@ -1,18 +1,18 @@
-#define AppName "赋形工作室学院"
+#define AppName "赋形造物工作室学院"
 [Setup]
 AppId={{CFF45F03-4D61-4AF0-93F5-5C21174D7510}
 AppName={#AppName}
-AppPublisher=Zeruik
+AppPublisher=理工阿白菌 / TechABJ
 AppPublisherURL=mailto:zeruik@qq.com
-AppVersion=12.0.0
-VersionInfoVersion=12.0.0.0
+AppVersion=14.0.0
+VersionInfoVersion=14.0.0.0
 DefaultDirName={code:DefaultInstallFolder}
 DefaultGroupName=ZeroToHand
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=dist
-OutputBaseFilename=Install-ZeroToHand-v12
+OutputBaseFilename=Install-ZeroToHand-v14
 Compression=lzma2/fast
 SolidCompression=yes
 WizardStyle=modern
@@ -35,9 +35,9 @@ UsePreviousAppDir=yes
 Name: "chinesesimp"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 [Messages]
-chinesesimp.WelcomeLabel1=欢迎来到赋形工作室学院 12.0
+chinesesimp.WelcomeLabel1=欢迎来到赋形造物工作室学院 14.0
 chinesesimp.WelcomeLabel2=四条学习赛道：机械设计、电子电控、编程与自主系统、内容运营。按先修逐步学习，操作教学模型，记录项目证据，并使用离线学员管理。%n%n安装包已内置桌面运行环境，无需另装浏览器、下载依赖或配置环境变量。适用于 Windows 10/11 64 位电脑。%n%n接下来请确认许可与隐私说明，选择安装位置、存档位置和快捷方式。
-english.WelcomeLabel1=Welcome to ZTH Studio Academy 12.0
+english.WelcomeLabel1=Welcome to ZTH Studio Academy 14.0
 english.WelcomeLabel2=Four learning tracks: mechanical design, electronics, programming and autonomy, and content operations. Follow prerequisite guidance, explore teaching models, record project evidence and manage learner-shared archives offline.%n%nThe desktop runtime is included. No separate browser, dependency download or environment-variable changes are needed. For Windows 10/11 64-bit computers.%n%nContinue to review the license and privacy information, then choose application and archive folders and shortcuts.
 [CustomMessages]
 chinesesimp.RuntimePageTitle=运行环境
@@ -68,13 +68,15 @@ Source: "LICENSE-ZH.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "PRIVACY-ZH.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "README.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "THIRD-PARTY-LICENSES.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "dist\desktop\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "dist\desktop-v14\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 [InstallDelete]
+Type: files; Name: "{autodesktop}\赋形工作室学院.lnk"
+Type: files; Name: "{group}\赋形工作室学院.lnk"
 Type: files; Name: "{autodesktop}\ZeroToHand电子版.lnk"
 Type: files; Name: "{group}\ZeroToHand电子版.lnk"
 [Icons]
-Name: "{group}\赋形工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: startmenu
-Name: "{autodesktop}\赋形工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: desktopicon
+Name: "{group}\赋形造物工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: startmenu
+Name: "{autodesktop}\赋形造物工作室学院"; Filename: "{app}\ZeroToHand.exe"; IconFilename: "{app}\resources\app\icon.ico"; AppUserModelID: "ZeroToHand.Desktop"; Tasks: desktopicon
 [Run]
 Filename: "{app}\ZeroToHand.exe"; Description: "{cm:LaunchAcademy}"; Flags: postinstall nowait skipifsilent
 [Code]
@@ -90,7 +92,7 @@ var
   BackupFolder, BackupSource, MigratedSource, MigratedTarget: String;
 
 const
-  InstallerVersion = '12.0.0';
+  InstallerVersion = '14.0.0';
   AppExecutable = 'ZeroToHand.exe';
   UninstallKey = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\{CFF45F03-4D61-4AF0-93F5-5C21174D7510}_is1';
 
@@ -347,7 +349,7 @@ begin
   Info.SetBounds(0, 0, AgreementPage.SurfaceWidth, ScaleY(63));
   Info.AutoSize := False;
   Info.WordWrap := True;
-  Info.Caption := Tr('版权所有 © 2026 Zeruik。原创部分仅限非商用；商业使用及应用修改、逆向需书面授权（法定例外与第三方许可除外）。联系：zeruik@qq.com。学习档案保存在本机；天气需主动启用。', 'Copyright © 2026 Zeruik. Original content is licensed for non-commercial use. Commercial use, application modification and reverse engineering require written permission, subject to legal exceptions and third-party licenses. Contact: zeruik@qq.com. Learning archives are local; weather is opt-in.');
+  Info.Caption := Tr('版权所有 © 2026 理工阿白菌 / TechABJ · zeruik@qq.com'+#13#10+'原创内容仅限非商用；商用及应用修改、逆向需书面授权。'+#13#10+'法定例外与第三方许可保留。学习档案保存在本机。'+#13#10+'天气需主动启用；请阅读下方完整许可与隐私说明。', '© 2026 理工阿白菌 / TechABJ · zeruik@qq.com'+#13#10+'Original content: non-commercial use only.'+#13#10+'Commercial use or app modification requires permission.'+#13#10+'Read full terms below. Statutory/third-party rights remain.');
   LicenseButton := TNewButton.Create(AgreementPage);
   LicenseButton.Parent := AgreementPage.Surface;
   LicenseButton.SetBounds(0, ScaleY(69), ScaleX(190), ScaleY(28));

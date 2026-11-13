@@ -1,20 +1,53 @@
-# 赋形工作室学院 12.0 / ZTH Studio Academy
+# 赋形造物工作室学院 14.0 / ZTH Studio Academy
 
-一个面向动手实践的离线双语工程学院。12.0 用四条清晰的学习赛道组织内容：电控与电子、机械设计与制造、编程与自主系统、内容与运营。先选择自己的主线，按先修补课，再用小项目把几组的接口连接起来；电脑操作不再占据所有人的共同起点。
+一个面向动手实践的离线双语工程学院。14.0 用四条清晰的学习赛道组织内容：电控与电子、机械设计与制造、编程与自主系统、内容与运营。先选择自己的主线，按先修补课，再用小项目把几组的接口连接起来；电脑操作不再占据所有人的共同起点。
 
-本版共有 **156 节课程**。保留 **30 个主要实验操作台**，另增加 **5 类机械与运营课内操作台**及 **5 类自主系统课内操作台**。这是不同范围的教学计算、可编辑练习与视觉模型，不应把这些数字相加宣传为全功能物理仿真器。
+本版共有 **186 节课程**。提供 **31 个主要实验操作台**，另增加 **5 类机械与运营课内操作台**及 **5 类自主系统课内操作台**。这是不同范围的教学计算、可编辑练习与视觉模型，不应把这些数字相加宣传为全功能物理仿真器。
 
 建议每周投入 **4–6 小时**，交替阅读、复习、独立实践与项目验收；1–2 年是可调整的学习安排，不是掌握全部学科的保证。原有 96 周参考路线继续提供，四赛道按各自先修与交付物推进，不要求所有人先学完电脑基础。
 
+## 14.0 大更新 / Major update
+
+新增12节工作流衔接课，把单位、坐标、检测/分割、数据泄漏、评价指标、屏幕迁移、首次亮屏、交接和备份连到实际任务。单位操作台可修改输入、观察计算结果并保存在当前学员的加密练习草稿中。
+
+Twelve new bridge lessons connect units, coordinates, detection/segmentation, leakage, metrics, screen migration, first light, handoff and recovery. Editable calculation benches retain inputs in the current learner’s encrypted drafts.
+
+3D场景优先使用WebGL；显卡不支持时自动采用同一三维结构、坐标、镜头与控制的三维矢量绘制，明确提示简化光照和模型细分。软件仿真不代表实物验收。
+
+3D scenes prefer WebGL and automatically use the same geometry/camera/controls through a vector renderer where GPU support is unavailable, with simplified lighting and tessellation clearly labelled. Simulation is not hardware acceptance.
+
+以下机器人内容沿用上一大版本，并在本版继续提供：
+
+创作者与权利人：理工阿白菌 / TechABJ（阿白菌）。为赋形造物工作室制作，关注将工程学习、动手制作与工作室运营连接起来的工具。赋形造物工作室是向阳科创工作室旗下的子工作室。公开代码账户：Zeruik。联系：zeruik@qq.com。
+
+Created by 理工阿白菌 / TechABJ for Fuxing Zaowu Studio, a sub-studio of Xiangyang Science & Technology Studio, connecting engineering learning, making and studio operations. Public code account: Zeruik. Contact: zeruik@qq.com.
+
+- 新增18节双语机器人课：机械臂的结构/坐标/逆解/夹持/接口/项目；机械狗的结构/步态/腿部逆解/空间目标/ROS/项目；无人机的装配/推力/混控/PD/航点/项目。每节有三段解释、示例、操作任务和可修改答案的检查题。
+- 新的原创关节式3D教学模型：机械臂实际附着并搬运工件；机械狗四腿独立运动并走向点击目标；无人机四电机输出、姿态、风扰、五阶段航点和降落。近景、跟随镜头、任务路径、旋转/缩放、暂停/单步/复位可分别操作。
+- 三条九阶段项目路线。先定义判据，再操作、注入失败、重复实验、保存证据，最后交接。阶段完成需要填写实际观察；程序不会把按钮点击记成硬件成功。
+- 答题、反思与独立仿真报告进入当前学员的完整加密.zth。仅进度分享继续排除私有笔记和练习正文。实验报告可以另行下载JSON；报告本身不是加密存档，分享前检查内容。
+- 修复抓取高度故障可能被后续动作意外修正、暂停任务继续时丢失原阶段、失效旋翼仍旋转，以及上一/下一课反思归属等问题。
+
+The update adds 18 bilingual robotics lessons, three nine-stage project routes, articulated 3D missions, close/follow cameras, mission paths and private evidence integrated with the encrypted full learner archive. These are declared teaching models: arm geometry/attachment, flat-ground gait kinematics and simplified drone rigid-body/PD/allocation. They are neither vendor digital twins nor deployable controllers. Real contact dynamics, hardware, USB/OTA and physical flight need separate acceptance.
+
+打开左侧“机器人三维学院”，或在“全部课程”查找新机器人课；“项目路线”提供九阶段任务。原有174节课程编号与四条赛道保留，新增12节工作流衔接课；主要实验操作台现为31个。建议每周4–6小时，学习年限按实践与复习调整。
+
+源码复现：安装 qa/desktop-runtime/package-lock.json 中锁定的开发依赖，运行 node build.cjs。桌面打包使用 node build-desktop-v14.cjs、Inno Setup和node package-release-v14.cjs；运行时通过 desktop/runtime-lock.json 从官方归档校验。离线烧录工具链及其对应源材料需先按build-flashing.cjs准备，不能仅复制个人Arduino环境。个人运行安装包无需这些开发依赖。当前目录已有输出时构建器会保留或拒绝，不删除学习数据。
+
+当前回归入口：node shared-robotics/qa-core.cjs、node qa/integration-v14.cjs；实际WebGL、桌面存储和安装生命周期需另行运行原生验收。仓库内旧版编号测试用于对应模块/历史版本，不应把历史整包数量断言当作14.0验收。测试日志、截图和实际学员数据不在发行包。
+
+升级沿用原安装目录、AppId和保护密钥目录；先导出完整.zth备份并退出程序。卸载默认保留Archives及独立保护材料，不自动删学习数据，也不回滚并未修改的PATH。旧版本不认识新课程时应停止写入并提示使用新版；不要强行降级覆盖新存档。高级隔离启动参数--zth-profile-dir=<绝对目录>用于单独配置/QA，不会改变默认配置目录。
+
+
 ## 安装后就能学习
 
-完整解压 `ZeroToHand-Academy-Windows-v12.0.0.zip`，双击 `Install-ZeroToHand-v12.exe`。向导按系统或上次安装语言显示中文/英文，并提供使用许可确认、安装位置和存档位置选择；快捷方式默认勾选，可取消。安装与存档目录按页面提示使用英文路径，应用自建目录使用英文名称。桌面运行环境包含在安装包中，学习者不需要另装浏览器、Node.js 或 Python，不需要修改系统 PATH。
+完整解压 `ZeroToHand-Academy-Windows-v14.0.0.zip`，双击 `Install-ZeroToHand-v14.exe`。向导按系统或上次安装语言显示中文/英文，并提供使用许可确认、安装位置和存档位置选择；快捷方式默认勾选，可取消。安装与存档目录按页面提示使用英文路径，应用自建目录使用英文名称。桌面运行环境包含在安装包中，学习者不需要另装浏览器、Node.js 或 Python，不需要修改系统 PATH。
 
 也可以用现代浏览器打开 `免安装版/ZeroToHand-Engineering-Academy.html`。课程、界面和模型在单文件中，日常学习不需要联网；主动打开外部参考资料或启用可选天气时才需要网络。源码仓库根目录提供同一个 HTML。
 
 先选择主赛道，电子方向从电路主线开始；不熟悉文件、工具或编程时再打开对应基础课程。每课先写预测，再按任务操作，记录结果并解释原因，最后检查完成标准。进度文档记录个人学习过程，不是机构颁发的资格证书。
 
-安装从一个可拖动的欢迎窗口开始，后续协议、路径、快捷方式与进度页使用同一个窗口。需要指定安装语言时可运行 `Install-ZeroToHand-v12.exe /LANG=english` 或 `/LANG=chinesesimp`；应用内仍可随时切换中英文。
+安装从一个可拖动的欢迎窗口开始，后续协议、路径、快捷方式与进度页使用同一个窗口。需要指定安装语言时可运行 `Install-ZeroToHand-v14.exe /LANG=english` 或 `/LANG=chinesesimp`；应用内仍可随时切换中英文。
 
 ## 四条赛道与本版新增内容
 
@@ -72,7 +105,7 @@ Python 课程提供从文件后缀、缩进、if、运行命令，到完整平�
 - **强化学习与 SuperMimic**：展示参考相位、一阶滞后和误差，讲解奖励/数据/验证方法，并按原始论文做阅读；没有内置策略训练、刚体接触求解或论文模型，不能声称在本机复现作者结果。
 - **机械与制造**：几何和层数是明确公式的教学估算；不是完整 CAD 约束求解、有限元分析或真实切片器，不生成可直接送机的加工安全结论。
 
-更完整的功能、保存、网络与验收边界见 [SCOPE-v12.md](SCOPE-v12.md)。这些限制用于区分“可在本软件验证的结果”和“必须在真实工具/实物继续完成的工作”。
+更完整的功能、保存、网络与验收边界见 [SCOPE-v14.md](SCOPE-v14.md)。这些限制用于区分“可在本软件验证的结果”和“必须在真实工具/实物继续完成的工作”。
 
 ## 保留教学模型的边界
 
@@ -93,7 +126,7 @@ Go2 和 UR5 的公开视觉网格经过坐标/法线量化后离线嵌入，保�
 - 安装器未签名，Windows 可能提示无法确认发布者。请核对来源并按设备管理要求处理。
 - 客户端默认在安装位置的 Archives 目录保存 Windows 保护的本机数据库，可在安装时选择其他可写目录，并保留上次有效副本；浏览器使用当前站点的本地存储。默认自动保存，也可关闭后手动保存。关闭自动保存时更改先留在内存，退出前需要保存或导出。应用不自动上传资料。
 - 工具工作区中的“保存文件”只把编辑内容写入**虚拟项目文件**；学员资料是否持久保存仍服从全局自动保存设置。文件、设置和预测/解释草稿可随学员档案保存；重新打开应用会重置虚拟设备固件、编译产物与进行中的传输，需要重新检查，不会把草稿当成已完成烧录。
-- 换电脑、浏览器、移动网页文件、清理数据或卸载前先导出 `.zth`。档案使用 PBKDF2-SHA256 与 AES-256-GCM；口令不会保存，忘记后无法恢复。可导入旧 `.zthprogress` 档案；应用 12.0 继续使用第 9 版档案结构，不因应用升版更改存储格式。
+- 换电脑、浏览器、移动网页文件、清理数据或卸载前先导出 `.zth`。档案使用 PBKDF2-SHA256 与 AES-256-GCM；口令不会保存，忘记后无法恢复。可导入旧 `.zthprogress` 档案；应用 14.0 继续使用第 9 版档案结构，不因应用升版更改存储格式。
 - 导出时选择范围：完整个人档案含已填资料、笔记、答题和草稿；“仅学习进度与成绩”含姓名/组别/已填学籍信息和答题结果，不含性别、生日、笔记、代码、草稿或任务正文。两者均为口令加密 .zth。进度分享不能恢复未分享的资料，导入只创建独立副本；该来源标记在后续备份中保留。请只分享给合适的人。本机自动保存与动效设置独立，不随导入改变。同编号导入会创建新编号副本，保留本地原档案。
 - 进度文档只汇总学习与练习记录，不包含预测、解释或代码草稿正文，也不作为资格证书。
 
@@ -128,18 +161,22 @@ OTA 代码生成器在页面内存中处理填写的配置，不会自动烧录�
 在源码目录根部执行：
 
 ```powershell
-npm ci --prefix qa/dom-runtime --ignore-scripts
-npm ci --prefix qa/desktop-runtime
+Push-Location qa/dom-runtime
+npm ci
+Pop-Location --ignore-scripts
+Push-Location qa/desktop-runtime
+npm ci
+Pop-Location
 node build-brand-v8.cjs
 node build.cjs
 node qa/tracks-content-v12.cjs
 node qa/tracks-v12.cjs
 node qa/autonomy-v12.cjs
-node qa/integration-v12.cjs
-node qa/archive-compatibility-v12.cjs
-node qa/protection-native-v12.cjs
-node qa/storage-upgrade-v12.cjs
-node qa/installer-lifecycle-v12.cjs
+node qa/integration-v14.cjs
+node qa/archive-compatibility-v14.cjs
+node qa/protection-native-v14.cjs
+node qa/storage-upgrade-v14.cjs
+node qa/installer-lifecycle-v14.cjs
 node qa/navigation-shell-v11.cjs
 node qa/electronics-v11.cjs
 node qa/connections-v11.cjs
@@ -150,11 +187,11 @@ node qa/computer-v11.cjs
 node qa/robot-interaction-v11.cjs
 ```
 
-第二条命令下载 Electron。以上模块检查不代替 Windows 原生存储保护验收；本机保护接口需要在 Electron/Windows 下使用隔离测试资料单独验证，不能只依据浏览器或模拟接口判断成功。品牌脚本从附带原始图稿生成图标和安装器图片；`build-exe-brand-v12.cjs` 为 Windows 程序嵌入图标与产品版本，打包时从原始 Electron 重放资源编辑并比较结果；网页构建使用附带的机器人几何 JavaScript，不需要 ROS、Python/xacro 或重新下载网格。`assets/robots-v8/` 保存来源与许可，不是可直接运行的完整 ROS 软件包。
+桌面构建器另外从官方归档下载并校验锁定的Electron；npm只安装开发工具。以上模块检查不代替 Windows 原生存储保护验收；本机保护接口需要在 Electron/Windows 下使用隔离测试资料单独验证，不能只依据浏览器或模拟接口判断成功。品牌脚本从附带原始图稿生成图标和安装器图片；`build-exe-brand-v14.cjs` 为 Windows 程序嵌入图标与产品版本，打包时从原始 Electron 重放资源编辑并比较结果；网页构建使用附带的机器人几何 JavaScript，不需要 ROS、Python/xacro 或重新下载网格。`assets/robots-v8/` 保存来源与许可，不是可直接运行的完整 ROS 软件包。
 
-`qa/installer-lifecycle-v12.cjs` 需要本机 Inno Setup 7，在隔离目录和随机安装器 ID 下用很小的测试程序检查安装、更新、迁移、防降级和卸载；它不安装正式产品，也不能代替完整发行包的安装验收。工具链实际上传测试需要匹配的开发板，代码检查和编译测试不表示已经完成实物刷写。
+`qa/installer-lifecycle-v14.cjs` 需要本机 Inno Setup 7，在隔离目录和随机安装器 ID 下用很小的测试程序检查安装、更新、迁移、防降级和卸载；它不安装正式产品，也不能代替完整发行包的安装验收。工具链实际上传测试需要匹配的开发板，代码检查和编译测试不表示已经完成实物刷写。
 
-测试会自行创建 `dev-notes/` 保存结果，不需要复制发布者的开发记录。以上命令选用本版适用的模块检查，覆盖电子内容、接线、虚拟电脑、学习记录、离线管理、存档兼容和界面集成；`integration-v12.cjs` 核对本版156课、四赛道和保留的30个主要操作台；新增课内模式按独立模块检查。保留的旧测试可能带有旧课程数量或旧入口假设，不应批量运行后当作 v12 验收清单；例如四赛道首页与路线使用 `tracks-v12.cjs` 检验，不再采用旧首页的固定入口假设。测试文件名保留模块版本，并不表示应用版本倒退。`protection-native-v12.cjs` 是 Windows 专用的本机加密跨进程检查；本版已验证三个独立进程间保护数据可读，并非跨 Windows 账号或换系统恢复保证。JSDOM、数值和几何检查不等于真实浏览器、原生安装或第二台电脑验收，实际画面和安装流程仍需单独检查。
+测试会自行创建 `dev-notes/` 保存结果，不需要复制发布者的开发记录。以上命令选用本版适用的模块检查，覆盖电子内容、接线、虚拟电脑、学习记录、离线管理、存档兼容和界面集成；`integration-v14.cjs` 核对本版186课、四赛道和保留的30个主要操作台；新增课内模式按独立模块检查。保留的旧测试可能带有旧课程数量或旧入口假设，不应批量运行后当作 v12 验收清单；例如四赛道首页与路线使用 `tracks-v12.cjs` 检验，不再采用旧首页的固定入口假设。测试文件名保留模块版本，并不表示应用版本倒退。`protection-native-v14.cjs` 是 Windows 专用的本机加密跨进程检查；本版已验证三个独立进程间保护数据可读，并非跨 Windows 账号或换系统恢复保证。JSDOM、数值和几何检查不等于真实浏览器、原生安装或第二台电脑验收，实际画面和安装流程仍需单独检查。
 
 如果要复现带真实烧录功能的离线桌面包，还需要 Arduino CLI 1.5.1 和 `esp32:esp32@3.3.10` 的安装目录及其下载归档。使用 Espressif 官方稳定索引安装该固定核心；随后运行 `node build-flashing.cjs`，或通过 `--cli`、`--arduino-data` 指定这些工具的位置。编译器与板卡库体积较大，最终用户无需自行安装；开发复现需要保留相同版本。工具链和对应源码/许可必须完成配对核验，不能把未完成的负载直接分发。
 
@@ -165,17 +202,17 @@ node qa/robot-interaction-v11.cjs
 ```powershell
 powershell -ExecutionPolicy Bypass -File build-desktop.ps1
 ISCC.exe ZeroToHand-Desktop.iss
-node package-release-v12.cjs --check
-node package-release-v12.cjs
-Compress-Archive -Path 'release/ZeroToHand-Academy-Windows-v12.0.0' -DestinationPath 'release/ZeroToHand-Academy-Windows-v12.0.0.zip' -Force
+node package-release-v14.cjs --check
+node package-release-v14.cjs
+Compress-Archive -Path 'release/ZeroToHand-Academy-Windows-v14.0.0' -DestinationPath 'release/ZeroToHand-Academy-Windows-v14.0.0.zip' -Force
 ```
 
-`ISCC.exe` 来自已安装的 Inno Setup 7；也可在 Inno 编辑器打开 `.iss` 编译。输出安装器为 `dist/Install-ZeroToHand-v12.exe`。缺少 Electron 时桌面构建会停止，先解决依赖安装问题。
+`ISCC.exe` 来自已安装的 Inno Setup 7；也可在 Inno 编辑器打开 `.iss` 编译。输出安装器为 `dist/Install-ZeroToHand-v14.exe`。缺少 Electron 时桌面构建会停止，先解决依赖安装问题。
 
 打包器采用逐文件白名单，核对桌面负载、文件哈希、应用版本、安装器身份与时效，并扫描机器路径、账号及常见凭据样式。`--plan` 只列计划；`--check` 校验输入但不生成公开目录。正式更新仍由用户手动下载安装包，不自动发布或拉取远端代码。正常执行生成：
 
-- `publish/zerotohand-academy-v12/`：手动上传 GitHub 的源码、资源、测试和锁文件。
-- `release/ZeroToHand-Academy-Windows-v12.0.0/`：安装器、快速开始、使用许可、隐私说明、第三方许可、可选免安装网页，以及`ThirdPartySources/` 中单独的第三方工具链对应源码材料（不安装进应用）。
+- `publish/zerotohand-academy-v14/`：手动上传 GitHub 的源码、资源、测试和锁文件。
+- `release/ZeroToHand-Academy-Windows-v14.0.0/`：安装器、快速开始、使用许可、隐私说明、第三方许可、可选免安装网页，以及`ThirdPartySources/` 中单独的第三方工具链对应源码材料（不安装进应用）。
 
 ZIP 保留一个版本文件夹作为根目录。输出目录出现清单外内容会停止，不自动删除。开发日志、QA 结果、截图、提示词、个人档案、缓存、依赖目录和 Git 元数据不进入公开目录。验证记录只留在本地 `dev-notes/`，不要上传整个开发工作区。
 
@@ -189,13 +226,13 @@ Go2 来源为 [Unitree 官方 unitree_ros](https://github.com/unitreerobotics/un
 
 ## English overview
 
-ZTH Studio Academy 12.0 is an offline bilingual engineering learning app with **156 lessons and 30 retained main workbenches**, organized into electrical, mechanical, programming/autonomy and operations tracks. It retains the electronics lessons and adjustable experiments while making computer fundamentals optional support for the four tracks. A virtual Windows/Linux file window shares its tree with a limited teaching terminal: create, open, copy and rename files, then check a robot-project task without accessing real files. Existing 3D teaching workbenches and the suggested long-term route remain available.
+ZTH Studio Academy 14.0 is an offline bilingual engineering learning app with **186 lessons and 31 main workbenches**, organized into electrical, mechanical, programming/autonomy and operations tracks. It retains the electronics lessons and adjustable experiments while making computer fundamentals optional support for the four tracks. A virtual Windows/Linux file window shares its tree with a limited teaching terminal: create, open, copy and rename files, then check a robot-project task without accessing real files. Existing 3D teaching workbenches and the suggested long-term route remain available.
 
 The Windows ZIP includes its desktop runtime. The terminal, C stepper, IDE and OTA workspaces are explicit teaching simulations: they do not execute host commands, compile arbitrary C/C++, flash hardware or contact a network. A separate, explicitly confirmed desktop USB action uses the bundled Arduino toolchain to compile and upload firmware to supported ESP32 targets. It does not constitute hardware acceptance testing. ArduinoOTA and ESP-IDF use distinct prerequisite, transfer and recovery models. Go2 and UR5 show attributed official geometry and kinematics, not validated physical control.
 
 Learner data stays local. Creating or editing a profile requires a display name and group; student ID, major, college, school, gender and birthday are optional. Existing profiles remain readable. The study calendar shows recorded reading activity, answers and completion dates without inventing missing history. Notes have a direct entry; accuracy uses the latest answer per question, independently of self-marked course completion.
 
-Export requires a password-protected `.zth` archive; application 12.0 retains the version-9 archive schema. Choose a full personal backup, or progress-only sharing that excludes gender, birthday, notes, code/drafts and task text while retaining supplied group/student/school fields. Progress-only imports create independent learner copies, retain their partial-origin marker and cannot recover omitted information. The commands above reproduce the app from included sources. Developer logs, personal records, screenshots and installed dependencies are excluded from the public source folder and user package.
+Export requires a password-protected `.zth` archive; application 14.0 retains the version-9 archive schema. Choose a full personal backup, or progress-only sharing that excludes gender, birthday, notes, code/drafts and task text while retaining supplied group/student/school fields. Progress-only imports create independent learner copies, retain their partial-origin marker and cannot recover omitted information. The commands above reproduce the app from included sources. Developer logs, personal records, screenshots and installed dependencies are excluded from the public source folder and user package.
 
 The offline manager accepts password-protected `.zth` archives explicitly shared by learners. It shows progress, answer history and latest-answer accuracy, with group and school filters, without replacing the active learner profile or contacting a server. Supplied student/school fields are self-reported. Manager records omit birth dates, gender, notes and code drafts, and remove terminal/C submission text; original full archives may contain them. A separate password protects the manager database and portable `.zthm` backups. CSV summaries are plaintext names, IDs, groups, schools and progress statistics. Deleting a managed record does not erase previously exported copies or backups.
 
@@ -207,9 +244,26 @@ The electrical track preserves the strengthened electronics sequence. The mechan
 
 Python examples include file creation, indentation, branching, a validated mean function, CSV input, expected outputs and error diagnosis. They are displayed, not executed by the Academy. Real YOLO training, ROS/Nav2, PX4 and research reproduction require separately configured environments and data. The course references Ultralytics 8.4.203 / YOLO26, ROS 2 Jazzy on Ubuntu 24.04, PX4 1.17, QGroundControl 5.1 and SuperMimic arXiv v1 as reviewed on 2026-11-06. These references do not bundle or validate all those environments.
 
-The annotation bench edits imported images and boxes/simple polygons. **Save its separate JSON project: images and contours are excluded from learner .zth archives.** Metrics are defined calculations, the transform bench is planar, mapping uses known poses and A* on a grid, and motion compares reference phase and lag. None of these is trained vision, full SLAM/Nav2, calibrated physical grasping or reinforcement-learning policy training. Mechanical models are not a full CAD, FEA or manufacturing slicer. Read SCOPE-v12.md before transferring a result to hardware.
+The annotation bench edits imported images and boxes/simple polygons. **Save its separate JSON project: images and contours are excluded from learner .zth archives.** Metrics are defined calculations, the transform bench is planar, mapping uses known poses and A* on a grid, and motion compares reference phase and lag. None of these is trained vision, full SLAM/Nav2, calibrated physical grasping or reinforcement-learning policy training. Mechanical models are not a full CAD, FEA or manufacturing slicer. Read SCOPE-v14.md before transferring a result to hardware.
 
 Two independently licensed MIT applications accompany this development effort. Screen Studio exports real Arduino sketches and raster resources for pinned Adafruit libraries; generated ST7789/S3, ILI9341/C3 and SSD1306/S3 projects have compiled and linked, without proving hardware behavior. Editing works offline; first-time firmware compilation needs separate dependencies. Studio Forge inspects Windows and prepares reviewable plans; actual WSL/Ubuntu/ROS/Microsoft installation requires an explicit confirmation and may need administrator rights, network or reboot. A cached root filesystem does not make every dependency offline. Cancelling is not rollback, and uninstalling Forge does not remove environments it helped install.
 
-For upgrades, application 12.0 retains archive schema 9 and the existing application/storage identity. Back up personal .zth and manager .zthm archives, close the app, then run Install-ZeroToHand-v12.exe. Do not delete the retained ZeroToHand Academy protection directory or attempt to downgrade by editing version fields. Public source goes in publish/zerotohand-academy-v12; the Windows distribution is ZeroToHand-Academy-Windows-v12.0.0.zip. Developer logs, test images, local archives and tool caches are excluded.
+For upgrades, application 14.0 retains archive schema 9 and the existing application/storage identity. Back up personal .zth and manager .zthm archives, close the app, then run Install-ZeroToHand-v14.exe. Do not delete the retained ZeroToHand Academy protection directory or attempt to downgrade by editing version fields. Public source goes in publish/zerotohand-academy-v14; the Windows distribution is ZeroToHand-Academy-Windows-v14.0.0.zip. Developer logs, test images, local archives and tool caches are excluded.
 
+
+
+## 14.0.0: 从课程走向可交付工程 / From lessons to deliverables
+
+新增 12 节双语衔接课：像素/毫米/缩放、验收标准、检测框、实例轮廓、数据泄漏、precision/recall、屏幕迁移、刷新状态、首次亮屏、坐标链、交接和备份。每节含例题、操作与可保存的计算模型，已接入四条赛道和 96 周路线。原有 174 节与课程编号保留，总数 186。
+
+Twelve bilingual bridge lessons connect units, acceptance, detection/segmentation, data leakage, metrics, screen migration, update state, first light, coordinate frames, handoff and recovery. Worked examples, operations and saved model inputs join the four tracks and 96-week route. All previous 174 lessons and their IDs remain: 186 in total.
+
+Windows 独立学院包含原有离线 MCU 工具链。Linux/macOS 的完整学习模块、三维机器人、屏幕工程、数据审查与网站工作流由同工作室的 ZTH Studio Desk 5 提供；本仓库独立 MCU 安装器不声称为 Linux/macOS 固件工具链。
+
+The standalone Windows Academy retains its offline MCU toolchain. The full learning module, 3D robotics, screen engineering, data review and site workflow are available on Linux/macOS through ZTH Studio Desk 5. This standalone MCU installer does not claim to be a Linux/macOS firmware toolchain.
+
+[整合工作台 / Integrated Desk](https://github.com/Zeruik/zth-studio-desk/releases) · [环境与数据工具 / Forge](https://github.com/Zeruik/zth-studio-forge/releases) · [屏幕设计 / Screen](https://github.com/Zeruik/zth-screen-studio/releases)
+
+自带 Noto Sans SC，字体和原始 OFL 许可位于 assets/fonts；HTML 预览须保留完整资源文件夹。应用安装包已包含字体。原始工具代码与独立标注课程内容的许可范围不同，第三方许可照常保留。
+
+Noto Sans SC and its unmodified OFL are bundled in assets/fonts. Keep the resource folder with HTML previews; the installed app includes it. Original tool code, labelled teaching content and third-party components retain their respective terms.

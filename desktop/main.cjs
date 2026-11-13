@@ -6,7 +6,7 @@ const {createFlasher10}=require('./flashing.cjs');
 const {configureProtectionPaths,createProtection}=require('./protection.cjs');
 for(const stream of [process.stdout,process.stderr])stream?.on('error',error=>{if(error.code!=='EPIPE')throw error;});
 app.setName('ZeroToHand Academy');
-configureProtectionPaths(app);
+const explicitProfile=require('./profile-directory.cjs').profileDirectory();configureProtectionPaths(app,explicitProfile||undefined);
 if(process.platform==='win32')app.setAppUserModelId('ZeroToHand.Desktop');
 function external(url){try{let u=new URL(url);if(u.protocol==='https:'||(u.protocol==='mailto:'&&u.pathname==='zeruik@qq.com'))shell.openExternal(u.href);}catch{}}
 if(!app.requestSingleInstanceLock())app.quit();

@@ -1,0 +1,23 @@
+机器人课程文字使用许可 / Robotics curriculum text licence
+版权所有 © 2026 理工阿白菌 / TechABJ
+联系：zeruik@qq.com
+
+本文件仅适用于 courses.js 与 projects.js 中的原创教学文字、题目、例题和项目验收说明。
+不适用于独立的程序代码、Three.js或其第三方材料。应用程序代码继续按各自MIT
+许可提供；赋形造物工作室标识和品牌权利单独保留。
+
+允许个人学习和不收费的非商业教学使用，并免费转交完整、未修改的官方内容。
+应保留作者与许可标识，不得冒充作者。未经作者书面许可，不得将这些课程文字
+用于商业经营、收费培训、付费产品或广告，亦不得修改后传播这些课程内容。
+法律不能排除的行为不受上述限制。需要商用或改编许可请邮件联系作者。
+教学模型与内容按现状提供；软件仿真、作答或自评不等于实机操作资质或安全认证。
+
+This licence applies only to original curriculum text, questions, examples and
+acceptance instructions in courses.js and projects.js. Program code and third-party components
+retain their own licences, including MIT where stated. Personal learning and
+unpaid non-commercial teaching are permitted. Complete unmodified official
+content may be shared free of charge with attribution. Commercial use or
+redistribution of modified curriculum requires the author's written permission,
+except where applicable law provides rights that cannot be excluded.
+Provided as is; simulations, answers and self-reports are not physical-device
+acceptance, qualifications or safety certification.
