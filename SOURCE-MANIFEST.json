@@ -705,7 +705,7 @@
     {
       "path": "src/brand-v9.js",
       "size": 7316,
-      "sha256": "41cbb59f36fe0216afad4586720cbac896efb08aa67dbe1a5b2ebfae875aaeb0"
+      "sha256": "a0eb8ae92fa72efc6e64a827cfe08cf206d2ae00e76eb5e78ca8f6d6c67eb354"
     },
     {
       "path": "src/companion-v10.css",
@@ -1075,7 +1075,7 @@
     {
       "path": "ZeroToHand-Engineering-Academy.html",
       "size": 9277012,
-      "sha256": "6197182398c518fe31855b33507f2d2ca7f0c9410cdc5ed11b2d71d103b2784a"
+      "sha256": "c4b856a3fafa9a2fea309890ebd4a169a7eb44030d8375c1217f3ebe33fcac78"
     }
   ]
 }
