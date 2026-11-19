@@ -8,9 +8,64 @@
       "sha256": "71495537d9dda2380aad692f74334c44e1fd391db98eba85cb0a733c8c6d2d9a"
     },
     {
+      "path": ".github/workflows/portable-regression.yml",
+      "size": 1041,
+      "sha256": "568489d496f30db7a4ce3123a5c59bdb6e453e7c5e85674efcf22b34072685da"
+    },
+    {
       "path": ".gitignore",
       "size": 158,
       "sha256": "0557b19135ed2659e98f1dc6febbb1b7fa1b2bbaa908a254fa17cbbe43cbe11c"
+    },
+    {
+      "path": "LICENSE-ZH.txt",
+      "size": 5406,
+      "sha256": "b2c1d984bc377dc78da137628afd6d73c15357171ae67ff6fad40d8aa439ef46"
+    },
+    {
+      "path": "NEXT-RELEASE.md",
+      "size": 1575,
+      "sha256": "e8ec2aaaba050e6ce6654fd99c592fa8697b765ce56a97c73e7843a342f3fd83"
+    },
+    {
+      "path": "PRIVACY-ZH.txt",
+      "size": 15546,
+      "sha256": "cd2eac182d033ed6b1f8f824c3ad56974aa4d9586baff7f72dadb525972a6af0"
+    },
+    {
+      "path": "README.md",
+      "size": 41677,
+      "sha256": "8b5e1760cacd86149a7cfdb7472afa48c5cd04a702b69c6f038c501a93e22e76"
+    },
+    {
+      "path": "README.txt",
+      "size": 1019,
+      "sha256": "2f2572f77a53e1997faef0dc4fd99a35f78c1cb2d63245084e5c6a4b0173abad"
+    },
+    {
+      "path": "SCOPE-v14.md",
+      "size": 1323,
+      "sha256": "514b48c137987e6475df3f1a0acfeffe7e4b39f8fc3c45d7fde3c2e89c6335d2"
+    },
+    {
+      "path": "THIRD-PARTY-LICENSES.txt",
+      "size": 9823,
+      "sha256": "6cd16eb796bbe268192ebbbe7a0ad6bec18aebd0922bf451c6bcc434d0558243"
+    },
+    {
+      "path": "ZeroToHand-Academy.ico",
+      "size": 21323,
+      "sha256": "7fadae0099591112c1d5443ee1a650608f5d51b8e4915a9f46ca9f4560a86f02"
+    },
+    {
+      "path": "ZeroToHand-Desktop.iss",
+      "size": 28096,
+      "sha256": "75b53201fef2d2f138f652e94d6173262d0b74291dc29228b3af44af41957692"
+    },
+    {
+      "path": "ZeroToHand-Engineering-Academy.html",
+      "size": 9276870,
+      "sha256": "c5b34613fa7dd23deb422ed2660784270a0aade08b653a4d7fd6608d6a77daba"
     },
     {
       "path": "assets/fonts/NotoSansSC.ttf",
@@ -26,6 +81,11 @@
       "path": "assets/fonts/SOURCE.json",
       "size": 998,
       "sha256": "70f695e25fb0747b0edabcd3de7c3191beff98edcbb534478e4c5a4c0b762dd2"
+    },
+    {
+      "path": "assets/robots-v8/NOTICE.md",
+      "size": 4165,
+      "sha256": "db498343ea95c828067144f21a6b0aebef0df678cf82540097631871e60be8a4"
     },
     {
       "path": "assets/robots-v8/go2/LICENSE-BSD-3-Clause.txt",
@@ -48,24 +108,19 @@
       "sha256": "45cefee4f5dbbbe3c59b62cc71349bf1a3e7c11106f4fc65eb9cc6cc828219fe"
     },
     {
-      "path": "assets/robots-v8/NOTICE.md",
-      "size": 4165,
-      "sha256": "db498343ea95c828067144f21a6b0aebef0df678cf82540097631871e60be8a4"
-    },
-    {
       "path": "assets/robots-v8/ur5/LICENSE-BSD-3-Clause.txt",
       "size": 1459,
       "sha256": "143077f9f6a8de5a99f78c2c2472801fb53cf240277ef661642f079b9acdfff8"
     },
     {
-      "path": "assets/robots-v8/ur5/package.upstream.xml",
-      "size": 4341,
-      "sha256": "d5b79186aa09b1c9b54e9a4c0b236774b6e0e77857d52217c1e23fcacdb44498"
-    },
-    {
       "path": "assets/robots-v8/ur5/README.upstream.md",
       "size": 4306,
       "sha256": "7bf26581913a851476323daab7226fb5fb8aa19b0acbda3969abe58be2689a18"
+    },
+    {
+      "path": "assets/robots-v8/ur5/package.upstream.xml",
+      "size": 4341,
+      "sha256": "d5b79186aa09b1c9b54e9a4c0b236774b6e0e77857d52217c1e23fcacdb44498"
     },
     {
       "path": "assets/robots-v8/ur5/robot.urdf",
@@ -243,19 +298,9 @@
       "sha256": "b71691ddccfc23549ded579af004cf22af9b3d3704a207d2a4f3bb655aa07653"
     },
     {
-      "path": "LICENSE-ZH.txt",
-      "size": 5406,
-      "sha256": "b2c1d984bc377dc78da137628afd6d73c15357171ae67ff6fad40d8aa439ef46"
-    },
-    {
       "path": "package-release-v14.cjs",
       "size": 26482,
       "sha256": "8bac789cdf41ceeeff1e56b8073ebce8cabd2a561c330fc73c7b3a7733f23529"
-    },
-    {
-      "path": "PRIVACY-ZH.txt",
-      "size": 15546,
-      "sha256": "cd2eac182d033ed6b1f8f824c3ad56974aa4d9586baff7f72dadb525972a6af0"
     },
     {
       "path": "qa/archive-compatibility-v10.cjs",
@@ -439,8 +484,8 @@
     },
     {
       "path": "qa/manager-v11.cjs",
-      "size": 9206,
-      "sha256": "aaac6ae233b812a0106343c33a8c3712682d7059acd534c4ad41aa18300425ea"
+      "size": 10107,
+      "sha256": "a54f3b89656a8245b469405bd34b8ea66c0b2e766e7e06d6f86fb7307499968a"
     },
     {
       "path": "qa/meter-v7.cjs",
@@ -598,21 +643,6 @@
       "sha256": "b37fa230102c09b9ffd2620c86124d245cb3d6331a5048874d5bbff53f42f02b"
     },
     {
-      "path": "README.md",
-      "size": 41677,
-      "sha256": "8b5e1760cacd86149a7cfdb7472afa48c5cd04a702b69c6f038c501a93e22e76"
-    },
-    {
-      "path": "README.txt",
-      "size": 1019,
-      "sha256": "2f2572f77a53e1997faef0dc4fd99a35f78c1cb2d63245084e5c6a4b0173abad"
-    },
-    {
-      "path": "SCOPE-v14.md",
-      "size": 1323,
-      "sha256": "514b48c137987e6475df3f1a0acfeffe7e4b39f8fc3c45d7fde3c2e89c6335d2"
-    },
-    {
       "path": "setup-small.bmp",
       "size": 9294,
       "sha256": "a7f77ecb396eb7d94c84373fa6c9641043b56102099eb285f105dabcb83c33e2"
@@ -621,6 +651,11 @@
       "path": "setup-wizard.bmp",
       "size": 154542,
       "sha256": "e5ec71d85905b30f2b7112dd1d2726a624b0d9ffc9154a15e0eb4b290ca7599c"
+    },
+    {
+      "path": "shared-robotics/LICENSE-CONTENT.txt",
+      "size": 1653,
+      "sha256": "ebfe39bebefbcccc85865c7053dd5697daececb7c3fa0d40f853ace28cdc655a"
     },
     {
       "path": "shared-robotics/core.js",
@@ -636,11 +671,6 @@
       "path": "shared-robotics/engine-entry.js",
       "size": 333,
       "sha256": "2bbd3553b9a086fab685cfe163ff2765c21d5203230d4a5211c990f08b31e531"
-    },
-    {
-      "path": "shared-robotics/LICENSE-CONTENT.txt",
-      "size": 1653,
-      "sha256": "ebfe39bebefbcccc85865c7053dd5697daececb7c3fa0d40f853ace28cdc655a"
     },
     {
       "path": "shared-robotics/projects.js",
@@ -889,8 +919,8 @@
     },
     {
       "path": "src/manager-v11.js",
-      "size": 28338,
-      "sha256": "8b96e1aedee0b2ac549176d13ce3aa30fb1832795328a1dd2d34de77eaab0d45"
+      "size": 28462,
+      "sha256": "4b5f581110875b7d80129d371505a2c469022c605ec722ceeec3dbfe69440999"
     },
     {
       "path": "src/meter-v6.js",
@@ -1053,29 +1083,9 @@
       "sha256": "0e7ce5c01e7d511d41d89eee73acbbd0ae7d7761963824157a8b0a5740cc449e"
     },
     {
-      "path": "THIRD-PARTY-LICENSES.txt",
-      "size": 9823,
-      "sha256": "6cd16eb796bbe268192ebbbe7a0ad6bec18aebd0922bf451c6bcc434d0558243"
-    },
-    {
       "path": "typography.css",
       "size": 349,
       "sha256": "41836d27df6b3f6e65c5552ba4a53c361aa1e7d1a656b20ff4691670bd6e491c"
-    },
-    {
-      "path": "ZeroToHand-Academy.ico",
-      "size": 21323,
-      "sha256": "7fadae0099591112c1d5443ee1a650608f5d51b8e4915a9f46ca9f4560a86f02"
-    },
-    {
-      "path": "ZeroToHand-Desktop.iss",
-      "size": 28096,
-      "sha256": "75b53201fef2d2f138f652e94d6173262d0b74291dc29228b3af44af41957692"
-    },
-    {
-      "path": "ZeroToHand-Engineering-Academy.html",
-      "size": 9277012,
-      "sha256": "c4b856a3fafa9a2fea309890ebd4a169a7eb44030d8375c1217f3ebe33fcac78"
     }
   ]
 }

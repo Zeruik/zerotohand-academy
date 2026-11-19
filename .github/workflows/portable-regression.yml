@@ -1,0 +1,32 @@
+name: Portable source regression
+on:
+  push:
+    branches: [main, 'iteration/**', 'release/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - name: Source regression (synthetic data; no hardware or system installation)
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --prefix qa/desktop-runtime --no-audit --no-fund
+          npm ci --prefix qa/dom-runtime --no-audit --no-fund
+          node build.cjs
+          node shared-robotics/qa-core.cjs
+          node qa/integration-v14.cjs
+          node qa/manager-v11.cjs
+          node qa/archive-compatibility-v14.cjs
+          node qa/workflow-v14.cjs
+          node qa/manager-storage-v11.cjs
