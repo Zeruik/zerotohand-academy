@@ -9,13 +9,13 @@
     },
     {
       "path": ".github/workflows/portable-regression.yml",
-      "size": 1083,
-      "sha256": "dbdbd3b66ad784391a16ed420dad8841f9f3c09ab07e5fe2463dfa0a8a6817b8"
+      "size": 1127,
+      "sha256": "a2fe47d6cbb74dc0a8d79e48219dcd6a2ba51229d40b9359e1fa3d490ef93a01"
     },
     {
       "path": ".github/workflows/windows-candidate.yml",
-      "size": 4591,
-      "sha256": "41ce63bf4559ad76d42d35ca961facaa40c302e88a313956bd6c581fb9ae5e19"
+      "size": 4716,
+      "sha256": "e75572320622f7cf71031683b9b81c328a15e3c2483f80c41cb8b01a99a88c8e"
     },
     {
       "path": ".gitignore",
@@ -304,8 +304,8 @@
     },
     {
       "path": "package-release-v14.cjs",
-      "size": 26482,
-      "sha256": "1be46a8748b939297cfc8015fbb343f31f0cf6331c3b2d940c3daeab4ad6d8b0"
+      "size": 26921,
+      "sha256": "2599daa412d1189fd76d98b425f05234d56cc5973edc848e14a0012f5de01b72"
     },
     {
       "path": "qa/archive-compatibility-v10.cjs",
@@ -446,6 +446,11 @@
       "path": "qa/installer-lifecycle-v14.cjs",
       "size": 11343,
       "sha256": "477980ed38fbb2f6d41a917d64e2d44bc4e0c38b87c0b201d81496774862161e"
+    },
+    {
+      "path": "qa/installer-version-v14.cjs",
+      "size": 879,
+      "sha256": "86080c658f0b4b63ad15565038b90026f364beaac90a538c1457cc8adf5d5dde"
     },
     {
       "path": "qa/integration-v10.cjs",

@@ -52,6 +52,8 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
+          node scripts/ci-command.cjs qa/installer-version-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs build.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs build-desktop-v14.cjs

@@ -270,6 +270,13 @@ function checkFlashingPayload(bundleFolder){
   for(const name of files){const from=path.join(toolRoot,name),to=path.join(bundleFolder,'resources/flashing-v10',name);const item=manifest.files.find(x=>x.file===name);if(item&&(fs.statSync(from).size!==item.bytes||digest(from)!==item.sha256))throw Error('Offline toolchain input changed: '+name);if(!fs.existsSync(to)||digest(from)!==digest(to))throw Error('Bundled offline toolchain differs from its checked input: '+name);}
   return{expected,files:files.length,sourceFiles:source.files.length+1};
 }
+function installerIdentityMatches(source,version){
+  if(!/^\d+\.\d+\.\d+$/.test(version))return false;
+  const field=pattern=>{const matches=[...source.matchAll(pattern)];return matches.length===1?matches[0][1].trim():null;};
+  return field(/^AppVersion=([^\r\n]+)$/gm)===version &&
+    field(/^VersionInfoVersion=([^\r\n]+)$/gm)===version+'.0' &&
+    field(/^\s*InstallerVersion\s*=\s*'([^']+)';/gm)===version;
+}
 function checkRuntimePayload() {
   const runtimeFolder = path.join(path.resolve(process.env.ZTH_RUNTIME_CACHE||path.join(ROOT,'.runtime-cache')),'electron-45.3.2');
   const bundleFolder = child('dist/desktop-v14');
@@ -332,7 +339,7 @@ function checkRuntimePayload() {
   if (!/^AppId=\{\{CFF45F03-4D61-4AF0-93F5-5C21174D7510\}\s*$/m.test(setup)) {
     throw new Error('The installer AppId must match the released v8 product so upgrades retain the same application identity.');
   }
-  if (!/^AppVersion=14\.0\.0\s*$/m.test(setup) || !/^OutputBaseFilename=Install-ZeroToHand-v14\s*$/m.test(setup)) {
+  if (!installerIdentityMatches(setup,VERSION) || !/^OutputBaseFilename=Install-ZeroToHand-v14\s*$/m.test(setup)) {
     throw new Error('The Inno Setup script is not configured for the v14 installer.');
   }
   const setupInputs = [...setup.matchAll(/^Source:\s*"([^"]+)"/gm)].map((match) => match[1].replace(/\\/g, '/'));
@@ -403,7 +410,7 @@ function main() {
   console.log(JSON.stringify({ version: VERSION, uploadFolder: SOURCE_FOLDER, releaseFolder: RELEASE_FOLDER, uploadFiles: publicFiles.length, releaseFiles: distributedFiles.length, privacy: 'PASS', privateReport: 'dev-notes/packaging-v14.json' }, null, 2));
 }
 
-module.exports = { sourcePlan, releasePlan, assertOnlyExpected, assertNoPersonalArtifacts, scanPrivateStrings, checkRuntimePayload };
+module.exports = { installerIdentityMatches, sourcePlan, releasePlan, assertOnlyExpected, assertNoPersonalArtifacts, scanPrivateStrings, checkRuntimePayload };
 if (require.main === module) {
   try { main(); } catch (error) { console.error(`Packaging stopped: ${error.message}`); process.exitCode = 1; }
 }
