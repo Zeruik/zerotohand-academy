@@ -1,4 +1,4 @@
-ZeroToHand Studio Academy 14.0.0
+ZeroToHand Studio Academy 14.0.1
 
 完整解压 Windows 发布 ZIP，运行 Install-ZeroToHand-v14.exe。选择可写的英文路径，桌面快捷方式默认勾选。请保留与安装器同目录的离线工具链补充文件。
 

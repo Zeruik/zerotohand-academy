@@ -58,6 +58,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs build-desktop-v14.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs qa/production-native-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs qa/protection-native-v14.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs qa/storage-upgrade-v14.cjs
@@ -74,6 +76,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node scripts/ci-command.cjs package-release-v14.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $installer = Join-Path $PWD 'dist/Install-ZeroToHand-v14.exe'
+          ((Get-FileHash $installer -Algorithm SHA256).Hash.ToLowerInvariant() + '  ' + (Split-Path $installer -Leaf)) | Set-Content -Encoding utf8 ($installer + '.sha256')
           $version = (Get-Content desktop/package.json | ConvertFrom-Json).version
           $folder = Join-Path $PWD ('release/ZeroToHand-Academy-Windows-v' + $version)
           $zip = $folder + '.zip'
@@ -86,5 +90,7 @@ jobs:
           path: |
             release/*.zip
             release/*.zip.sha256
+            dist/Install-ZeroToHand-v14.exe
+            dist/Install-ZeroToHand-v14.exe.sha256
           if-no-files-found: error
           retention-days: 1

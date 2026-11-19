@@ -32,3 +32,5 @@ jobs:
           node qa/manager-storage-v11.cjs
           node qa/storage-upgrade-v14.cjs
           node qa/installer-version-v14.cjs
+          node qa/storage-profile-v14.cjs
+          node --test qa/publication-guard.test.cjs

@@ -9,13 +9,18 @@
     },
     {
       "path": ".github/workflows/portable-regression.yml",
-      "size": 1127,
-      "sha256": "a2fe47d6cbb74dc0a8d79e48219dcd6a2ba51229d40b9359e1fa3d490ef93a01"
+      "size": 1221,
+      "sha256": "ba1afdcc19171f5a779a031425586758abd7ebfb565a418b57a09fd851f9d84f"
+    },
+    {
+      "path": ".github/workflows/publish-release.yml",
+      "size": 702,
+      "sha256": "07733677100d5c19b44e9a86bc002f6aa1cd7136183c79d1659aac5688500d09"
     },
     {
       "path": ".github/workflows/windows-candidate.yml",
-      "size": 4716,
-      "sha256": "e75572320622f7cf71031683b9b81c328a15e3c2483f80c41cb8b01a99a88c8e"
+      "size": 5181,
+      "sha256": "d407a4e7ab0cac311e9499860bed9d001294176b3c914b53c6a6c91272c9bdc1"
     },
     {
       "path": ".gitignore",
@@ -45,7 +50,7 @@
     {
       "path": "README.txt",
       "size": 1019,
-      "sha256": "2f2572f77a53e1997faef0dc4fd99a35f78c1cb2d63245084e5c6a4b0173abad"
+      "sha256": "0930eb55b8ced4421ae7c6a06f2ef8601a9a8b29c9b48dd6699b7ca8dc37d902"
     },
     {
       "path": "SCOPE-v14.md",
@@ -254,8 +259,8 @@
     },
     {
       "path": "desktop/main.cjs",
-      "size": 7254,
-      "sha256": "1b9a9e2ff183943dda4bb1538a54d2810fe610862f9775a534e47a57e69d6784"
+      "size": 7289,
+      "sha256": "2fa43a9bf0b32f6b5a3380ab9a46f7307ff283ef087794b938620e9c5e1dee81"
     },
     {
       "path": "desktop/manager-store.cjs",
@@ -294,8 +299,8 @@
     },
     {
       "path": "desktop/storage-path.cjs",
-      "size": 1373,
-      "sha256": "164b1476adb2c4690539035f6804e0a52b55db79a4a0b4b71be0ec66f4acd0a5"
+      "size": 1710,
+      "sha256": "3bc4c5589b17b427d5d0d53d675ae71e64f37600e4e7927fb6aa76a2a5ce48db"
     },
     {
       "path": "desktop/store.cjs",
@@ -304,8 +309,8 @@
     },
     {
       "path": "package-release-v14.cjs",
-      "size": 26921,
-      "sha256": "2599daa412d1189fd76d98b425f05234d56cc5973edc848e14a0012f5de01b72"
+      "size": 27276,
+      "sha256": "e99b56419eae29c1e8c8957f39a46df96588c83619744e60e1f3fdba949287fb"
     },
     {
       "path": "qa/archive-compatibility-v10.cjs",
@@ -523,6 +528,11 @@
       "sha256": "8f7435b237b42c4e9759913d222f31a27275e23d93241af954ed9fa3a0db3491"
     },
     {
+      "path": "qa/production-native-v14.cjs",
+      "size": 6269,
+      "sha256": "d87047440e19772c60998fbea05e411936b9cf62adfee7191293962f1a61d9c8"
+    },
+    {
       "path": "qa/profiles-v8.cjs",
       "size": 15377,
       "sha256": "c2bd8e935fef7a63cee094e0695c5802f097ebad435b41f543d93c6ea3ffa612"
@@ -546,6 +556,11 @@
       "path": "qa/protection-native-v14.cjs",
       "size": 7672,
       "sha256": "8444f42594b051c2dfa66d00d4a5e5349d24ba880efd0e58b155077261a2d798"
+    },
+    {
+      "path": "qa/publication-guard.test.cjs",
+      "size": 2183,
+      "sha256": "c2fb2df4ffae45908ddd0dacf67ff11c1cd8104be52f628b91db128a2881b54c"
     },
     {
       "path": "qa/quality-v7.cjs",
@@ -591,6 +606,11 @@
       "path": "qa/storage-path-v11.cjs",
       "size": 10636,
       "sha256": "55fdc491d20edfea6aaffb9c3c1a0cb4ca77147a1815a557bc4e15fc846e5632"
+    },
+    {
+      "path": "qa/storage-profile-v14.cjs",
+      "size": 2606,
+      "sha256": "e4c16a22af6354d3c8c909fcbe3ec76eac2ce6f42e14e1c4842d13c5731e244c"
     },
     {
       "path": "qa/storage-upgrade-v10.cjs",
@@ -661,6 +681,11 @@
       "path": "scripts/prepare-release-toolchain.ps1",
       "size": 3681,
       "sha256": "4e20275ad3ad5e30ff685c9339780e2d9be48ce32678162fdc8c5f7cf5420d8d"
+    },
+    {
+      "path": "scripts/publish-release.cjs",
+      "size": 9533,
+      "sha256": "473bc7a3b29bb5cb1a6d8349b9a1be3597a97a6c6d8affcd0ea18a165e69d582"
     },
     {
       "path": "setup-small.bmp",

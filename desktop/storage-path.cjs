@@ -1,7 +1,8 @@
 const fs=require('fs/promises');
 const path=require('path');
 const {createStore9}=require('./store.cjs');
-async function storagePath10(installRoot,legacyRoot,codec){
+async function storagePath10(installRoot,legacyRoot,codec,{profileDirectory}={}){
+ if(profileDirectory!==undefined&&profileDirectory!==null){if(typeof profileDirectory!=='string'||!path.isAbsolute(profileDirectory)||path.resolve(profileDirectory)===path.parse(path.resolve(profileDirectory)).root)throw Error('STORAGE_PROFILE_INVALID');installRoot=path.resolve(profileDirectory);legacyRoot=null;}
  const fallback=path.join(installRoot,'Archives'),config=path.join(installRoot,'storage-location.json');
  let directory=fallback;
  try{const raw=JSON.parse((await fs.readFile(config,'utf8')).replace(/^\uFEFF/,''));if(typeof raw.archivePath!=='string'||!path.isAbsolute(raw.archivePath)||/[\0\r\n]/.test(raw.archivePath))throw Error('STORAGE_LOCATION_INVALID');directory=path.resolve(raw.archivePath);}catch(e){if(e.code!=='ENOENT')throw e;}

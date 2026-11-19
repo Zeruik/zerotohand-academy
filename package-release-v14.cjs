@@ -101,6 +101,7 @@ const SOURCE_FILES = ['shared-robotics/renderer.js','typography.css','assets/fon
   'qa/stories.cjs', 'qa/dom-runtime/package.json', 'qa/dom-runtime/package-lock.json',
   'qa/meter-v7.cjs', 'qa/quality-v7.cjs',
   'qa/desktop-runtime/package.json', 'qa/desktop-runtime/package-lock.json',
+  'qa/installer-version-v14.cjs', 'qa/storage-profile-v14.cjs', 'qa/production-native-v14.cjs', 'qa/publication-guard.test.cjs', 'scripts/ci-command.cjs', 'scripts/prepare-release-toolchain.ps1', 'scripts/publish-release.cjs', '.github/workflows/portable-regression.yml', '.github/workflows/windows-candidate.yml', '.github/workflows/publish-release.yml'
 ];
 
 const GITIGNORE = [

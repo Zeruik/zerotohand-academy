@@ -15,7 +15,7 @@ else{let win;app.on('second-instance',()=>{if(win){win.show();if(win.isMinimized
  Menu.setApplicationMenu(null);
  const entry=pathToFileURL(path.join(__dirname,'index.html')).href;
  const protection=await createProtection(safeStorage);
- const archive=await storagePath10(path.dirname(app.getPath('exe')),app.getPath('userData'),protection);
+ const archive=await storagePath10(path.dirname(app.getPath('exe')),app.getPath('userData'),protection,{profileDirectory:explicitProfile});
  const store=archive.store;
  const manager=require('./manager-store.cjs').createManagerStore(archive.directory);
  const flasher=createFlasher10({root:path.join(process.resourcesPath,'flashing-v10'),tempRoot:path.join(app.getPath('temp'),'ZeroToHand-builds')});
