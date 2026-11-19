@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/portable-regression.yml",
-      "size": 1221,
-      "sha256": "ba1afdcc19171f5a779a031425586758abd7ebfb565a418b57a09fd851f9d84f"
+      "size": 1264,
+      "sha256": "a99f2f3c327e220030f137837f44245ec36f17eb2470be3f0209c50fc112e057"
     },
     {
       "path": ".github/workflows/publish-release.yml",
@@ -34,8 +34,8 @@
     },
     {
       "path": "NEXT-RELEASE.md",
-      "size": 1721,
-      "sha256": "4e917a6d0d924093c615692f8de182a836cff06aa5075abd470fbabc7449d1ad"
+      "size": 2271,
+      "sha256": "0a4058dfe69af7321a7f89b2df7280407fdca2ede03a25ec228282cb366a4fb3"
     },
     {
       "path": "PRIVACY-ZH.txt",
@@ -74,8 +74,8 @@
     },
     {
       "path": "ZeroToHand-Engineering-Academy.html",
-      "size": 9276870,
-      "sha256": "8c174f4339b4ecf6153ff192366adeb99a1b225ce12a544baba696fea3eda0a6"
+      "size": 9277320,
+      "sha256": "7a242fe48d574be71ce2d17e7a18db6591aa2fc61143960b6e8c366ea0915622"
     },
     {
       "path": "assets/fonts/NotoSansSC.ttf",
@@ -519,8 +519,8 @@
     },
     {
       "path": "qa/navigation-shell-v11.cjs",
-      "size": 5098,
-      "sha256": "cacbd20c781977ac1c49f3716db82374b69a11f27fa9c9c7e4685eb4e0f94b8c"
+      "size": 5856,
+      "sha256": "96d8c878552bf77359c69cae996d01f9b961d68788e8d5f91a28aa3133eae15f"
     },
     {
       "path": "qa/practice-v8.cjs",
@@ -874,8 +874,8 @@
     },
     {
       "path": "src/experience-v10.js",
-      "size": 5130,
-      "sha256": "6fc05671c094bea1a05e118928f6bb4c4cdeb0a285f2ee04981d28d7fc59ae0a"
+      "size": 5134,
+      "sha256": "dcbeb5c6f41269a29ca4f9d1bd6cb36e1617714c7fa7e337233d18fe77a4ce3c"
     },
     {
       "path": "src/experience-v4.css",
@@ -1024,13 +1024,13 @@
     },
     {
       "path": "src/robot-projects-v13.js",
-      "size": 3667,
-      "sha256": "7c5bc11ca170bd73234ee7c6fab8e6de79c76d32e01ce00fdb7caa8dce7521ee"
+      "size": 3758,
+      "sha256": "b52300cf830069f391ef53a13c9c3a925858c35acda8e751972b817299cc9b8a"
     },
     {
       "path": "src/robotics-academy-v13.js",
-      "size": 6036,
-      "sha256": "3534ae50874b15f20ada66b2705486a46c6b6fa50832fbd081f79e965f61b29f"
+      "size": 6391,
+      "sha256": "2cb6b0f94b25554b77fb9288a24eeb666606f8c6687473235b3f1bfcaa1b3c61"
     },
     {
       "path": "src/robotics-register-v13.js",

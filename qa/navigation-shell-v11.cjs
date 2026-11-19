@@ -1,21 +1,24 @@
 'use strict';
 const assert=require('assert/strict'),fs=require('fs'),path=require('path');
 const {load,root}=require('./harness-v10.cjs');
-const checks=[],routes=['path','home','courses','lab','atlas','tools','projects','notes','sources','manager'];let app;
+const checks=[],routes=['robotics13','path','home','courses','lab','atlas','tools','projects','notes','sources','manager'];let app;
 function check(name,run){run();checks.push({name,passed:true});console.log('PASS '+name);}
 (async()=>{
- app=await load();const {w,d}=app;
+ app=await load({beforeParse(w){const getContext=w.HTMLCanvasElement.prototype.getContext;w.HTMLCanvasElement.prototype.getContext=function(type,...args){return /webgl/i.test(type)?null:getContext.call(this,type,...args);};w.ResizeObserver=class{observe(){}disconnect(){}};}});const {w,d}=app;
  const buttons=()=>[...d.querySelectorAll('.sidebar4 nav>button[data-go]')];
- function selected(route){const all=buttons(),visual=all.filter(button=>button.classList.contains('selected')),accessible=all.filter(button=>button.getAttribute('aria-current')==='page');assert.equal(all.length,10);assert.deepEqual(all.map(button=>button.dataset.go).sort(),routes.slice().sort());assert.equal(all.filter(button=>button.classList.contains('active')).length,0,'Legacy active classes must not survive');assert.deepEqual(visual.map(button=>button.dataset.go),route?[route]:[]);assert.deepEqual(accessible.map(button=>button.dataset.go),route?[route]:[]);for(const button of all)if(button.dataset.go!==route)assert.equal(button.hasAttribute('aria-current'),false,'Inactive buttons have no current-page attribute');}
+ function selected(route){const all=buttons(),visual=all.filter(button=>button.classList.contains('selected')),accessible=all.filter(button=>button.getAttribute('aria-current')==='page');assert.equal(all.length,routes.length);assert.deepEqual(all.map(button=>button.dataset.go).sort(),routes.slice().sort());assert.equal(all.filter(button=>button.classList.contains('active')).length,0,'Legacy active classes must not survive');assert.deepEqual(visual.map(button=>button.dataset.go),route?[route]:[]);assert.deepEqual(accessible.map(button=>button.dataset.go),route?[route]:[]);for(const button of all)if(button.dataset.go!==route)assert.equal(button.hasAttribute('aria-current'),false,'Inactive buttons have no current-page attribute');}
  function footer(){const main=d.querySelector('.shell4>main'),all=d.querySelectorAll('.footer4');assert.equal(all.length,1);assert.equal(all[0].parentElement,main,'Footer belongs to the independently scrolling main content');}
- check('Both languages give exactly one selected/current sidebar destination on all ten routes',()=>{
-  for(const lang of ['zh','en']){if(w.eval('UI4.lang')!==lang)d.querySelector('[data-client="language"]').click();for(const route of routes){d.querySelector(`.sidebar4 nav>button[data-go="${route}"]`).click();assert.equal(w.eval('UI4.view'),route);assert.equal(d.documentElement.lang,lang==='zh'?'zh-CN':'en');selected(route);footer();}}
+ check('Both languages give exactly one selected/current sidebar destination on all eleven routes',()=>{
+  for(const lang of ['zh','en']){if(w.eval('UI4.lang')!==lang)d.querySelector('[data-client="language"]').click();for(const route of routes){d.querySelector(`.sidebar4 nav>button[data-go="${route}"]`).click();assert.equal(w.eval('UI4.view'),route==='robotics13'?'lesson':route);if(route==='robotics13')assert.ok(w.eval('UI4.id').startsWith('robotics13-'));assert.equal(d.documentElement.lang,lang==='zh'?'zh-CN':'en');selected(route);footer();}}
  });
  check('Long-term learning never leaves the 02 Lessons item highlighted, including after language changes',()=>{
   d.querySelector('.sidebar4 [data-go="courses"]').click();d.querySelector('.sidebar4 [data-go="path"]').click();selected('path');const courses=d.querySelector('.sidebar4 [data-go="courses"]');assert.equal(courses.querySelector('i,span').textContent,'02');assert.equal(courses.classList.contains('selected'),false);d.querySelector('[data-client="language"]').click();selected('path');footer();
  });
  check('Lesson pages map to Lessons; Help has no unrelated selected sidebar destination',()=>{
   for(const lang of ['zh','en']){if(w.eval('UI4.lang')!==lang)d.querySelector('[data-client="language"]').click();w.nav4('lesson','pc-parts');selected('courses');footer();w.nav4('lesson','esp32-arduino-ota');selected('courses');footer();d.querySelector('.header-actions4 [data-go="help"]').click();assert.equal(w.eval('UI4.view'),'help');selected(null);footer();}
+ });
+ check('Robotics lessons select only the 3D classroom in both languages',()=>{
+  for(const lang of ['zh','en']){if(w.eval('UI4.lang')!==lang)d.querySelector('[data-client="language"]').click();for(const kind of ['arm','dog','drone']){const id='robotics13-'+kind+'-'+w.RoboticsCourses.courses[kind][0].id;w.nav4('lesson',id);selected('robotics13');footer();}}
  });
  check('Return to top scrolls only main content and preserves the sidebar position',()=>{
   const main=d.querySelector('.shell4>main'),sidebar=d.querySelector('.sidebar4'),calls=[];let windowCalls=0;main.scrollTop=900;sidebar.scrollTop=137;d.body.scrollTop=41;w.scrollTo=()=>windowCalls++;main.scrollTo=function(options){calls.push({target:this,top:options.top,behavior:options.behavior});this.scrollTop=options.top;};

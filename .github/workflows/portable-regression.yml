@@ -27,6 +27,7 @@ jobs:
           node shared-robotics/qa-core.cjs
           node qa/integration-v14.cjs
           node qa/manager-v11.cjs
+          node qa/navigation-shell-v11.cjs
           node qa/archive-compatibility-v14.cjs
           node qa/workflow-v14.cjs
           node qa/manager-storage-v11.cjs
