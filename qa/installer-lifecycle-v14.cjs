@@ -6,7 +6,7 @@ const root=path.resolve(__dirname,'..'),stamp=Date.now().toString(),fixtureRoot=
 const source=fs.readFileSync(path.join(root,'ZeroToHand-Desktop.iss'),'utf8'),guid=crypto.randomUUID().toUpperCase(),realGuid='CFF45F03-4D61-4AF0-93F5-5C21174D7510',appName='ZTH-Lifecycle-Fixture.exe',install=path.join(fixtureRoot,'App'),initial=path.join(fixtureRoot,'FirstArchive'),custom=path.join(fixtureRoot,'UserChosenArchive'),migrated=path.join(fixtureRoot,'MigratedArchive'),key='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{'+guid+'}_is1';
 const report=path.join(root,'dev-notes','installer-lifecycle-v14-results.json');
 fs.mkdirSync(build,{recursive:true});fs.mkdirSync(fixtureRoot,{recursive:true});
-const pwsh=path.join(process.env.SystemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe'),iscc=path.join(process.env.LOCALAPPDATA,'Programs','Inno Setup 7','ISCC.exe');
+const pwsh=path.join(process.env.SystemRoot,'System32','WindowsPowerShell','v1.0','powershell.exe'),iscc=process.env.ZTH_ISCC||path.join(process.env.LOCALAPPDATA,'Programs','Inno Setup 7','ISCC.exe');
 function run(file,args,timeout=120000){const r=cp.spawnSync(file,args,{encoding:'utf8',windowsHide:true,timeout,maxBuffer:5*1024*1024});if(r.error)throw r.error;return r;}
 function ps(code){const r=run(pwsh,['-NoProfile','-NonInteractive','-EncodedCommand',Buffer.from("$ErrorActionPreference='Stop';"+code,'utf16le').toString('base64')]);if(r.status!==0)throw Error(r.stderr||r.stdout);return r.stdout.trim();}
 const q=s=>"'"+s.replace(/'/g,"''")+"'",hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');

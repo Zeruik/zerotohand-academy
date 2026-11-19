@@ -13,6 +13,11 @@
       "sha256": "dbdbd3b66ad784391a16ed420dad8841f9f3c09ab07e5fe2463dfa0a8a6817b8"
     },
     {
+      "path": ".github/workflows/windows-candidate.yml",
+      "size": 4591,
+      "sha256": "41ce63bf4559ad76d42d35ca961facaa40c302e88a313956bd6c581fb9ae5e19"
+    },
+    {
       "path": ".gitignore",
       "size": 158,
       "sha256": "0557b19135ed2659e98f1dc6febbb1b7fa1b2bbaa908a254fa17cbbe43cbe11c"
@@ -439,8 +444,8 @@
     },
     {
       "path": "qa/installer-lifecycle-v14.cjs",
-      "size": 11321,
-      "sha256": "69c867a7d44a16e3ee7d69f67d0bf071eafb491c5d7150ac1131ccdb021a01f0"
+      "size": 11343,
+      "sha256": "477980ed38fbb2f6d41a917d64e2d44bc4e0c38b87c0b201d81496774862161e"
     },
     {
       "path": "qa/integration-v10.cjs",
@@ -641,6 +646,16 @@
       "path": "qa/workflow-v14.cjs",
       "size": 2114,
       "sha256": "b37fa230102c09b9ffd2620c86124d245cb3d6331a5048874d5bbff53f42f02b"
+    },
+    {
+      "path": "scripts/ci-command.cjs",
+      "size": 529,
+      "sha256": "6af2652e1dd4dd24db43f327d5ae53146ed4ee11155d0d835d8871094b487976"
+    },
+    {
+      "path": "scripts/prepare-release-toolchain.ps1",
+      "size": 3681,
+      "sha256": "4e20275ad3ad5e30ff685c9339780e2d9be48ce32678162fdc8c5f7cf5420d8d"
     },
     {
       "path": "setup-small.bmp",

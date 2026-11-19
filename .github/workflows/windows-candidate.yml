@@ -1,0 +1,88 @@
+name: Windows Academy candidate
+on:
+  push:
+    branches: ['release/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: academy-windows-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  candidate:
+    runs-on: windows-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Check capacity and install pinned development tools
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Get-PSDrive -PSProvider FileSystem | Select-Object Name,Free,Used
+          $drive = (Split-Path $env:RUNNER_TEMP -Qualifier).TrimEnd(':')
+          if ((Get-PSDrive -Name $drive).Free -lt 12GB) { throw 'At least 12 GB free is required for the source-complete candidate build' }
+          npm ci --prefix qa/desktop-runtime --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm ci --prefix qa/dom-runtime --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Install checksum-pinned official Inno Setup 7.1.1
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = Join-Path $env:RUNNER_TEMP 'innosetup-7.1.1-x64.exe'
+          Invoke-WebRequest 'https://github.com/jrsoftware/issrc/releases/download/is-7_1_1/innosetup-7.1.1-x64.exe' -OutFile $setup
+          # SHA-256 from the official release's accompanying .issig metadata.
+          if ((Get-FileHash $setup -Algorithm SHA256).Hash.ToLowerInvariant() -ne '8a5a6711c3766a6e5fb74f280ba0e3551e719ce94538d901fdbd1f8f9920b3f0') { throw 'Inno Setup checksum mismatch' }
+          if ((Get-AuthenticodeSignature $setup).Status -ne 'Valid') { throw 'Inno Setup Authenticode verification failed' }
+          $compiler = Join-Path $env:RUNNER_TEMP 'inno-7.1.1'
+          $process = Start-Process $setup -ArgumentList @('/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART',('/DIR="' + $compiler + '"')) -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw 'Inno Setup installation failed' }
+          $iscc = Join-Path $compiler 'ISCC.exe'
+          if (!(Test-Path $iscc)) { throw 'Inno Setup compiler missing' }
+          "ZTH_ISCC=$iscc" >> $env:GITHUB_ENV
+      - name: Reuse unchanged published toolchain with its corresponding sources
+        shell: pwsh
+        run: ./scripts/prepare-release-toolchain.ps1
+      - name: Build fresh candidate application and verify native storage
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          node scripts/ci-command.cjs build.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs build-desktop-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs qa/protection-native-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs qa/storage-upgrade-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs qa/installer-lifecycle-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Compile installer and apply source, privacy and package gates
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          & $env:ZTH_ISCC /Qp ZeroToHand-Desktop.iss
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs package-release-v14.cjs --check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/ci-command.cjs package-release-v14.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $version = (Get-Content desktop/package.json | ConvertFrom-Json).version
+          $folder = Join-Path $PWD ('release/ZeroToHand-Academy-Windows-v' + $version)
+          $zip = $folder + '.zip'
+          Compress-Archive -Path $folder -DestinationPath $zip
+          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          ($hash + '  ' + (Split-Path $zip -Leaf)) | Set-Content -Encoding utf8 ($zip + '.sha256')
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: academy-windows-candidate-${{ github.sha }}
+          path: |
+            release/*.zip
+            release/*.zip.sha256
+          if-no-files-found: error
+          retention-days: 1
