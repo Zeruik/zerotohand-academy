@@ -24,10 +24,10 @@ if(phase){
    assert.equal((await store.load()).data,null);await store.save(fixture(1));
    fs.mkdirSync(legacyArchive,{recursive:true});fs.writeFileSync(path.join(legacyArchive,'learning-store.zthdb'),JSON.stringify({format:'zth-local-store',version:1,ciphertext:safeStorage.encryptString(JSON.stringify(fixture(70))).toString('base64')}));
   }else{
-   const loaded=await store.load();assert.equal(loaded.recovered,false);assert.equal(loaded.data.revision,phase==='update'?1:2);assert.deepEqual(loaded.data,{...fixture(phase==='update'?1:2),producerVersion:'14.0.0'});
+   const loaded=await store.load();assert.equal(loaded.recovered,false);assert.equal(loaded.data.revision,phase==='update'?1:2);assert.deepEqual(loaded.data,{...fixture(phase==='update'?1:2),producerVersion:'14.0.1'});
    assert.deepEqual((await legacy.load()).data,fixture(70),'Async protection reads sync ciphertext from an earlier process');
    if(phase==='update')await store.save(fixture(2));
-   else{const previous=JSON.parse(fs.readFileSync(path.join(archive,'learning-store.zthdb.previous'),'utf8'));const previousData=JSON.parse(await protection.decrypt(Buffer.from(previous.ciphertext,'base64')));assert.deepEqual(previousData,{...fixture(1),producerVersion:'14.0.0'});}
+   else{const previous=JSON.parse(fs.readFileSync(path.join(archive,'learning-store.zthdb.previous'),'utf8'));const previousData=JSON.parse(await protection.decrypt(Buffer.from(previous.ciphertext,'base64')));assert.deepEqual(previousData,{...fixture(1),producerVersion:'14.0.1'});}
   }
   const raw=fs.readFileSync(path.join(archive,'learning-store.zthdb'),'utf8');assert.ok(!raw.includes('Synthetic native phase'));assert.ok(!raw.includes('Synthetic private note'));
   fs.writeFileSync(path.join(base,phase+'.json'),JSON.stringify({passed:true,phase,pid:process.pid,electron:process.versions.electron,explicitUserData:true,explicitSessionData:true,revision:phase==='write'?1:2,syncCompatibility:phase!=='write',normalQuitRequested:true}));

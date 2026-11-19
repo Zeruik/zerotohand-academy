@@ -1,6 +1,6 @@
 # 下一轮维护计划 / Next maintenance iteration
 
-目标：14.0.1（候选规划，尚未发布；版本字段和旧标签保持当前值）。
+目标：14.0.1（候选分支已同步版本字段，尚未发布；旧标签保持不变）。
 
 ## 已实现 / Implemented
 
@@ -10,7 +10,7 @@
 
 build.cjs; robotics core (7 groups); integration-v14 (5 groups); manager-v11 (8 groups); archive compatibility (4 groups); workflow-v14; manager storage (6 groups) passed.
 
-New portable-regression CI workflows, where present, have not yet been observed running on GitHub. They use synthetic data and do not replace native acceptance.
+The maintenance-branch portable regression passed on GitHub and locally on Node 22.23.5. The new candidate must pass again. Windows packaging requires the explicitly prepared, corresponding-source-compliant offline flashing bundle; it cannot be substituted with a developer personal Arduino environment.
 
 ## 建议优化 / Recommended follow-up
 

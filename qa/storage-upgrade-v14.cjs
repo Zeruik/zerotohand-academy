@@ -12,13 +12,13 @@ async function check(name,run){await run();checks.push({name,passed:true});conso
  const base=await fs.mkdtemp(path.join(root,'dev-notes','storage-upgrade-v14-'));
  async function pair(name,current,previous){const dir=path.join(base,name);await fs.mkdir(dir);const file=path.join(dir,'learning-store.zthdb');if(current!==undefined)await fs.writeFile(file,current);if(previous!==undefined)await fs.writeFile(file+'.previous',previous);return{dir,file,store:createStore9(dir,codec)};}
  await check('Unmarked schema 9 remains readable and the next save adds a fixed producer without mutating input',async()=>{
-  const raw=fixture(),old=envelope(raw),{file,store}=await pair('legacy',old);assert.deepEqual((await store.load()).data,raw);const before=JSON.stringify(raw);await store.save(raw);assert.equal(JSON.stringify(raw),before);const disk=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(disk.producerVersion,'14.0.0');assert.deepEqual((await store.load()).data,{...raw,producerVersion:'14.0.0'});assert.equal(await fs.readFile(file+'.previous','utf8'),old);
+  const raw=fixture(),old=envelope(raw),{file,store}=await pair('legacy',old);assert.deepEqual((await store.load()).data,raw);const before=JSON.stringify(raw);await store.save(raw);assert.equal(JSON.stringify(raw),before);const disk=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(disk.producerVersion,'14.0.1');assert.deepEqual((await store.load()).data,{...raw,producerVersion:'14.0.1'});assert.equal(await fs.readFile(file+'.previous','utf8'),old);
  });
  const variants=[
   ['envelope-version',()=>envelope(fixture(),{version:2})],
   ['payload-version',()=>envelope({...fixture(),version:10})],
   ['record-version',()=>{const d=fixture();d.profiles[d.activeProfileId].version=10;return envelope(d);}],
-  ['envelope-producer',()=>envelope(fixture(),{producerVersion:'13.0.1'})],
+  ['envelope-producer',()=>envelope(fixture(),{producerVersion:'14.0.2'})],
   ['payload-producer',()=>envelope({...fixture(),producerVersion:'14.1.0'})],
   ['record-producer',()=>{const d=fixture();d.profiles[d.activeProfileId].producerVersion='15.0.0';return envelope(d);}]
  ];
@@ -27,6 +27,10 @@ async function check(name,run){await run();checks.push({name,passed:true});conso
   const {file,store}=await pair(name+'-'+slot,current,previous);
   await assert.rejects(store.load(),/STORE_NEWER_VERSION/);await assert.rejects(store.save(fixture(2)),/STORE_NEWER_VERSION/);
   assert.equal(await fs.readFile(file,'utf8'),current);assert.equal(await fs.readFile(file+'.previous','utf8'),previous);assert.equal(await fs.stat(file+'.pending').then(()=>true,()=>false),false);
+ });
+ await check('Previous 14.0.0 producer remains readable and updates without losing content',async()=>{
+  const raw={...fixture(6),producerVersion:'14.0.0'},bytes=envelope(raw,{producerVersion:'14.0.0'}),{file,store}=await pair('previous-patch',bytes);
+  assert.deepEqual((await store.load()).data,raw);await store.save(raw);assert.deepEqual((await store.load()).data,{...raw,producerVersion:'14.0.1'});assert.equal(await fs.readFile(file+'.previous','utf8'),bytes);
  });
  await check('A higher producer arriving after load is checked again before any write',async()=>{
   const {file,store}=await pair('late-future',envelope(fixture()));await store.load();const newer=envelope({...fixture(),producerVersion:'15.0.0'});await fs.writeFile(file,newer);await assert.rejects(store.save(fixture(3)),/STORE_NEWER_VERSION/);assert.equal(await fs.readFile(file,'utf8'),newer);
@@ -38,10 +42,10 @@ async function check(name,run){await run();checks.push({name,passed:true});conso
   const {file,store}=await pair('both-corrupt','bad-current','bad-previous');await assert.rejects(store.load(),/STORE_UNREADABLE/);await assert.rejects(store.save(fixture()),/STORE_UNREADABLE/);assert.equal(await fs.readFile(file,'utf8'),'bad-current');assert.equal(await fs.readFile(file+'.previous','utf8'),'bad-previous');
  });
  await check('Incoming future data is rejected before rewriting the producer marker',async()=>{
-  const {file,store}=await pair('incoming',envelope(fixture()));const before=await fs.readFile(file,'utf8');for(const value of [{...fixture(),version:10},{...fixture(),producerVersion:'13.0.1'}])assert.throws(()=>store.save(value),/STORE_NEWER_VERSION/);assert.equal(await fs.readFile(file,'utf8'),before);
+  const {file,store}=await pair('incoming',envelope(fixture()));const before=await fs.readFile(file,'utf8');for(const value of [{...fixture(),version:10},{...fixture(),producerVersion:'14.0.2'}])assert.throws(()=>store.save(value),/STORE_NEWER_VERSION/);assert.equal(await fs.readFile(file,'utf8'),before);
  });
  await check('A valid older marker is accepted and concurrent saves preserve ordered snapshots',async()=>{
-  const {file,store}=await pair('older-producer',envelope({...fixture(),producerVersion:'9.9.9'}));assert.equal((await store.load()).data.producerVersion,'9.9.9');await Promise.all([store.save(fixture(7)),store.save(fixture(8))]);assert.equal((await store.load()).data.revision,8);const previous=JSON.parse(codec.decrypt(Buffer.from(JSON.parse(await fs.readFile(file+'.previous','utf8')).ciphertext,'base64')));assert.equal(previous.revision,7);assert.equal(previous.producerVersion,'14.0.0');
+  const {file,store}=await pair('older-producer',envelope({...fixture(),producerVersion:'9.9.9'}));assert.equal((await store.load()).data.producerVersion,'9.9.9');await Promise.all([store.save(fixture(7)),store.save(fixture(8))]);assert.equal((await store.load()).data.revision,8);const previous=JSON.parse(codec.decrypt(Buffer.from(JSON.parse(await fs.readFile(file+'.previous','utf8')).ciphertext,'base64')));assert.equal(previous.revision,7);assert.equal(previous.producerVersion,'14.0.1');
  });
  await fs.writeFile(path.join(root,'dev-notes','storage-upgrade-v14-results.json'),JSON.stringify({passed:true,checks,scope:'Synthetic local files with authenticated encryption; legacy compatibility, downgrade refusal and corruption recovery. Not a cross-version installer or second-computer test.'},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;});

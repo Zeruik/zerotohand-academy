@@ -30,3 +30,4 @@ jobs:
           node qa/archive-compatibility-v14.cjs
           node qa/workflow-v14.cjs
           node qa/manager-storage-v11.cjs
+          node qa/storage-upgrade-v14.cjs

@@ -4,8 +4,8 @@ AppId={{CFF45F03-4D61-4AF0-93F5-5C21174D7510}
 AppName={#AppName}
 AppPublisher=理工阿白菌 / TechABJ
 AppPublisherURL=mailto:zeruik@qq.com
-AppVersion=14.0.0
-VersionInfoVersion=14.0.0.0
+AppVersion=14.0.1
+VersionInfoVersion=14.0.1.0
 DefaultDirName={code:DefaultInstallFolder}
 DefaultGroupName=ZeroToHand
 PrivilegesRequired=lowest
@@ -92,7 +92,7 @@ var
   BackupFolder, BackupSource, MigratedSource, MigratedTarget: String;
 
 const
-  InstallerVersion = '14.0.0';
+  InstallerVersion = '14.0.1';
   AppExecutable = 'ZeroToHand.exe';
   UninstallKey = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\{CFF45F03-4D61-4AF0-93F5-5C21174D7510}_is1';
 

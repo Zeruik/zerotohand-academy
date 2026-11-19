@@ -1,7 +1,7 @@
 {
   "name": "zerotohand-academy",
   "productName": "ZTH Studio Academy",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "description": "Offline studio learning: mechanical design, electronics, programming, autonomous systems and content operations",
   "main": "main.cjs",
   "private": true,

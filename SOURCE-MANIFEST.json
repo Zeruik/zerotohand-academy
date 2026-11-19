@@ -1,6 +1,6 @@
 {
   "product": "academy",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "files": [
     {
       "path": ".gitattributes",
@@ -9,8 +9,8 @@
     },
     {
       "path": ".github/workflows/portable-regression.yml",
-      "size": 1041,
-      "sha256": "568489d496f30db7a4ce3123a5c59bdb6e453e7c5e85674efcf22b34072685da"
+      "size": 1083,
+      "sha256": "dbdbd3b66ad784391a16ed420dad8841f9f3c09ab07e5fe2463dfa0a8a6817b8"
     },
     {
       "path": ".gitignore",
@@ -24,8 +24,8 @@
     },
     {
       "path": "NEXT-RELEASE.md",
-      "size": 1575,
-      "sha256": "e8ec2aaaba050e6ce6654fd99c592fa8697b765ce56a97c73e7843a342f3fd83"
+      "size": 1721,
+      "sha256": "4e917a6d0d924093c615692f8de182a836cff06aa5075abd470fbabc7449d1ad"
     },
     {
       "path": "PRIVACY-ZH.txt",
@@ -34,8 +34,8 @@
     },
     {
       "path": "README.md",
-      "size": 41677,
-      "sha256": "8b5e1760cacd86149a7cfdb7472afa48c5cd04a702b69c6f038c501a93e22e76"
+      "size": 41874,
+      "sha256": "870f2338a753e9d62117f497d6dcfc26563a2253b535b32c14cb0caf20e687e3"
     },
     {
       "path": "README.txt",
@@ -60,12 +60,12 @@
     {
       "path": "ZeroToHand-Desktop.iss",
       "size": 28096,
-      "sha256": "75b53201fef2d2f138f652e94d6173262d0b74291dc29228b3af44af41957692"
+      "sha256": "bf37bf6f18fef72e5ac14404ca8486cab95cab87a2c4e92dc49f8bb9d29d1a0e"
     },
     {
       "path": "ZeroToHand-Engineering-Academy.html",
       "size": 9276870,
-      "sha256": "c5b34613fa7dd23deb422ed2660784270a0aade08b653a4d7fd6608d6a77daba"
+      "sha256": "8c174f4339b4ecf6153ff192366adeb99a1b225ce12a544baba696fea3eda0a6"
     },
     {
       "path": "assets/fonts/NotoSansSC.ttf",
@@ -225,7 +225,7 @@
     {
       "path": "build-exe-brand-v14.cjs",
       "size": 2920,
-      "sha256": "e649cb50c97d0b6965a075234579ff424a5cac7050f203fce3a6d17d3463f58b"
+      "sha256": "ee0fce5a016d165a072bc4a5e3a4214feec0acc03c5324c3f2ee8a1c4b5e5d5f"
     },
     {
       "path": "build-flashing.cjs",
@@ -260,7 +260,7 @@
     {
       "path": "desktop/package.json",
       "size": 311,
-      "sha256": "9ad21256b29b6d87e275a7b0a0ee022977757f67ae0e231b6b17240ed9b01d18"
+      "sha256": "53d0879777698a6591398c4a8989ee30560165a54288150bbca34a0d9e1becc8"
     },
     {
       "path": "desktop/preload.cjs",
@@ -295,12 +295,12 @@
     {
       "path": "desktop/store.cjs",
       "size": 6780,
-      "sha256": "b71691ddccfc23549ded579af004cf22af9b3d3704a207d2a4f3bb655aa07653"
+      "sha256": "f50b8dfdc271623773aa53f14c5872552a5d3affc9ac2a1ae91c35db43966aef"
     },
     {
       "path": "package-release-v14.cjs",
       "size": 26482,
-      "sha256": "8bac789cdf41ceeeff1e56b8073ebce8cabd2a561c330fc73c7b3a7733f23529"
+      "sha256": "1be46a8748b939297cfc8015fbb343f31f0cf6331c3b2d940c3daeab4ad6d8b0"
     },
     {
       "path": "qa/archive-compatibility-v10.cjs",
@@ -320,7 +320,7 @@
     {
       "path": "qa/archive-compatibility-v14.cjs",
       "size": 2867,
-      "sha256": "3866ab0b52d0c51196cf5324229ddbe5c16144f37dc1818109e26a7013aa220e"
+      "sha256": "51e78009440982a11319fa3c5330e6f20cea39e0d6c3330e341e66d21a413a8a"
     },
     {
       "path": "qa/autonomy-v12.cjs",
@@ -440,7 +440,7 @@
     {
       "path": "qa/installer-lifecycle-v14.cjs",
       "size": 11321,
-      "sha256": "a5de2ed6867774369b41fd31f05f6b7dde048eeffed91470c7992d285947019e"
+      "sha256": "69c867a7d44a16e3ee7d69f67d0bf071eafb491c5d7150ac1131ccdb021a01f0"
     },
     {
       "path": "qa/integration-v10.cjs",
@@ -460,7 +460,7 @@
     {
       "path": "qa/integration-v14.cjs",
       "size": 5346,
-      "sha256": "8c62e507ab6e7aa7d2a56cc0d0ba492a3f1ab0cc86466eccbfb2b0454076e394"
+      "sha256": "782c8732b6ab06abfc6ea77bcc5b966aaf1038a9a46ec36d24c60406d33f7c58"
     },
     {
       "path": "qa/interface-v8.cjs",
@@ -535,7 +535,7 @@
     {
       "path": "qa/protection-native-v14.cjs",
       "size": 7672,
-      "sha256": "33c83bc1d567f0c658033b6a5824b520dcbd2a9167e581c4069628dbbfdb4514"
+      "sha256": "8444f42594b051c2dfa66d00d4a5e5349d24ba880efd0e58b155077261a2d798"
     },
     {
       "path": "qa/quality-v7.cjs",
@@ -599,8 +599,8 @@
     },
     {
       "path": "qa/storage-upgrade-v14.cjs",
-      "size": 6260,
-      "sha256": "a14fdcb9190ad2e0d462c7f841eaf82a4286cd84e748929e1faa67b408ce188c"
+      "size": 6731,
+      "sha256": "0090cbca9bf5f7d58ba64d729b8f7cfb88c7a943161b1fcb6b6ffc4568cbe70a"
     },
     {
       "path": "qa/store-v9.cjs",
@@ -965,7 +965,7 @@
     {
       "path": "src/profiles-v9.js",
       "size": 35029,
-      "sha256": "93b30f20ed732e3b53202d9a0f99eb166a328048d061de5f2fadc113740618cf"
+      "sha256": "f905e5ba725abc221809e912b17471220d639e96819965fe94469dabba2ee891"
     },
     {
       "path": "src/robot-assets-v8.js",

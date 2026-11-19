@@ -4,9 +4,9 @@ const crypto = require('crypto');
 const cp = require('child_process');
 
 const ROOT = fs.realpathSync(__dirname);
-const VERSION = '14.0.0';
+const VERSION = '14.0.1';
 const SOURCE_FOLDER = 'publish/zerotohand-academy-v14';
-const RELEASE_FOLDER = 'release/ZeroToHand-Academy-Windows-v14.0.0';
+const RELEASE_FOLDER = 'release/ZeroToHand-Academy-Windows-v14.0.1';
 const INSTALLER = 'dist/Install-ZeroToHand-v14.exe';
 const APP_HTML = 'ZeroToHand-Engineering-Academy.html';
 
